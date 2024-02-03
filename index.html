@@ -1,0 +1,212 @@
+<!-- Using MIT license. https://github.com/bddjr/BCSPanel-web-login -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <template id="footer_template">
+      <!-- <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备99999999号-9</a><br/> -->
+      <!-- <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=99999999999999">京公网安备99999999999999号</a><br/> -->
+    </template>
+
+    <title>BCSPanel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/img/BCSP-64x64.png" />
+    <link href="src/css/index.css" rel="stylesheet" />
+    <link href="src/css/index-dark.css" rel="stylesheet" />
+    <link href="src/css/login-background-img.css" rel="stylesheet" />
+    <script>
+      window.onerror = function () {
+        console.log("js loading failed");
+        var loading_p_failed = document.getElementById("loading_p_failed");
+        if (loading_p_failed) {
+          loading_p_failed.style.display = "";
+        }
+      };
+      setTimeout(function () {
+        var loading_p_failed = document.getElementById("loading_p_failed");
+        if (loading_p_failed && loading_p_failed.style.display == "none") {
+          loading_p_failed.innerHTML =
+            "The loading may have failed (>10s). <br />Please refresh or change the web browser.";
+          loading_p_failed.style.display = "";
+        }
+      }, 10001);
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+    <style id="loading_style">
+      #loading_div {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        background-color: #fafafa;
+        transition: opacity 0.3s ease;
+        z-index: 99999;
+      }
+      #loading_div2 {
+        transition: opacity 0.3s ease;
+      }
+      #loading_div > div {
+        text-align: center;
+        margin: 0;
+      }
+      #loading_div p {
+        color: black;
+        margin: 24px 0 0 0;
+        font-size: 16px;
+      }
+      @media (prefers-color-scheme: dark) {
+        #loading_div {
+          background-color: #0e0e0e;
+        }
+        #loading_div p {
+          color: white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading_div">
+      <div id="loading_div2">
+        <div style="height: 40.32px">
+          <!--
+              To change the dataURL, run this command:
+                npm run logo
+            -->
+          <img
+            id="loading_applogo"
+            alt=""
+            width="230"
+            src="data:image/png;base64,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"
+          />
+        </div>
+        <noscript>
+          <p>Loading failed, <br />please allow JavaScript to run.</p>
+        </noscript>
+        <p id="loading_p_failed" style="display: none">
+          Loading failed. <br />Please refresh or change the web browser.
+        </p>
+      </div>
+    </div>
+    <div id="divmain" class="main">
+      <div id="divmain2" class="main2">
+        <p
+          id="loginTitle"
+          class="loginTitle"
+          i18n_id="loginTitle"
+          i18n_property_name="innerText"
+          i18n_statu="login"
+        >
+          I18nElement
+        </p>
+        <a
+          href="https://bcspanel.bddjr.com/docs/https"
+          target="_blank"
+          rel="noopener"
+          id="notSecureWarning"
+          class="notSecureWarning"
+          style="display: none"
+        >
+          <div i18n_id="notSecureWarning" i18n_property_name="innerHTML">
+            I18nElement
+          </div>
+        </a>
+        <div id="divLoginInput">
+          <form id="form" action="" method="post" class="form">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="I18nElement"
+              i18n_id="form_username"
+              i18n_property_name="placeholder"
+            /><br />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              placeholder="I18nElement"
+              i18n_id="form_password"
+              i18n_property_name="placeholder"
+            /><br />
+          </form>
+          <input
+            style="display: none"
+            type="password"
+            id="repeat_password"
+            name="repeat_password"
+            autocomplete="off"
+            i18n_id="form_repeat_password"
+            i18n_property_name="placeholder"
+            placeholder="I18nElement"
+          />
+          <div id="divLoginButton" class="divLoginButton">
+            <p class="loginStatus">
+              <span
+                id="loginStatus"
+                i18n_id="loginStatus"
+                i18n_property_name="innerText"
+                i18n_statu="not_logged_in"
+                >I18nElement</span
+              ><br />
+              <a
+                id="forgotPassword"
+                class="forgotPassword"
+                href="https://bcspanel.bddjr.com/docs/forgotPassword"
+                target="_blank"
+                rel="noopener"
+                i18n_id="forgotPassword"
+                i18n_property_name="innerText"
+              >
+                I18nElement
+              </a>
+            </p>
+            <button
+              id="loginbutton"
+              class="loginbutton"
+              i18n_id="loginbutton"
+              i18n_property_name="innerText"
+              i18n_statu="login"
+            >
+              I18nElement
+            </button>
+          </div>
+        </div>
+        <footer>
+          <a
+            href="https://github.com/bddjr/BCSPanel"
+            target="_blank"
+            rel="noopener"
+            >BCSPanel</a
+          ><br />
+        </footer>
+        <div id="div_change_lang" class="div_change_lang">
+          <button class="button_lang">
+            <!-- 图标来源: https://element-plus.org/zh-CN/ 的右上角 -->
+            <svg
+              viewBox="0 0 24 24"
+              height="24"
+              style="transform: translateY(4px)"
+            >
+              <path
+                d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z"
+              ></path>
+            </svg>
+          </button>
+          <div id="div_change_lang_content" class="div_change_lang_content">
+            <a id="changeLang_en" class="div_change_lang_content_a"> English </a
+            ><br />
+            <a id="changeLang_zh-CN" class="div_change_lang_content_a">
+              简体中文 </a
+            ><br />
+            <a id="changeLang_default" class="div_change_lang_content_a">
+              Default </a
+            ><br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

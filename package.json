@@ -1,0 +1,21 @@
+{
+  "name": "web-login",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "logo": "node change-img-dataurl.js && prettier --write index.html"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "prettier": "^3.2.4",
+    "vite-plugin-compression": "^0.5.1"
+  }
+}

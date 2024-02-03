@@ -1,0 +1,31 @@
+{
+    "langName": "English",
+    "loginTitle": {
+        "status": {
+            "login": "Login BCSPanel",
+            "register": "Register BCSPanel"
+        }
+    },
+    "form_username": "User Name",
+    "form_password": "Password",
+    "form_repeat_password": "Repeat Your Password",
+    "loginStatus": {
+        "status": {
+            "not_logged_in": "Not logged in",
+            "user_name_or_password_not_filled_in": "User name or password not filled in",
+            "attempting_to_login": "Attempting to login……",
+            "login_failed": "Login failed, {{error}}",
+            "login_succeeded": "Login succeeded ✔",
+            "do_not_enter_two_different_passwords": "Don't enter two different passwords",
+            "wrong_username_or_password": "Wrong username or password"
+        }
+    },
+    "forgotPassword": "Forgot Password",
+    "loginbutton": {
+        "status": {
+            "login": "Login",
+            "register": "Sign Up"
+        }
+    },
+    "notSecureWarning": "⚠ All your sensitive information is transmitted in plain text without encryption, which can lead to man-in-the-middle hijacking attacks!<br /><span>To configure secure encrypted transmissions, click here for documentation.</span>"
+}

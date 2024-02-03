@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    background-image: url('../img/background-bedrock.png');
+    /* 背景图垂直、水平均居中 */
+    background-position: center center;
+    /* 背景图平铺 */
+    background-repeat: repeat;
+    /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+    background-attachment: fixed;
+    /* 背景图片放大 */
+    background-size: 256px;
+    /* 设置背景颜色，背景图加载过程中会显示背景色 */
+    background-color: #202020;
+    /* 不对放大的图片做模糊处理 */
+    image-rendering: pixelated;
+}
+body > *{
+    image-rendering: auto;
+}
