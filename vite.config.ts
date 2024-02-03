@@ -5,6 +5,10 @@ import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    // 监听所有地址，包括局域网与公网
+    host: '0.0.0.0',
+  },
   base: './',
   plugins: [
     viteCompression({

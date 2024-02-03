@@ -4,6 +4,7 @@ import clickLogin from './clickLogin';
 import { setI18nElementStatu, updateLang } from './i18n/i18n';
 import { changeLang, langsKeys } from './i18n/langs';
 import { updateHeight } from './updateHeight';
+import isMobile from './isMobile';
 
 // 将加载页面的logo的dataurl缓存备用
 ; (window as any).appLogoDataUrl = (
@@ -67,7 +68,7 @@ function clickChangeLang(event: MouseEvent) {
   // 异步显示菜单
   setTimeout(() => {
     contentStyle.display = '';
-  }, 1)
+  }, 0)
 }
 // 遍历添加语言切换按钮的响应
 for (const i of langsKeys.concat('default')) {
