@@ -1,6 +1,6 @@
 # BCSPanel-web-login
 
-[BCSPanel](https://github.com/bddjr/BCSPanel) 的登录页面，体积小巧，功能齐全，使用 [Vite](https://cn.vitejs.dev) + [TypeScript](https://www.typescriptlang.org) 编写。  
+[BCSPanel](https://github.com/bddjr/BCSPanel) 的登录页面，体积小巧，使用 [Vite](https://cn.vitejs.dev) + [TypeScript](https://www.typescriptlang.org) 编写。  
 
 请使用最新版本的 [Google Chrome](https://google.cn/chrome/) 或 [Microsoft Edge](https://www.microsoft.com/zh-cn/edge/download) 浏览器访问，确保一切正常运行。  
 会尝试适配最新版 [Mozilla Firefox](https://www.mozilla.org/zh-CN/firefox/browsers/) ，但不保证它正常显示。  
@@ -21,3 +21,23 @@
 ![3](README/img/3.png)
 
 ![4](README/img/4.jpg)
+
+***
+## 开始
+
+下载源码并补全依赖
+```
+git clone https://github.com/bddjr/BCSPanel-web-login
+cd BCSPanel-web-login
+npm install
+```
+
+开发时预览
+```
+npm run dev
+```
+
+构建
+```
+npm run build
+```
