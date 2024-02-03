@@ -25,6 +25,7 @@ export default async () => {
         if (isRegister) {
             if ((document.getElementById("repeat_password") as HTMLInputElement).value === "") {
                 changeLoginStats("user_name_or_password_not_filled_in", "red");
+                (document.getElementById("repeat_password") as HTMLInputElement).focus();
                 return;
             }
             if (
