@@ -4,9 +4,10 @@ import { getThisLang, langsParams } from "./langs";
 
 /** 自定义元素类型，基于原版添加了一些参数 */
 export interface I18nElementAttributes extends NamedNodeMap {
-    i18n_id: Attr
-    i18n_statu: Attr | undefined
-    i18n_property_name: Attr
+    i18n_id: Attr // loginTitle
+    i18n_statu: Attr | undefined // login
+    i18n_property_name: Attr // innerText
+    i18n_mirror_elementIds: Attr | undefined // title,title2,title3
 }
 export interface I18nElement extends HTMLElement {
     attributes: I18nElementAttributes
@@ -32,7 +33,7 @@ export function updateLang(
         console.log(`updateI18nElement ${i18n_id}`);
 
         /** 依据i18n_id获取所有匹配的元素 */
-        const eles = document.querySelectorAll(`[i18n_id="${i18n_id}"]`)
+        const eles = document.querySelectorAll(`[i18n_id="${i18n_id}"]`) as NodeListOf<I18nElement>
         // console.log(eles);
 
         // 如果找不到元素，滚出去
@@ -47,10 +48,10 @@ export function updateLang(
             // 如果已经输入了参数对象
             if (params) {
                 // 那么将语言文件的参数合集设置成输入的
-                (langsParams as any)[i18n_id] = params
+                langsParams[i18n_id] = params
             } else {
                 // 否则将输入的设置成语言文件的
-                params = (langsParams as any)[i18n_id]
+                params = langsParams[i18n_id]
             }
             // console.log(params);
 
@@ -58,7 +59,7 @@ export function updateLang(
             if (statu === undefined) {
                 // 获取第0个元素的statu
                 //@ts-ignore
-                statu = (eles[0] as I18nElement).attributes.i18n_statu?.value
+                statu = eles[0].attributes.i18n_statu?.value
             }
             // console.log(statu);
 
@@ -75,15 +76,23 @@ export function updateLang(
         // 遍历找到的所有元素，让更改生效
         for (const ele of eles) {
             // 如果有状态，修改元素的状态属性
-            //@ts-ignore
-            const ele_i18n_statu = (ele as I18nElement).attributes?.i18n_statu
+            const ele_i18n_statu = ele.attributes?.i18n_statu
             if (ele_i18n_statu !== undefined) {
-                ele_i18n_statu.value = (statu as string)
+                ele_i18n_statu.value = statu as string
             }
             // 如果不忽略更新显示文本，那么更新
             if (!ignore_update_property) {
+                const i18n_property_name = ele.attributes.i18n_property_name.value;
                 //@ts-ignore
-                (ele as I18nElement)[(ele as I18nElement).attributes.i18n_property_name.value] = property;
+                ele[i18n_property_name] = property;
+                // 更新镜像内容
+                const mirIds = ele.attributes.i18n_mirror_elementIds?.value?.split(',');
+                if (mirIds) for (const i of mirIds) {
+                    const mirEle = document.getElementById(i) as I18nElement | null;
+                    if (!mirEle) continue;
+                    //@ts-ignore
+                    mirEle[i18n_property_name] = property;
+                }
             }
         }
     }
@@ -107,13 +116,6 @@ export function updateLang(
 export function getI18nIdFromElementId(elementId: string): string | undefined {
     const value: string | null | undefined = (document.getElementById(elementId) as (I18nElement | null))?.attributes?.i18n_id?.value;
     if (value) return value;
-}
-
-/** 函数用于更改I18nElement的statu */
-export function setI18nElementStatu(elementId: string, value: string) {
-    const statu = (document.getElementById(elementId) as I18nElement).attributes.i18n_statu;
-    if (statu)
-        statu.value = value;
 }
 
 /** 函数用于切换显示登录状态 */

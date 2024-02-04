@@ -1,13 +1,22 @@
 import { changeLoginStats } from "./i18n/i18n";
 import isRegister from "./isRegister";
 
-// 函数用于启用或禁用登录按钮
+
+export const loginConfig = {
+    login_api: '../api-login/',
+    login_success_redirect: () => {
+        location.pathname = '../web/'
+    },
+}
+
+
+/** 函数用于启用或禁用登录按钮 */
 export function setDisabledLoginButton(a: boolean) {
     (document.getElementById("loginbutton") as HTMLButtonElement).disabled = a;
 }
 
-// 函数用于触发提交表单
-export default async () => {
+/** 函数用于触发提交表单 */
+export async function clickLogin(){
     try {
         console.log("clickLogin");
         if ((document.getElementById("loginbutton") as HTMLButtonElement).disabled)
@@ -45,14 +54,14 @@ export default async () => {
         FDS.append("username", (document.getElementById("username") as HTMLInputElement).value)
         FDS.append("password", (document.getElementById("password") as HTMLInputElement).value)
 
-        const response = await fetch('../api/login', {
+        const response = await fetch(loginConfig.login_api, {
             method: "POST",
             body: FDS,
         })
 
         if (response.status == 200) {
             changeLoginStats('login_succeeded', 'green');
-            location.pathname = '../web/';
+            loginConfig.login_success_redirect();
         } else if (response.status == 403) {
             changeLoginStats('wrong_username_or_password', 'red');
             setDisabledLoginButton(false)

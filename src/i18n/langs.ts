@@ -13,7 +13,7 @@ export const langsKeys = Object.keys(langs);
 
 
 /** 语言参数 */
-export const langsParams = {
+export const langsParams: any = {
     /* "loginStatus": {
         "error": "404"
     } */

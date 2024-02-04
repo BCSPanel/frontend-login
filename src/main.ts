@@ -1,12 +1,12 @@
 import asyncSleep from './asyncSleep';
 import isRegister from './isRegister';
-import clickLogin from './clickLogin';
-import { setI18nElementStatu, updateLang } from './i18n/i18n';
+import { clickLogin } from './clickLogin';
+import { updateLang } from './i18n/i18n';
 import { changeLang, langsKeys } from './i18n/langs';
 import { updateHeight } from './updateHeight';
 
 // 将加载页面的logo的dataurl缓存备用
-; (window as any).appLogoDataUrl = (
+window.appLogoDataUrl = (
   document.getElementById('loading_applogo') as HTMLImageElement
 ).src
 
@@ -82,8 +82,8 @@ if (!window.isSecureContext) {
 // 配置注册页
 if (isRegister) {
   (document.getElementById('repeat_password') as HTMLElement).style.display = '';
-  setI18nElementStatu('loginTitle', 'register');
-  setI18nElementStatu('loginbutton', 'register');
+  updateLang('loginTitle', 'register', undefined, true);
+  updateLang('loginbutton', 'register', undefined, true);
 }
 
 // footer结尾追加内容
