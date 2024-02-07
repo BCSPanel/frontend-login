@@ -15,16 +15,14 @@ body {
     /* 让背景图基于容器大小伸缩 */
     background-size: cover;
     /* 设置背景颜色，背景图加载过程中会显示背景色 */
-    background-color: #ffffff;
+    background-color: gray;
     /* 模糊 */
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-            url('../img/login-background-384x195-tinify.webp');
-    }
+html.dark body {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('../img/login-background-384x195-tinify.webp');
 }

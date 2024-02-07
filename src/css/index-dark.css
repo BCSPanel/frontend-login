@@ -1,48 +1,45 @@
-@media (prefers-color-scheme: dark) {
-  p {
-    color: white;
-  }
+html.dark p {
+  color: white;
+}
 
-  .main {
-    background-color: rgba(16, 16, 16, 0.85);
-  }
+html.dark .main {
+  background-color: rgba(16, 16, 16, 0.85);
+}
 
-  input {
-    background-color: #2f2f2f;
-    color: white;
-    border-color: gray;
-  }
+html.dark input {
+  background-color: #2f2f2f;
+  color: white;
+  border-color: gray;
+}
 
-  .loginbutton {
-    background-color: #0066d3;
-  }
+html.dark .loginbutton {
+  background-color: #0066d3;
+}
 
-  .loginbutton:disabled {
-    background-color: #212a34;
-  }
+html.dark .loginbutton:disabled {
+  background-color: #212a34;
+}
 
-  .div_button_lang {
-    color: black;
-  }
+html.dark .div_button_lang {
+  color: black;
+}
 
-  .div_change_lang_content {
-    background-color: #333;
-  }
+html.dark .div_change_lang_content {
+  background-color: #333;
+}
 
-  .div_change_lang_content_a {
-    color: white;
-  }
+html.dark .div_change_lang_content_a {
+  color: white;
+}
 
-  .div_change_lang_content_a:hover {
-    color: #d1d1d1;
-  }
+html.dark .div_change_lang_content_a:hover {
+  color: #d1d1d1;
+}
 
-  .div_change_lang_content_a:active {
-    color: #a0a0a0;
-  }
+html.dark .div_change_lang_content_a:active {
+  color: #a0a0a0;
+}
 
-  .button_lang > svg > path {
-    fill: #fff;
-  }
-  
+html.dark .button_lang>svg>path {
+  fill: #fff;
 }

@@ -7,11 +7,10 @@ export function updateHeight() {
     let divmain = (document.getElementById('divmain') as HTMLElement); // 取元素的，可能非必要，但能让ts看懂
     divmain.style.bottom = ''; // 取消上下居中
     divmain.style.height = ''; // 取消高度设定
-    divmain.style.height = divmain.clientHeight + 'px'; // 设定高度
-    if (window.innerHeight > divmain.clientHeight){
+    divmain.style.height = divmain.offsetHeight + 'px'; // 设定高度
+    if (window.innerHeight > divmain.offsetHeight){
         divmain.style.bottom = '0'; // 上下居中
-        document.body.style.height = '100%'
-    }else{
-        document.body.style.height = divmain.clientHeight + 'px';
     }
+    //@ts-ignore
+    document.body.style['min-height'] = divmain.offsetHeight + 'px';
 }

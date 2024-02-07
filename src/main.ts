@@ -1,28 +1,27 @@
-import asyncSleep from './asyncSleep';
 import isRegister from './isRegister';
 import { clickLogin } from './clickLogin';
 import { updateLang } from './i18n/i18n';
 import { changeLang, langsKeys } from './i18n/langs';
 import { updateHeight } from './updateHeight';
 
-// 将加载页面的logo的dataurl缓存备用
-window.appLogoDataUrl = (
-  document.getElementById('loading_applogo') as HTMLImageElement
-).src
 
-// 函数用于移除加载页面
-async function remove_loading() {
-  console.log('remove loading')
-    ; (document.getElementById('loading_p_failed') as HTMLElement).remove()
-    ; (document.getElementById('loading_div2') as HTMLElement).style.opacity = '0'
-  await asyncSleep(400)
-    ; (document.getElementById('loading_div') as HTMLElement).style.opacity = '0'
-  await asyncSleep(300)
-    ; (document.getElementById('loading_div') as HTMLElement).remove()
-    ; (document.getElementById('loading_style') as HTMLElement).remove()
+
+// 深色模式
+const matchMediaDark = window.matchMedia("(prefers-color-scheme: dark)");
+function matchMediaDarkChange() {
+  const htmlclass = document.getElementsByTagName('html')[0].classList;
+  if (matchMediaDark.matches) {
+    console.log('color-scheme dark');
+    htmlclass.add('dark');
+  } else {
+    console.log('color-scheme light');
+    htmlclass.remove('dark');
+  }
 }
+matchMediaDark.addEventListener("change", matchMediaDarkChange);
+matchMediaDarkChange();
 
-/////////////////////////////////////
+
 
 // 函数用于添加输入框按回车键时的响应
 function add_doc_Enter_listener(doc_name: string, func: string | Function) {
@@ -42,18 +41,22 @@ function add_doc_Enter_listener(doc_name: string, func: string | Function) {
 
   (document.getElementById(doc_name) as HTMLInputElement).addEventListener("keyup", thisfunc);
 }
-
 // 添加输入框按回车键的响应
 add_doc_Enter_listener("username", "password");
 if (isRegister) {
   add_doc_Enter_listener("password", "repeat_password");
-  add_doc_Enter_listener("repeat_password", clickLogin);
+  add_doc_Enter_listener("repeat_password", "verification_code");
+  add_doc_Enter_listener("verification_code", clickLogin);
 } else {
   add_doc_Enter_listener("password", clickLogin);
 }
 
+
+
 // 添加登录按钮的响应
 (document.getElementById("loginbutton") as HTMLButtonElement).addEventListener('click', clickLogin);
+
+
 
 /* 函数用于添加语言切换按钮的响应 */
 function clickChangeLang(event: MouseEvent) {
@@ -74,28 +77,51 @@ for (const i of langsKeys.concat('default')) {
   (document.getElementById('changeLang_' + i) as HTMLElement).addEventListener('click', clickChangeLang);
 }
 
+
+
 // HTTP不安全警告
 if (!window.isSecureContext) {
   (document.getElementById("notSecureWarning") as HTMLElement).style.display = '';
 }
 
+
+
 // 配置注册页
 if (isRegister) {
   (document.getElementById('repeat_password') as HTMLElement).style.display = '';
+  (document.getElementById('verification_code') as HTMLElement).style.display = '';
   updateLang('loginTitle', 'register', undefined, true);
   updateLang('loginbutton', 'register', undefined, true);
 }
+
+
 
 // footer结尾追加内容
 document.getElementsByTagName("footer")[0].appendChild(
   (document.getElementById('footer_template') as HTMLTemplateElement).content.cloneNode(true)
 );
 
+
+
 // resize触发更新高度
-window.addEventListener('resize', updateHeight)
+window.addEventListener('resize', updateHeight);
+
+
+
+// 显示
+(document.getElementById('divmain') as HTMLElement).style.display = '';
+
+
 
 // 更新语言
-updateLang()
+updateLang();
 
-// 移除加载页面
-remove_loading()
+
+
+// 移除加载时的style
+(document.getElementById('loading_style') as HTMLElement).remove();
+
+
+
+// 异步触发更新高，修复部分情况出现的高度错误
+setTimeout(updateHeight, 0);
