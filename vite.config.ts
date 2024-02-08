@@ -13,9 +13,10 @@ export default defineConfig({
   plugins: [
     viteCompression({
       algorithm: 'gzip',
-      threshold: 1024,
-      verbose: false,
-      deleteOriginFile: false
+      threshold: 0,
+      verbose: true,
+      deleteOriginFile: false,
+      filter: /\.(js|json|css)$/i
     }),
     {
       // script执行前阻止网页渲染
@@ -34,5 +35,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    reportCompressedSize: false,
   }
 })

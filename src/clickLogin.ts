@@ -64,6 +64,7 @@ export async function clickLogin() {
         if (isRegister) {
             FDS_append("verification_code");
         }
+        FDS.append("secure", String(window.isSecureContext));
 
         // 提交
         const response = await fetch(loginConfig.login_api, {
