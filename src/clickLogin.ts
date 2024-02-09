@@ -2,8 +2,15 @@ import { changeLoginStats } from "./i18n/i18n";
 import isRegister from "./isRegister";
 
 
+// 异步预加载 clickLogin_noSecure_encrypt
+if (!window.isSecureContext) {
+    import('./clickLogin_noSecure_encrypt');
+}
+
+
 export const loginConfig = {
-    login_api: '../api-login/',
+    login_api: '../api-login/login',
+    login_salt_api: '../api-login/salt?username={{username}}',
     login_success_redirect: () => {
         location.pathname = '../web/'
     },
@@ -54,26 +61,37 @@ export async function clickLogin() {
         // 禁用登录按钮
         setDisabledLoginButton(true);
 
-        /** form data search */
-        const FDS = new URLSearchParams();
-        function FDS_append(elementId: string) {
-            FDS.append(elementId, (document.getElementById(elementId) as HTMLInputElement).value);
+        const postLoginBody = {
+            // boolean 安全上下文
+            "secure": window.isSecureContext,
+            // boolean 是否处于注册模式
+            "isregister": isRegister,
+            // string 用户名
+            "username": (document.getElementById("username") as HTMLInputElement).value,
+            // string 密码
+            "password": (document.getElementById("password") as HTMLInputElement).value,
+            // string 盐 登录模式发送随机盐 注册模式发送验证码
+            "salt": '',
         }
-        FDS_append("username");
-        FDS_append("password");
-        if (isRegister) {
-            FDS_append("verification_code");
+        // 如果不安全
+        if (!window.isSecureContext) {
+            // 加密
+            await (await import('./clickLogin_noSecure_encrypt')).updateBody(postLoginBody, loginConfig.login_salt_api)
+        } else if (isRegister) {// 安全的情况下注册
+            // 将验证码作为盐，直接发送
+            postLoginBody.salt = (document.getElementById("verification_code") as HTMLInputElement).value.trim();
         }
-        FDS.append("secure", String(window.isSecureContext));
 
         // 提交
+        console.log('clickLogin POST');
+        console.log(postLoginBody);
         const response = await fetch(loginConfig.login_api, {
             method: "POST",
-            body: FDS,
+            body: JSON.stringify(postLoginBody),
         })
 
         // 判断返回
-        if (response.status == 200) {
+        if (response.ok) {
             // 成功
             changeLoginStats('login_succeeded', 'green');
             loginConfig.login_success_redirect();
@@ -83,16 +101,14 @@ export async function clickLogin() {
             setDisabledLoginButton(false)
         } else {
             // 未知状态码
-            changeLoginStats('login_failed', 'red', {
-                error: String(response.status)
-            });
-            setDisabledLoginButton(false)
+            throw response.status;
         }
     } catch (e) {
-        console.log(e)
+        console.error(e)
         changeLoginStats("login_failed", "red", {
             error: String(e)
         })
+        setDisabledLoginButton(false)
     }
 }
 

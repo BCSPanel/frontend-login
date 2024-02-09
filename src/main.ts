@@ -1,3 +1,5 @@
+console.log('### main');
+
 import isRegister from './isRegister';
 import { clickLogin } from './clickLogin';
 import { updateLang } from './i18n/i18n';
@@ -79,8 +81,9 @@ for (const i of langsKeys.concat('default')) {
 
 
 
-// HTTP不安全警告
+// HTTP不安全
 if (!window.isSecureContext) {
+  // 显示警告
   (document.getElementById("notSecureWarning") as HTMLElement).style.display = '';
 }
 
@@ -98,7 +101,7 @@ if (isRegister) {
 
 // footer结尾追加内容
 document.getElementsByTagName("footer")[0].appendChild(
-  (document.getElementById('footer_template') as HTMLTemplateElement).content.cloneNode(true)
+  (document.getElementById('template_footer') as HTMLTemplateElement).content.cloneNode(true)
 );
 
 

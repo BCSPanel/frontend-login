@@ -13,10 +13,10 @@ export default defineConfig({
   plugins: [
     viteCompression({
       algorithm: 'gzip',
-      threshold: 0,
-      verbose: true,
-      deleteOriginFile: false,
-      filter: /\.(js|json|css)$/i
+      threshold: 256, // >=256字节时压缩
+      verbose: true, // 打印压缩结果
+      deleteOriginFile: false, // 不删除源文件
+      filter: /\.(js|json|css)$/i // 文件名匹配
     }),
     {
       // script执行前阻止网页渲染
@@ -37,6 +37,6 @@ export default defineConfig({
     }
   },
   build: {
-    reportCompressedSize: false,
+    reportCompressedSize: false, // 不使用vite自带的方式打印压缩后的大小
   }
 })

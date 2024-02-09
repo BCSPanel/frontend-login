@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <template id="footer_template">
+    <template id="template_footer">
       <!-- 在此处添加备案号即可： -->
       <!-- <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备99999999号-9</a><br/> -->
       <!-- <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=99999999999999">京公网安备99999999999999号</a><br/> -->
@@ -23,12 +23,17 @@
     </style>
     <link
       rel="preload"
-      as="style"
+      as="image"
       href="src/img/login-background-384x195-tinify.webp"
     />
-    <link rel="stylesheet" href="src/css/index.css" />
-    <link rel="stylesheet" href="src/css/index-dark.css" />
-    <link rel="stylesheet" href="src/css/login-background-img.css" />
+    <link rel="stylesheet" href="/src/css/index.css" />
+    <link rel="stylesheet" href="/src/css/index-dark.css" />
+    <link rel="stylesheet" href="/src/css/login-background-img.css" />
+    <script>
+      window.addEventListener("load", function () {
+        console.log("### Event load");
+      });
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
@@ -139,7 +144,6 @@
         </footer>
         <div id="div_change_lang" class="div_change_lang">
           <button class="button_lang">
-            <!-- 图标来源: https://element-plus.org/zh-CN/ 的右上角 -->
             <svg
               viewBox="0 0 24 24"
               height="24"
