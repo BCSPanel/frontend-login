@@ -27,8 +27,9 @@ jobs:
         npm install
         npm run build
 
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v4
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        name: dist
-        path: dist
+        branch: dist
+        folder: build
+        single-commit: true
