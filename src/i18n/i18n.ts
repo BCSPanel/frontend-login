@@ -66,9 +66,11 @@ export function updateLang(
             // 获取当前状态对应的语言字符串
             property = property.status[statu]
             // console.log(property);
-
-            // 如果参数合集是对象，遍历替换各个参数名
-            if (params && property) for (let i in params) {
+            // 如果没找到，直接用statu
+            if (!property) {
+                property = statu
+            } else if (params) for (let i in params) {
+                // 否则如果参数合集是对象，遍历替换各个参数名
                 // console.log(i)
                 property = property.replace(`{{${i}}}`, params[i])
             }

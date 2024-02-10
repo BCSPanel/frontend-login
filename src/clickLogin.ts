@@ -1,5 +1,6 @@
 import { changeLoginStats } from "./i18n/i18n";
 import isRegister from "./isRegister";
+import fetchWithTimeout from "./fetchWithTimeout";
 
 
 // 异步预加载 clickLogin_noSecure_encrypt
@@ -30,10 +31,10 @@ export async function clickLogin() {
         if ((document.getElementById("loginbutton") as HTMLButtonElement).disabled)
             return;
         /** 函数用于没填内容 */
-        function not_filled_in(elementId: string): boolean {
+        function not_filled_in(elementId: string, errorStatu: string = "user_name_or_password_not_filled_in"): boolean {
             const element = document.getElementById(elementId) as HTMLInputElement;
             if (element.value !== "") return false;
-            changeLoginStats("user_name_or_password_not_filled_in", "red");
+            changeLoginStats(errorStatu, "red");
             element.focus();
             return true;
         }
@@ -41,12 +42,25 @@ export async function clickLogin() {
         if (not_filled_in("username")) return;
         // 没填密码
         if (not_filled_in("password")) return;
+
         // 如果是注册模式
         if (isRegister) {
+            // 密码强度不足
+            {
+                const password = (document.getElementById("password") as HTMLButtonElement).value;
+                if (password.length < 16 ||
+                    !/[a-z]/g.test(password) ||
+                    !/[A-Z]/g.test(password) ||
+                    !/[0-9]/g.test(password)
+                ) {
+                    changeLoginStats('password_strength_is_insufficient', 'red');
+                    return;
+                }
+            }
             // 没填重复密码
             if (not_filled_in("repeat_password")) return;
             // 没填验证码
-            if (not_filled_in("verification_code")) return;
+            if (not_filled_in("verification_code", "the_verification_code_is_not_entered")) return;
             // 密码与重复密码不相等
             if (
                 (document.getElementById("password") as HTMLInputElement).value !==
@@ -57,6 +71,7 @@ export async function clickLogin() {
             }
         }
         console.log("clickLogin running");
+        changeLoginStats('attempting_to_login', 'gray');
 
         // 禁用登录按钮
         setDisabledLoginButton(true);
@@ -85,7 +100,7 @@ export async function clickLogin() {
         // 提交
         console.log('clickLogin POST');
         console.log(postLoginBody);
-        const response = await fetch(loginConfig.login_api, {
+        const response = await fetchWithTimeout(loginConfig.login_api, {
             method: "POST",
             body: JSON.stringify(postLoginBody),
         })
@@ -96,8 +111,11 @@ export async function clickLogin() {
             changeLoginStats('login_succeeded', 'green');
             loginConfig.login_success_redirect();
         } else if (response.status == 403) {
-            // 用户名或密码错误
-            changeLoginStats('wrong_username_or_password', 'red');
+            // 服务器拒绝
+            console.error(403);
+            const text = (await response.text()).trim();
+            if (text === '') throw 403;
+            changeLoginStats(text, 'red');
             setDisabledLoginButton(false)
         } else {
             // 未知状态码

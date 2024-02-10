@@ -1,5 +1,6 @@
 console.log('import clickLogin_noSecure_encrypt');
 
+import fetchWithTimeout from './fetchWithTimeout';
 import isRegister from './isRegister';
 import { SHA256 } from './sha256';
 
@@ -44,7 +45,7 @@ export async function updateBody(postLoginBody: postLoginBodyType, login_salt_ap
         postLoginBody.password = encrypt(postLoginBody.password, verification_code);
     } else {// 是登录
         // 向服务器要盐
-        const response = await fetch(login_salt_api.replace('{{username}}', postLoginBody.username));
+        const response = await fetchWithTimeout(login_salt_api.replace('{{username}}', postLoginBody.username));
         if (!response.ok) throw response.status;
 
         /** ["该用户注册时的验证码", "随机盐"] */

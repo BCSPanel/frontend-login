@@ -13,12 +13,16 @@
     "loginStatus": {
         "status": {
             "not_logged_in": "Not logged in",
-            "user_name_or_password_not_filled_in": "The user name, password, or verification code is not entered",
+            "user_name_or_password_not_filled_in": "The user name or password is not entered",
+            "the_verification_code_is_not_entered": "The verification code is not entered",
             "attempting_to_login": "Attempting to login……",
             "login_failed": "Login failed, {{error}}",
             "login_succeeded": "Login succeeded ✔",
             "do_not_enter_two_different_passwords": "Don't enter two different passwords",
-            "wrong_username_or_password": "The user name or password or verification code is incorrect"
+            "wrong_username_or_password": "Wrong user name or password",
+            "wrong_verification_code": "Wrong verification code",
+            "please_try_again": "Please try again",
+            "password_strength_is_insufficient": "The password is not strong enough. It must contain uppercase and lowercase letters and digits and cannot be less than 16 characters in length"
         }
     },
     "forgotPassword": "Forgot Password",

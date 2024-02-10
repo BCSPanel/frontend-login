@@ -8,21 +8,6 @@
 [使用MIT开源许可协议。](https://mit-license.org)  
 
 ***
-## 图
-
-不保证是最新版本的截图，仅供参考
-
-![0](README/img/0.jpg)
-
-![1](README/img/1.jpg)
-
-![2](README/img/2.jpg)
-
-![3](README/img/3.png)
-
-![4](README/img/4.jpg)
-
-***
 ## 开始
 
 下载源码并补全依赖
@@ -41,3 +26,20 @@ npm run dev
 ```
 npm run build
 ```
+
+***
+## 图
+
+不保证是最新版本的截图，仅供参考
+
+![0](README/img/0.jpg)
+
+![1](README/img/1.jpg)
+
+![2](README/img/2.jpg)
+
+![3](README/img/3.png)
+
+![4](README/img/4.jpg)
+
+![5](README/img/5.jpg)
