@@ -126,5 +126,9 @@ updateLang();
 
 
 
-// 异步触发更新高，修复部分情况出现的高度错误
-setTimeout(updateHeight, 0);
+// 加载完成后再次更新高，修复部分情况出现的高度错误
+window.addEventListener('load', () => {
+  console.log("### Event load");
+  updateHeight();
+  setTimeout(updateHeight, 100);
+});

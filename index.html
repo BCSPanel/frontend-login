@@ -28,16 +28,13 @@
     <link
       rel="preload"
       as="image"
+      type="image/webp"
       href="src/img/login-background-384x195-tinify.webp"
+      fetchpriority="high"
     />
     <link rel="stylesheet" href="/src/css/index.css" />
     <link rel="stylesheet" href="/src/css/index-dark.css" />
     <link rel="stylesheet" href="/src/css/login-background-img.css" />
-    <script>
-      window.addEventListener("load", function () {
-        console.log("### Event load");
-      });
-    </script>
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
@@ -85,27 +82,27 @@
               i18n_id="form_password"
               i18n_property_name="placeholder"
             /><br />
+            <input
+              style="display: none"
+              type="password"
+              id="repeat_password"
+              name="repeat_password"
+              autocomplete="off"
+              i18n_id="form_repeat_password"
+              i18n_property_name="placeholder"
+              placeholder="I18nElement"
+            />
+            <input
+              style="display: none"
+              type="text"
+              id="verification_code"
+              name="verification_code"
+              autocomplete="off"
+              i18n_id="form_verification_code"
+              i18n_property_name="placeholder"
+              placeholder="I18nElement"
+            />
           </form>
-          <input
-            style="display: none"
-            type="password"
-            id="repeat_password"
-            name="repeat_password"
-            autocomplete="off"
-            i18n_id="form_repeat_password"
-            i18n_property_name="placeholder"
-            placeholder="I18nElement"
-          />
-          <input
-            style="display: none"
-            type="text"
-            id="verification_code"
-            name="verification_code"
-            autocomplete="off"
-            i18n_id="form_verification_code"
-            i18n_property_name="placeholder"
-            placeholder="I18nElement"
-          />
           <div id="divLoginButton" class="divLoginButton">
             <p class="loginStatus">
               <span

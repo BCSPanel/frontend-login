@@ -1,5 +1,6 @@
 /** 函数用于更新页面高度 */
 export function updateHeight() {
+    // console.log('updateHeight');
     // 更新登录按钮那块的高度
     (document.getElementById('divLoginButton') as HTMLElement).style.height =
         (document.getElementsByClassName('loginStatus')[0] as HTMLElement).offsetHeight + 'px';
