@@ -7,8 +7,8 @@
 
 实测 Chrome 66+ 才能使用，Chrome 76+ 才能模糊背景。[（测试平台是 browserling ）](https://www.browserling.com/)
 
-HTTPS [预览安全登录界面](https://bddjr.github.io/BCSPanel-web-login/) | [预览安全注册界面](https://bddjr.github.io/BCSPanel-web-login/?isreg=true)  
-HTTP [预览不安全登录界面](http://bddjr.github.io/BCSPanel-web-login/) | [预览不安全注册界面](http://bddjr.github.io/BCSPanel-web-login/?isreg=true)  
+HTTPS [预览安全登录界面](https://bcspanel-web-login-preview.bddjr.com/) | [预览安全注册界面](https://bcspanel-web-login-preview.bddjr.com/?isreg=true)  
+HTTP [预览不安全登录界面](http://bcspanel-web-login-preview.bddjr.com/) | [预览不安全注册界面](http://bcspanel-web-login-preview.bddjr.com/?isreg=true)  
 
 [使用MIT开源许可协议。](https://mit-license.org)  
 
