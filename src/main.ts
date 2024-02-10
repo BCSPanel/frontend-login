@@ -62,17 +62,10 @@ if (isRegister) {
 
 /* 函数用于添加语言切换按钮的响应 */
 function clickChangeLang(event: MouseEvent) {
-  // 隐藏菜单
-  const contentStyle = (document.getElementById('div_change_lang_content') as HTMLElement).style;
-  contentStyle.display = 'none';
   // 依据元素id切换对应语言
   changeLang(
     (event.target as HTMLElement).id.replace('changeLang_', '')
   );
-  // 异步显示菜单
-  setTimeout(() => {
-    contentStyle.display = '';
-  }, 0)
 }
 // 遍历添加语言切换按钮的响应
 for (const i of langsKeys.concat('default')) {
@@ -130,5 +123,4 @@ updateLang();
 window.addEventListener('load', () => {
   console.log("### Event load");
   updateHeight();
-  setTimeout(updateHeight, 100);
 });

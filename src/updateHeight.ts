@@ -4,6 +4,9 @@ export function updateHeight() {
     // 更新登录按钮那块的高度
     (document.getElementById('divLoginButton') as HTMLElement).style.height =
         (document.getElementsByClassName('loginStatus')[0] as HTMLElement).offsetHeight + 'px';
+    // 隐藏菜单
+    const langsContentStyle = (document.getElementById('div_change_lang_content') as HTMLElement).style;
+    langsContentStyle.display = 'none';
     // 更新主体框高度
     let divmain = (document.getElementById('divmain') as HTMLElement); // 取元素的，可能非必要，但能让ts看懂
     divmain.style.bottom = ''; // 取消上下居中
@@ -14,4 +17,6 @@ export function updateHeight() {
     }
     //@ts-ignore
     document.body.style['min-height'] = divmain.offsetHeight + 'px';
+    // 显示菜单
+    langsContentStyle.display = '';
 }
