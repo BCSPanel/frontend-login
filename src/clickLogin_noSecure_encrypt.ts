@@ -10,19 +10,6 @@ if (isRegister) {
 }
 
 
-interface postLoginBodyType {
-    // 安全上下文
-    "secure": boolean,
-    // 是否处于注册模式
-    "isregister": boolean,
-    // 用户名
-    "username": string,
-    // 密码
-    "password": string,
-    // 盐 登录模式发送随机盐 注册模式发送验证码
-    "salt": string,
-}
-
 /** 
  * 不安全时加密
  * （加密只防直接读密码，不防篡改注入读密码脚本，不防抓cookie）

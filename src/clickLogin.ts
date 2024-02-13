@@ -48,10 +48,10 @@ export async function clickLogin() {
             // 密码强度不足
             {
                 const password = (document.getElementById("password") as HTMLButtonElement).value;
-                if (password.length < 16 ||
-                    !/[a-z]/g.test(password) ||
-                    !/[A-Z]/g.test(password) ||
-                    !/[0-9]/g.test(password)
+                if (password.length < 12 ||
+                    !/[a-z]/.test(password) ||
+                    !/[A-Z]/.test(password) ||
+                    !/[0-9]/.test(password)
                 ) {
                     changeLoginStats('password_strength_is_insufficient', 'red');
                     return;
@@ -76,7 +76,7 @@ export async function clickLogin() {
         // 禁用登录按钮
         setDisabledLoginButton(true);
 
-        const postLoginBody = {
+        const postLoginBody: postLoginBodyType = {
             // boolean 安全上下文
             "secure": window.isSecureContext,
             // boolean 是否处于注册模式
