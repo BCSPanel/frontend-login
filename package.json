@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "bview": "npm run build && npm run preview"
+    "bview": "tsc && vite build && vite preview"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

@@ -3,6 +3,7 @@ console.log('import clickLogin_noSecure_encrypt');
 import fetchWithTimeout from './fetchWithTimeout';
 import isRegister from './isRegister';
 import { SHA256 } from './sha256';
+import loginConfig from "./loginConfig";
 
 // 异步预加载crypto-js
 if (isRegister) {
@@ -14,7 +15,7 @@ if (isRegister) {
  * 不安全时加密
  * （加密只防直接读密码，不防篡改注入读密码脚本，不防抓cookie）
  */
-export async function updateBody(postLoginBody: postLoginBodyType, login_salt_api: string) {
+export async function updateBody(postLoginBody: postLoginBodyType) {
     console.log('clickLogin_noSecure_encrypt updateBody');
     // 不可逆加密
     postLoginBody.password = await SHA256(postLoginBody.password);
@@ -33,7 +34,7 @@ export async function updateBody(postLoginBody: postLoginBodyType, login_salt_ap
 
     } else {// 是登录
         // 向服务器要盐
-        const response = await fetchWithTimeout(login_salt_api.replace('{{username}}', postLoginBody.username));
+        const response = await fetchWithTimeout(loginConfig.login_salt_api(postLoginBody.username));
         if (!response.ok) throw response.status;
 
         /** ["服务器记录密码时使用的盐绝对不能直接使用注册时的验证码", "随机盐"] */

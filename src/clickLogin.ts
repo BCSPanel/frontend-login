@@ -1,6 +1,7 @@
 import { changeLoginStats } from "./i18n/i18n";
 import isRegister from "./isRegister";
 import fetchWithTimeout from "./fetchWithTimeout";
+import loginConfig from "./loginConfig";
 
 
 // 异步预加载 clickLogin_noSecure_encrypt
@@ -9,19 +10,11 @@ if (!window.isSecureContext) {
 }
 
 
-export const loginConfig = {
-    login_api: '../api-login/login',
-    login_salt_api: '../api-login/salt?username={{username}}',
-    login_success_redirect: () => {
-        location.pathname = '../web/'
-    },
-}
-
-
 /** 函数用于启用或禁用登录按钮 */
 export function setDisabledLoginButton(a: boolean) {
     (document.getElementById("loginbutton") as HTMLButtonElement).disabled = a;
 }
+
 
 /** 函数用于触发提交表单 */
 export async function clickLogin() {
@@ -91,7 +84,7 @@ export async function clickLogin() {
         // 如果不安全
         if (!window.isSecureContext) {
             // 加密
-            await (await import('./clickLogin_noSecure_encrypt')).updateBody(postLoginBody, loginConfig.login_salt_api)
+            await (await import('./clickLogin_noSecure_encrypt')).updateBody(postLoginBody)
         } else if (isRegister) {// 安全的情况下注册
             // 将验证码作为盐，直接发送
             postLoginBody.salt = (document.getElementById("verification_code") as HTMLInputElement).value.trim();
