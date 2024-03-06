@@ -1,1 +1,3 @@
-export default new URLSearchParams(window.location.search).get('isreg') == 'true'
+export default ['true', '1'].includes(
+    new URLSearchParams(window.location.search).get('r')?.toLocaleLowerCase() as string
+)

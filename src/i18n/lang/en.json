@@ -22,7 +22,8 @@
             "wrong_username_or_password": "Wrong user name or password",
             "wrong_verification_code": "Wrong verification code",
             "please_try_again": "Please try again",
-            "password_strength_is_insufficient": "The password is not strong enough. It must contain uppercase and lowercase letters and digits and cannot be less than 12 characters in length"
+            "password_strength_is_insufficient": "The password is not strong enough. It must contain uppercase and lowercase letters and digits and cannot be less than 12 characters in length",
+            "password_too_long": "The password length exceeds 128 characters"
         }
     },
     "forgotPassword": "Forgot Password",

@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
-import viteCompression from 'vite-plugin-compression'
+// import viteCompression from 'vite-plugin-compression'
 
 
 // https://vitejs.dev/config/
@@ -11,13 +11,13 @@ export default defineConfig({
   },
   base: './',
   plugins: [
-    viteCompression({
-      algorithm: 'gzip',
-      threshold: 256, // >=256字节时压缩
-      verbose: true, // 打印压缩结果
-      deleteOriginFile: false, // 不删除源文件
-      filter: /\.(js|json|css)$/i // 文件名匹配
-    }),
+    // viteCompression({
+    //   algorithm: 'gzip',
+    //   threshold: 256, // >=256字节时压缩
+    //   verbose: true, // 打印压缩结果
+    //   deleteOriginFile: false, // 不删除源文件
+    //   filter: /\.(js|json|css)$/i // 文件名匹配
+    // }),
     {
       // script执行前阻止网页渲染
       // https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script
@@ -38,5 +38,12 @@ export default defineConfig({
   },
   build: {
     reportCompressedSize: false, // 不使用vite自带的方式打印压缩后的大小
+    rollupOptions: {
+      output: {
+        entryFileNames: `assets/static/[hash:22].js`,
+        chunkFileNames: `assets/static/[hash:22].js`,
+        assetFileNames: `assets/[name].[hash:22].[ext]`,
+      }
+    }
   }
 })

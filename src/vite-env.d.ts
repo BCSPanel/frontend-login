@@ -15,4 +15,6 @@ interface postLoginBodyType {
     "password": string,
     // 盐 登录模式发送随机盐 注册模式发送验证码
     "salt": string,
+    // cookie存储路径
+    "path": string
 }

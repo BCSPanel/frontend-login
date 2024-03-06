@@ -35,6 +35,11 @@ export async function clickLogin() {
         if (not_filled_in("username")) return;
         // 没填密码
         if (not_filled_in("password")) return;
+        // 密码超过128个字符
+        if ((document.getElementById("password") as HTMLButtonElement).value.length > 128) {
+            changeLoginStats('password_too_long', 'red');
+            return;
+        }
 
         // 如果是注册模式
         if (isRegister) {
@@ -63,11 +68,10 @@ export async function clickLogin() {
                 return;
             }
         }
-        console.log("clickLogin running");
-        changeLoginStats('attempting_to_login', 'gray');
-
         // 禁用登录按钮
         setDisabledLoginButton(true);
+        console.log("clickLogin running");
+        changeLoginStats('attempting_to_login', 'gray');
 
         const postLoginBody: postLoginBodyType = {
             // boolean 安全上下文
@@ -80,6 +84,10 @@ export async function clickLogin() {
             "password": (document.getElementById("password") as HTMLInputElement).value,
             // string 盐 登录模式发送随机盐 注册模式发送验证码
             "salt": '',
+            // string cookie存储路径
+            // "/web-login/index.html" -> "/"
+            // "/bcspanel/web-login/"  -> "/bcspanel/"
+            "path": window.location.pathname.replace(/\/web-login\/[^\/]*$/, "/")
         }
         // 如果不安全
         if (!window.isSecureContext) {
@@ -103,11 +111,11 @@ export async function clickLogin() {
             // 成功
             changeLoginStats('login_succeeded', 'green');
             loginConfig.login_success_redirect();
-        } else if (response.status == 403) {
+        } else if (response.status == 401) {
             // 服务器拒绝
-            console.error(403);
+            console.error(401);
             const text = (await response.text()).trim();
-            if (text === '') throw 403;
+            if (text === '') throw 401;
             changeLoginStats(text, 'red');
             setDisabledLoginButton(false)
         } else {
