@@ -22,6 +22,8 @@ export const langsParams: any = {
 // 当前语言
 var defaultLang: string;
 
+const storageCacheName = 'BCSPanelI18nLangName';
+
 /** 函数用于切换语言 */
 export function changeLang(
     langName?: string | undefined | null,
@@ -30,20 +32,20 @@ export function changeLang(
     console.log(`changeLang ${langName}`);
     // 如果没输入语言名称，那就读缓存
     if (typeof langName !== 'string') {
-        langName = localStorage.getItem('i18n_langName');
+        langName = localStorage.getItem(storageCacheName);
     }
     // 如果语言名称存在且不是“默认”
     if (langName && langName !== 'default') {
         // 如果找到了那么选中对应名称，否则选中en
         defaultLang = Object.keys(langs).includes(langName) ? langName : 'en';
         // 写入缓存
-        localStorage.setItem('i18n_langName', defaultLang)
+        localStorage.setItem(storageCacheName, defaultLang)
         // 更新并退出
         if (!ignoreUpdate) updateLang();
         return;
     }
     // 移除缓存
-    localStorage.removeItem('i18n_langName');
+    localStorage.removeItem(storageCacheName);
     // 从浏览器语言列表里查找支持的语言
     for (let i of navigator.languages) {
         if (langsKeys.includes(i)) {
