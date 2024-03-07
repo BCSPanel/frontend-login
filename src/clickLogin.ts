@@ -2,6 +2,7 @@ import { changeLoginStats } from "./i18n/i18n";
 import isRegister from "./isRegister";
 import fetchWithTimeout from "./fetchWithTimeout";
 import loginConfig from "./loginConfig";
+import asyncSleep from "./asyncSleep";
 
 
 // 异步预加载 clickLogin_noSecure_encrypt
@@ -16,13 +17,23 @@ export function setDisabledLoginButton(a: boolean) {
 }
 
 
+var abortLogin: (() => void) | null = null;
+
 /** 函数用于触发提交表单 */
 export async function clickLogin() {
+    console.log("clickLogin");
+    // 如果登录按钮被禁止，退出函数
+    if ((document.getElementById("loginbutton") as HTMLButtonElement).disabled) {
+        return
+    }
+    var loginAborted: boolean = false;
+    var Timeout: NodeJS.Timeout | null = null;
     try {
-        console.log("clickLogin");
-        // 如果登录按钮被禁止，退出函数
-        if ((document.getElementById("loginbutton") as HTMLButtonElement).disabled)
-            return;
+        // 停止之前运行的函数
+        if (abortLogin) {
+            abortLogin();
+            await asyncSleep(10) //ms
+        }
         /** 函数用于没填内容 */
         function not_filled_in(elementId: string, errorStatu: string = "user_name_or_password_not_filled_in"): boolean {
             const element = document.getElementById(elementId) as HTMLInputElement;
@@ -98,13 +109,25 @@ export async function clickLogin() {
             postLoginBody.salt = (document.getElementById("verification_code") as HTMLInputElement).value.trim();
         }
 
-        // 提交
+        // 准备提交
         console.log('clickLogin POST');
         console.log(postLoginBody);
+        // 如果运行了另一个函数，另一个函数可以终止当前请求
+        const controller = new AbortController();
+        abortLogin = () => {
+            console.log('abortLogin');
+            loginAborted = true;
+            controller?.abort();
+        }
+        // 2秒内还没提交完，先允许登录按钮
+        Timeout = setTimeout(() => {
+            setDisabledLoginButton(false);
+        }, 1500);
+        // 提交
         const response = await fetchWithTimeout(loginConfig.login_api, {
             method: "POST",
             body: JSON.stringify(postLoginBody),
-        })
+        }, undefined, controller);
 
         // 判断返回
         if (response.ok) {
@@ -117,17 +140,22 @@ export async function clickLogin() {
             const text = (await response.text()).trim();
             if (text === '') throw 401;
             changeLoginStats(text, 'red');
+            await asyncSleep(1500);
             setDisabledLoginButton(false)
         } else {
             // 未知状态码
             throw response.status;
         }
     } catch (e) {
-        console.error(e)
+        if (loginAborted) return;
+        console.error(e);
         changeLoginStats("login_failed", "red", {
             error: String(e)
-        })
-        setDisabledLoginButton(false)
+        });
+        setDisabledLoginButton(false);
+    } finally {
+        if (Timeout != null) clearTimeout(Timeout);
+        abortLogin = null;
     }
 }
 

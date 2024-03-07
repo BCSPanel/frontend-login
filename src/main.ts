@@ -11,15 +11,16 @@ import { updateHeight } from './updateHeight';
 // 深色模式
 const matchMediaDark = window.matchMedia("(prefers-color-scheme: dark)");
 function matchMediaDarkChange() {
-  const htmlclass = document.getElementsByTagName('html')[0].classList;
-  if (matchMediaDark.matches) {
-    console.log('color-scheme dark');
-    htmlclass.add('dark');
+  if (window.BCSPanelColorScheme) {
+    var dark = window.BCSPanelColorScheme == "dark"
   } else {
-    console.log('color-scheme light');
-    htmlclass.remove('dark');
+    var dark = matchMediaDark.matches
   }
+  const htmlclass = document.getElementsByTagName('html')[0].classList;
+  if (dark) htmlclass.add("dark");
+  else htmlclass.remove("dark");
 }
+window.matchMediaDarkChange = matchMediaDarkChange;
 matchMediaDark.addEventListener("change", matchMediaDarkChange);
 matchMediaDarkChange();
 

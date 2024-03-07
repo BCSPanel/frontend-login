@@ -4,22 +4,23 @@
 export default async function (
     input: string | URL | Request,
     init: RequestInit = {},
-    timeout_seconds: number = +window.fetchTimeoutSeconds
+    timeout_seconds?: number,
+    controller?: AbortController
 ): Promise<Response> {
+    if (!timeout_seconds) timeout_seconds = +window.fetchTimeoutSeconds;
     console.log(`myFetch ${timeout_seconds}`);
-    const controller = new AbortController();
+    if (controller == undefined) controller = new AbortController();
     init.signal = controller.signal;
     var isTimeoutError = false;
     const Timeout = setTimeout(
         () => {
             isTimeoutError = true;
-            controller.abort();
+            controller?.abort();
         },
         timeout_seconds * 1000 + 1
     )
     try {
         const response = await fetch(input, init);
-        clearTimeout(Timeout);
         return response;
     } catch (e) {
         if (isTimeoutError) {
@@ -27,5 +28,7 @@ export default async function (
             throw `timeout (>${timeout_seconds}s)`;
         }
         throw e;
+    } finally {
+        clearTimeout(Timeout);
     }
 }
