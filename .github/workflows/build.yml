@@ -33,5 +33,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: dist
-        folder: dist
+        folder: dist-ghpages
         single-commit: true
