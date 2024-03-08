@@ -7,7 +7,11 @@ import { changeLang, langsKeys } from './i18n/langs';
 import { updateHeight } from './updateHeight';
 
 
+let ranMain = false
+
 function Main() {
+  console.log('Main');
+  if (ranMain) return;
 
   // 深色模式
   const matchMediaDark = window.matchMedia("(prefers-color-scheme: dark)");
@@ -118,14 +122,14 @@ function Main() {
   // 移除加载时的style
   (document.getElementById('loading_style') as HTMLElement).remove();
 
+  ranMain = true
 }
 
 
-let ranMain: boolean = false
 if (document.getElementById('htmlloaded')) {
+  console.log('htmlloaded');
   try {
     Main();
-    ranMain = true
     // 加载完成后再次更新高，修复部分情况出现的高度错误
     window.addEventListener('load', () => {
       console.log("### Event load updateHeight");
@@ -136,7 +140,7 @@ if (document.getElementById('htmlloaded')) {
   }
 }
 if (!ranMain) {
-  // 修复小概率事件：未正确加载
+  // 修复XP虚拟机出现的bug：未加载元素就已经运行script导致不显示内容
   // 修复方式：等待网页加载完成再运行Main
   window.addEventListener('load', () => {
     console.log("### Event load Main");
