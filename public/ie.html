@@ -1,82 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <script>
-        // 浏览器版本似乎不低
-        if (window.AbortController) {
-            window.stop && stop();
-            document.location.assign("./");
+      // 浏览器版本似乎不低
+      if (window.AbortController && window.URLSearchParams) {
+        var s = new URLSearchParams(document.location.search);
+        if (s.has("jumptoiehtml", "1") || confirm("Do you want to login?")) {
+          window.stop && stop();
+          s.delete("jumptoiehtml");
+          if (s.size > 0) {
+            s = "?" + s.toString();
+          } else {
+            s = "";
+          }
+          document.location.assign("./" + s + document.location.hash);
         }
+      }
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
     <title>您的浏览器版本过低</title>
-    <link rel="shortcut icon" href="./icon/browser/iepage-24.png">
+    <link rel="shortcut icon" href="./icon/browser/iepage-24.png" />
     <style>
-        * {
-            font-family: 'Microsoft YaHei UI', Arial, sans-serif, system-ui;
-            color-scheme: light dark;
-        }
+      * {
+        font-family: "Microsoft YaHei UI", Arial, sans-serif, system-ui;
+        color-scheme: light dark;
+      }
 
-        body {
-            margin: 32px;
-        }
+      body {
+        margin: 32px;
+      }
 
-        .browserlink {
-            margin-top: 48px;
-            margin-bottom: 48px;
-            margin-left: 16px;
-        }
+      .browserlink {
+        margin-top: 48px;
+        margin-bottom: 48px;
+        margin-left: 16px;
+      }
 
-        img {
-            margin-bottom: -6px;
-            margin-right: 6px;
-        }
+      img {
+        margin-bottom: -6px;
+        margin-right: 6px;
+      }
 
+      a {
+        text-decoration: none;
+        color: #0069c2;
+      }
+
+      span {
+        font-size: 24px;
+      }
+
+      a:hover span {
+        text-decoration: underline;
+      }
+    </style>
+    <style>
+      @media (prefers-color-scheme: dark) {
         a {
-            text-decoration: none;
-            color: #0069c2;
+          color: #8cb4ff;
         }
-
-        span {
-            font-size: 24px;
-        }
-
-        a:hover span {
-            text-decoration: underline;
-        }
+      }
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            a {
-                color: #8cb4ff;
-            }
-        }
-    </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>您的浏览器版本过低，请更换浏览器。</h1>
-    <p>The version of your browser is outdated, please change your browser. <br>&nbsp;</p>
+    <p>The version of your browser is outdated, please change your browser.</p>
 
-    <p class="browserlink"><a target="_blank" rel="noopener" href="https://google.cn/chrome/">
-            <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="">
-            <span>Google Chrome</span>
-        </a></p>
-    <p class="browserlink"><a target="_blank" rel="noopener" href="https://www.microsoft.com/edge/download">
-            <img height="32" width="32" src="./icon/browser/edge-32.png" alt="">
-            <span>Microsoft Edge</span>
-        </a></p>
-    <p class="browserlink"><a target="_blank" rel="noopener" href="https://win32subsystem.live/supermium/">
-            <img height="32" width="32" src="./icon/browser/supermium-32.png" alt="">
-            <span>Supermium</span>
-        </a></p>
-    <p class="browserlink"><a target="_blank" rel="noopener" href="https://www.mozilla.org/zh-CN/firefox/browsers/">
-            <img height="32" width="32" src="./icon/browser/firefox-32.png" alt="">
-            <span>Firefox</span>
-        </a></p>
-</body>
-
+    <p class="browserlink">
+      <a target="_blank" rel="noopener" href="https://google.cn/chrome/">
+        <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="" />
+        <span>Google Chrome</span>
+      </a>
+    </p>
+    <p class="browserlink">
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.microsoft.com/edge/download"
+      >
+        <img height="32" width="32" src="./icon/browser/edge-32.png" alt="" />
+        <span>Microsoft Edge</span>
+      </a>
+    </p>
+    <p class="browserlink">
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://win32subsystem.live/supermium/"
+      >
+        <img
+          height="32"
+          width="32"
+          src="./icon/browser/supermium-32.png"
+          alt=""
+        />
+        <span>Supermium</span>
+      </a>
+    </p>
+    <p class="browserlink">
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.mozilla.org/zh-CN/firefox/browsers/"
+      >
+        <img
+          height="32"
+          width="32"
+          src="./icon/browser/firefox-32.png"
+          alt=""
+        />
+        <span>Firefox</span>
+      </a>
+    </p>
+  </body>
 </html>
