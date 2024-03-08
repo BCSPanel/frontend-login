@@ -14,7 +14,15 @@
 
       // 如果浏览器不支持部分接口，那就自动跳到 ie.html
       // ie.html 如果检测到有接口会自动跳回来
-      if (window.AbortController && window.URLSearchParams) {
+      if (
+        window.AbortController &&
+        window.URLSearchParams &&
+        (function () {
+          try {
+            return eval("import(`data:text/javascript,export%20default%200`)");
+          } catch (e) {}
+        })()
+      ) {
       } else {
         window.stop && stop();
         try {

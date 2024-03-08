@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <script>
       // 浏览器版本似乎不低
-      if (window.AbortController && window.URLSearchParams) {
+      if (
+        window.AbortController &&
+        window.URLSearchParams &&
+        (function () {
+          try {
+            return eval("import(`data:text/javascript,export%20default%200`)");
+          } catch (e) {}
+        })()
+      ) {
         var s = new URLSearchParams(document.location.search);
         if (s.has("jumptoiehtml", "1") || confirm("Do you want to login?")) {
           window.stop && stop();
