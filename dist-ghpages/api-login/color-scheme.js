@@ -1,1 +1,1 @@
-window.BCSPanelColorScheme="";window.matchMediaDarkChange?.()
+window.BCSPanelColorScheme="";window.matchMediaDarkChange&&window.matchMediaDarkChange()

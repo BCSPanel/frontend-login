@@ -9,10 +9,15 @@
       <!-- <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=99999999999999">京公网安备99999999999999号</a><br/> -->
     </template>
     <script>
+      // 如果浏览器不支持部分接口，那就自动跳转
+      if (!window.AbortController) {
+        window.stop && stop();
+        document.location.assign("./ie.html");
+      }
+
       // fetch请求的超时时长（单位：秒）
       window.fetchTimeoutSeconds = 10;
     </script>
-
     <title id="title">BCSPanel</title>
     <meta
       name="viewport"
@@ -35,7 +40,7 @@
     <link rel="stylesheet" href="/src/css/index-dark.css" />
     <link rel="stylesheet" href="/src/css/login-background-img.css" />
     <script src="../api-login/color-scheme.js">
-      // window.BCSPanelColorScheme="";window.matchMediaDarkChange?.()
+      // window.BCSPanelColorScheme="";window.matchMediaDarkChange&&window.matchMediaDarkChange()
     </script>
     <script type="module" src="/src/main.ts"></script>
   </head>
