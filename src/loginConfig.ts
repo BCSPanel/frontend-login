@@ -4,6 +4,6 @@ export default {
         return `../api-login/salt?username=${username}`
     },
     login_success_redirect() {
-        location.pathname = '../web/'
+        document.location.assign('../web/')
     },
 }

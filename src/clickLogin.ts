@@ -98,7 +98,7 @@ export async function clickLogin() {
             // string cookie存储路径
             // "/web-login/index.html" -> "/"
             // "/bcspanel/web-login/"  -> "/bcspanel/"
-            "path": window.location.pathname.replace(/\/web-login\/[^\/]*$/, "/")
+            "path": document.location.pathname.replace(/\/web-login\/[^\/]*$/, "/")
         }
         // 如果不安全
         if (!window.isSecureContext) {
