@@ -133,6 +133,7 @@ export async function clickLogin() {
         if (response.ok) {
             // 成功
             changeLoginStats('login_succeeded', 'green');
+            setDisabledLoginButton(true)
             loginConfig.login_success_redirect();
         } else if (response.status == 401) {
             // 服务器拒绝
