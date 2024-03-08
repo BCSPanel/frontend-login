@@ -122,7 +122,7 @@ function Main() {
 
 
 let ranMain: boolean = false
-if (document.getElementById('divmain')) {
+if (document.getElementById('htmlloaded')) {
   try {
     Main();
     ranMain = true
