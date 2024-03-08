@@ -9,10 +9,11 @@
       <!-- <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=99999999999999">京公网安备99999999999999号</a><br/> -->
     </template>
     <script>
-      // 如果浏览器不支持部分接口，那就自动跳转
+      // 如果浏览器不支持部分接口，那就自动跳到 ie.html
+      // ie.html 如果检测到有接口会自动跳回来
       if (!window.AbortController) {
         window.stop && stop();
-        document.location.assign("./ie.html");
+        document.location.pathname = "./ie.html";
       }
 
       // fetch请求的超时时长（单位：秒）
