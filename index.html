@@ -14,9 +14,13 @@
 
       // 如果浏览器不支持部分接口，那就自动跳到 ie.html
       // ie.html 如果检测到有接口会自动跳回来
+      //// Chrome 66, Edge 17, Firefox 60, Opera 53, Safari 12.1
       if (
+        // Chrome 66, Edge 16, Firefox 57, Opera 53, Safari 12.1
         window.AbortController &&
+        // Chrome 49, Edge 17, Firefox 29, Opera 36, Safari 10.1
         window.URLSearchParams &&
+        // Chrome 61, Edge 16, Firefox 60, Opera 48, Safari 10.1
         (function () {
           try {
             return eval("import(`data:text/javascript,export%20default%200`)");
@@ -25,19 +29,11 @@
       ) {
       } else {
         window.stop && stop();
-        try {
-          var s = document.location.search;
-          if (s.length > 1) {
-            s += "&";
-          } else {
-            s = "?";
-          }
-          document.location.assign(
-            "./ie.html" + s + "jumptoiehtml=1" + document.location.hash
-          );
-        } catch (e) {
-          document.location.assign("./ie.html");
-        }
+        document.location.assign(
+          "./ie.html?jumptoiehtml=1" +
+            document.location.search.replace(/^\?$/, "").replace(/^\?/, "&") +
+            document.location.hash
+        );
       }
     </script>
     <title id="title">BCSPanel</title>

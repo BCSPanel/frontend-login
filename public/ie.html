@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <script>
       // 浏览器版本似乎不低
+      //// Chrome 66, Edge 17, Firefox 60, Opera 53, Safari 12.1
       if (
+        // Chrome 66, Edge 16, Firefox 57, Opera 53, Safari 12.1
         window.AbortController &&
+        // Chrome 49, Edge 17, Firefox 29, Opera 36, Safari 10.1
         window.URLSearchParams &&
+        // Chrome 61, Edge 16, Firefox 60, Opera 48, Safari 10.1
         (function () {
           try {
             return eval("import(`data:text/javascript,export%20default%200`)");
@@ -17,12 +21,14 @@
         if (s.has("jumptoiehtml", "1") || confirm("Do you want to login?")) {
           window.stop && stop();
           s.delete("jumptoiehtml");
-          if (s.size > 0) {
-            s = "?" + s.toString();
-          } else {
-            s = "";
-          }
-          document.location.assign("./" + s + document.location.hash);
+          document.location.assign(
+            "./" +
+              s
+                .toString()
+                .replace(/^(?=[^\?])/, "?")
+                .replace(/^\?$/, "") +
+              document.location.hash
+          );
         }
       }
     </script>
