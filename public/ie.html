@@ -10,6 +10,9 @@
           if (!myusp) return;
           window.stop && window.stop();
           eval("myusp.delete('jumptoiehtml')");
+          window.addEventListener("load", function () {
+            document.body.style.display = "none";
+          });
           document.location.assign(
             "./" +
               myusp
@@ -19,13 +22,6 @@
               document.location.hash
           );
           myusp = false;
-          var tof = function () {
-            document.body.style.display = "none";
-          };
-          window.addEventListener("load", tof);
-          eval(
-            "for (var i = 100; i < 1000; i += 100) {window.setTimeout(tof,i)}"
-          );
         };
         var myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
