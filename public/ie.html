@@ -6,8 +6,9 @@
       // 浏览器版本似乎不低
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
-        function backToLogin() {
+        var backToLogin = function () {
           if (!myusp) return;
+          window.stop && stop();
           eval("myusp.delete('jumptoiehtml')");
           var url =
             "./" +
@@ -28,7 +29,7 @@
           }
           setTimeout(setBodyDisplayNone);
           document.location.assign(url);
-        }
+        };
         var myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
           backToLogin();
@@ -128,7 +129,6 @@
           width="32"
           src="./icon/browser/supermium-32.png"
           alt=""
-          loading="lazy"
         />
         &nbsp;
         <span class="aunderline">Supermium</span>
@@ -153,13 +153,7 @@
         rel="noopener"
         href="https://www.google.cn/chrome/"
       >
-        <img
-          height="32"
-          width="32"
-          src="./icon/browser/chrome-32.png"
-          alt=""
-          loading="lazy"
-        />
+        <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="" />
         &nbsp;
         <span class="aunderline">Google Chrome</span>
       </a>
@@ -171,13 +165,7 @@
         rel="noopener"
         href="https://www.microsoft.com/edge/download"
       >
-        <img
-          height="32"
-          width="32"
-          src="./icon/browser/edge-32.png"
-          alt=""
-          loading="lazy"
-        />
+        <img height="32" width="32" src="./icon/browser/edge-32.png" alt="" />
         &nbsp;
         <span class="aunderline">Microsoft Edge</span>
       </a>
@@ -194,7 +182,6 @@
           width="32"
           src="./icon/browser/firefox-32.png"
           alt=""
-          loading="lazy"
         />
         &nbsp;
         <span class="aunderline">Firefox</span>
