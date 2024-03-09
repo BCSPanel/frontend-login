@@ -37,6 +37,7 @@ export default defineConfig({
     }
   },
   build: {
+    target: 'es2021',
     reportCompressedSize: false, // 不使用vite自带的方式打印压缩后的大小
     rollupOptions: {
       output: {

@@ -14,20 +14,8 @@
 
       // 如果浏览器不支持部分接口，那就自动跳到 ie.html
       // ie.html 如果检测到有接口会自动跳回来
-      //// Chrome 66, Edge 17, Firefox 60, Opera 53, Safari 12.1
-      if (
-        // Chrome 66, Edge 16, Firefox 57, Opera 53, Safari 12.1
-        window.AbortController &&
-        // Chrome 49, Edge 17, Firefox 29, Opera 36, Safari 10.1
-        window.URLSearchParams &&
-        // Chrome 61, Edge 16, Firefox 60, Opera 48, Safari 10.1
-        (function () {
-          try {
-            return eval("import(`data:text/javascript,export%20default%200`)");
-          } catch (e) {}
-        })()
-      ) {
-      } else {
+      // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
+      if (!"".replaceAll) {
         window.stop && stop();
         document.location.assign(
           "./ie.html?jumptoiehtml=1" +

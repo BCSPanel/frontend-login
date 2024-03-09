@@ -2,10 +2,12 @@
 
 [BCSPanel](https://github.com/bddjr/BCSPanel) 的登录页面，体积小巧，使用 [Vite](https://cn.vitejs.dev) + [TypeScript](https://www.typescriptlang.org) 编写。  
 
-请使用最新版本的 [Google Chrome](https://google.cn/chrome/) 或 [Microsoft Edge](https://www.microsoft.com/zh-cn/edge/download) 浏览器访问，确保一切正常运行。  
-会尝试适配最新版 [Mozilla Firefox](https://www.mozilla.org/zh-CN/firefox/browsers/) ，但不保证它正常显示。  
+请使用最新 Chromium 内核浏览器访问，确保正常运行。  
+> [Google Chrome](https://google.cn/chrome/)  
+> [Microsoft Edge](https://www.microsoft.com/zh-cn/edge/download)  
+> [Supermium (WinXP Win7 Win8)](https://win32subsystem.live/supermium/)  
 
-实测 Chrome 66+ 才能使用，Chrome 76+ 才能模糊背景。[（测试平台是 browserling ）](https://www.browserling.com/)
+会尝试适配最新版 [Mozilla Firefox](https://www.mozilla.org/zh-CN/firefox/browsers/) ，但不保证它正常显示。  
 
 HTTPS [预览安全登录界面](https://bcspanel-web-login-preview.bddjr.com/web-login/) | [预览安全注册界面](https://bcspanel-web-login-preview.bddjr.com/web-login/?r=1)  
 HTTP [预览不安全登录界面](http://bcspanel-web-login-preview.bddjr.com/web-login/) | [预览不安全注册界面](http://bcspanel-web-login-preview.bddjr.com/web-login/?r=1)  

@@ -4,31 +4,25 @@
     <meta charset="UTF-8" />
     <script>
       // 浏览器版本似乎不低
-      //// Chrome 66, Edge 17, Firefox 60, Opera 53, Safari 12.1
-      if (
-        // Chrome 66, Edge 16, Firefox 57, Opera 53, Safari 12.1
-        window.AbortController &&
-        // Chrome 49, Edge 17, Firefox 29, Opera 36, Safari 10.1
-        window.URLSearchParams &&
-        // Chrome 61, Edge 16, Firefox 60, Opera 48, Safari 10.1
-        (function () {
-          try {
-            return eval("import(`data:text/javascript,export%20default%200`)");
-          } catch (e) {}
-        })()
-      ) {
-        var s = new URLSearchParams(document.location.search);
-        if (s.has("jumptoiehtml", "1") || confirm("Do you want to login?")) {
-          window.stop && stop();
-          s.delete("jumptoiehtml");
-          document.location.assign(
-            "./" +
-              s
-                .toString()
-                .replace(/^(?=[^\?])/, "?")
-                .replace(/^\?$/, "") +
-              document.location.hash
-          );
+      function backToLogin() {
+        if (!myusp) return;
+        window.stop && stop();
+        myusp.delete("jumptoiehtml");
+        document.location.assign(
+          "./" +
+            myusp
+              .toString()
+              .replace(/^(?!\?)/, "?")
+              .replace(/^\?$/, "") +
+            document.location.hash
+        );
+        myusp = null;
+      }
+      // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
+      if ("".replaceAll) {
+        var myusp = new URLSearchParams(document.location.search);
+        if (myusp.has("jumptoiehtml", "1")) {
+          backToLogin();
         }
       }
     </script>
@@ -38,36 +32,56 @@
     <link rel="shortcut icon" href="./icon/browser/iepage-24.png" />
     <style>
       * {
-        font-family: "Microsoft YaHei UI", Arial, sans-serif, system-ui;
+        font-family: "Microsoft YaHei UI", system-ui;
         color-scheme: light dark;
       }
-
       body {
         margin: 32px;
       }
-
-      .browserlink {
-        margin-top: 48px;
-        margin-bottom: 48px;
-        margin-left: 16px;
+      .browserp {
+        margin-top: 18px;
+        margin-bottom: 0px;
       }
-
-      img {
-        margin-bottom: -6px;
-        margin-right: 6px;
-      }
-
-      a {
-        text-decoration: none;
+      .browsera {
         color: #0069c2;
+        text-decoration: none;
+        display: inline-block;
+        padding: 16px;
+        line-height: 30px;
       }
-
+      img {
+        margin-bottom: -6.5px;
+      }
       span {
         font-size: 24px;
       }
-
-      a:hover span {
+      .aunderline {
         text-decoration: underline;
+        text-decoration-thickness: 1px;
+      }
+      .winxp {
+        color: gray;
+        text-decoration: none;
+        margin-left: 46px;
+        margin-top: 6px;
+        font-size: 14px;
+      }
+      .supermuim {
+        margin-top: 26px;
+        margin-bottom: 0px;
+      }
+      .debug {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 12px 32px;
+        background-color: #d4ffd1;
+        color: #006f00;
+      }
+      .backtologin {
+        color: #0079eb;
+        cursor: pointer;
       }
     </style>
     <style>
@@ -75,32 +89,21 @@
         a {
           color: #8cb4ff;
         }
+        .debug {
+          background-color: #006f00;
+          color: #d4ffd1;
+        }
       }
     </style>
   </head>
 
   <body>
-    <h1>您的浏览器版本过低，请更换浏览器。</h1>
+    <h1 id="h1">您的浏览器版本过低，请更换浏览器。</h1>
     <p>The version of your browser is outdated, please change your browser.</p>
 
-    <p class="browserlink">
-      <a target="_blank" rel="noopener" href="https://google.cn/chrome/">
-        <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="" />
-        <span>Google Chrome</span>
-      </a>
-    </p>
-    <p class="browserlink">
+    <p class="browserp supermuim">
       <a
-        target="_blank"
-        rel="noopener"
-        href="https://www.microsoft.com/edge/download"
-      >
-        <img height="32" width="32" src="./icon/browser/edge-32.png" alt="" />
-        <span>Microsoft Edge</span>
-      </a>
-    </p>
-    <p class="browserlink">
-      <a
+        class="browsera"
         target="_blank"
         rel="noopener"
         href="https://win32subsystem.live/supermium/"
@@ -111,11 +114,39 @@
           src="./icon/browser/supermium-32.png"
           alt=""
         />
-        <span>Supermium</span>
+        &nbsp;
+        <span class="aunderline">Supermium</span>
+        <br />
+        <span class="winxp aunderline">(WinXP Win7 Win8)</span>
       </a>
     </p>
-    <p class="browserlink">
+    <p class="browserp">
       <a
+        class="browsera"
+        target="_blank"
+        rel="noopener"
+        href="https://google.cn/chrome/"
+      >
+        <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="" />
+        &nbsp;
+        <span class="aunderline">Google Chrome</span>
+      </a>
+    </p>
+    <p class="browserp">
+      <a
+        class="browsera"
+        target="_blank"
+        rel="noopener"
+        href="https://www.microsoft.com/edge/download"
+      >
+        <img height="32" width="32" src="./icon/browser/edge-32.png" alt="" />
+        &nbsp;
+        <span class="aunderline">Microsoft Edge</span>
+      </a>
+    </p>
+    <p class="browserp">
+      <a
+        class="browsera"
         target="_blank"
         rel="noopener"
         href="https://www.mozilla.org/zh-CN/firefox/browsers/"
@@ -126,8 +157,22 @@
           src="./icon/browser/firefox-32.png"
           alt=""
         />
-        <span>Firefox</span>
+        &nbsp;
+        <span class="aunderline">Firefox</span>
       </a>
     </p>
+    <script>
+      if (window.myusp) {
+        var debugdiv = document.createElement("div");
+        debugdiv.className = "debug";
+        debugdiv.innerHTML =
+          '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" onclick="backToLogin()">返回登录页面</a>';
+        document.body.appendChild(debugdiv);
+        (window.onresize = function () {
+          document.getElementById("h1").style.marginTop =
+            debugdiv.clientHeight + 21 + "px";
+        })();
+      }
+    </script>
   </body>
 </html>
