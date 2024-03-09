@@ -10,9 +10,16 @@
           if (!myusp) return;
           window.stop && window.stop();
           eval("myusp.delete('jumptoiehtml')");
-          setTimeout(function () {
-            document.body.style.display = "none";
-          }, 300);
+          var i = 0;
+          var setBodyDisplayNone = function () {
+            if (document.body && document.body.style) {
+              document.body.style.display = "none";
+            } else if (i < 500) {
+              setTimeout(setBodyDisplayNone, 50);
+              i += 50;
+            }
+          };
+          setTimeout(setBodyDisplayNone);
           document.location.assign(
             "./" +
               myusp
@@ -105,11 +112,6 @@
   </head>
 
   <body>
-    <script type="module">
-      if (myusp === false) {
-        document.body.style.display = "none";
-      }
-    </script>
     <h1 id="h1">您的浏览器版本过低，请更换浏览器。</h1>
     <p>The version of your browser is outdated, please change your browser.</p>
 
