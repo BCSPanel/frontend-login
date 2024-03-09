@@ -18,7 +18,7 @@
                 .replace(/^\?$/, "") +
               document.location.hash
           );
-          myusp = null;
+          myusp = false;
         };
         var myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
@@ -188,6 +188,8 @@
           document.getElementById("h1").style.marginTop =
             debugdiv.clientHeight + 21 + "px";
         })();
+      } else if (myusp === false) {
+        document.body.style.display = "none";
       }
     </script>
   </body>
