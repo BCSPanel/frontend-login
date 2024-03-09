@@ -17,9 +17,11 @@
               .replace(/^\?$/, "") +
             document.location.hash;
           myusp = false;
-          window.addEventListener("load", function () {
+          function setBodyDisplayNone() {
             document.body.style.display = "none";
-          });
+          }
+          setTimeout(setBodyDisplayNone, 200);
+          window.addEventListener("load", setBodyDisplayNone);
           document.location.assign(url);
         };
         var myusp = new window.URLSearchParams(document.location.search);
