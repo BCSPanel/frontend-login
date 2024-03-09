@@ -6,7 +6,7 @@
       // 浏览器版本似乎不低
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
-        var backToLogin = function () {
+        function backToLogin() {
           if (!myusp) return;
           eval("myusp.delete('jumptoiehtml')");
           var url =
@@ -17,13 +17,18 @@
               .replace(/^\?$/, "") +
             document.location.hash;
           myusp = false;
+          var i = 0;
           function setBodyDisplayNone() {
-            document.body.style.display = "none";
+            if (document.body && document.body.style) {
+              document.body.style.display = "none";
+            } else if (i < 500) {
+              setTimeout(setBodyDisplayNone, 25);
+              i += 25;
+            }
           }
-          setTimeout(setBodyDisplayNone, 200);
-          window.addEventListener("load", setBodyDisplayNone);
+          setTimeout(setBodyDisplayNone);
           document.location.assign(url);
-        };
+        }
         var myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
           backToLogin();
