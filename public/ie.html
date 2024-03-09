@@ -8,27 +8,16 @@
       if ("".replaceAll) {
         var backToLogin = function () {
           if (!myusp) return;
-          window.stop && window.stop();
           eval("myusp.delete('jumptoiehtml')");
-          var i = 0;
-          var setBodyDisplayNone = function () {
-            if (document.body && document.body.style) {
-              document.body.style.display = "none";
-            } else if (i < 500) {
-              setTimeout(setBodyDisplayNone, 50);
-              i += 50;
-            }
-          };
-          setTimeout(setBodyDisplayNone);
-          document.location.assign(
+          var url =
             "./" +
-              myusp
-                .toString()
-                .replace(eval("/^(?!\\?)/"), "?")
-                .replace(/^\?$/, "") +
-              document.location.hash
-          );
+            myusp
+              .toString()
+              .replace(eval("/^(?!\\?)/"), "?")
+              .replace(/^\?$/, "") +
+            document.location.hash;
           myusp = false;
+          document.location.assign(url);
         };
         var myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
@@ -112,6 +101,11 @@
   </head>
 
   <body>
+    <script type="module">
+      if (window.myusp === false) {
+        document.body.style.display = "none";
+      }
+    </script>
     <h1 id="h1">您的浏览器版本过低，请更换浏览器。</h1>
     <p>The version of your browser is outdated, please change your browser.</p>
 
@@ -129,6 +123,7 @@
           width="32"
           src="./icon/browser/supermium-32.png"
           alt=""
+          loading="lazy"
         />
         &nbsp;
         <span class="aunderline">Supermium</span>
@@ -153,7 +148,13 @@
         rel="noopener"
         href="https://www.google.cn/chrome/"
       >
-        <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="" />
+        <img
+          height="32"
+          width="32"
+          src="./icon/browser/chrome-32.png"
+          alt=""
+          loading="lazy"
+        />
         &nbsp;
         <span class="aunderline">Google Chrome</span>
       </a>
@@ -165,7 +166,13 @@
         rel="noopener"
         href="https://www.microsoft.com/edge/download"
       >
-        <img height="32" width="32" src="./icon/browser/edge-32.png" alt="" />
+        <img
+          height="32"
+          width="32"
+          src="./icon/browser/edge-32.png"
+          alt=""
+          loading="lazy"
+        />
         &nbsp;
         <span class="aunderline">Microsoft Edge</span>
       </a>
@@ -182,6 +189,7 @@
           width="32"
           src="./icon/browser/firefox-32.png"
           alt=""
+          loading="lazy"
         />
         &nbsp;
         <span class="aunderline">Firefox</span>
