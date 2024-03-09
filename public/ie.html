@@ -19,6 +19,12 @@
               document.location.hash
           );
           myusp = false;
+          var tof = function () {
+            document.body.style.display = "none";
+          };
+          eval(
+            "for (var i = 0; i <= 1000; i += 200) {window.setTimeout(tof,i)}"
+          );
         };
         var myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
