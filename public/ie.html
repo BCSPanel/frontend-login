@@ -2,14 +2,14 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <script>
+    <script type="module">
       // 浏览器版本似乎不低
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
         var backToLogin = function () {
           if (!myusp) return;
-          window.stop && stop();
-          myusp.delete("jumptoiehtml");
+          window.stop && window.stop();
+          eval("myusp.delete('jumptoiehtml')");
           document.location.assign(
             "./" +
               myusp
@@ -20,7 +20,7 @@
           );
           myusp = null;
         };
-        var myusp = new URLSearchParams(document.location.search);
+        var myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
           backToLogin();
         }
@@ -68,7 +68,7 @@
         text-decoration: none;
         margin-left: 46px;
         margin-top: 6px;
-        font-size: 14px;
+        font-size: 16px;
       }
       .supermuim {
         margin-top: 26px;
@@ -127,7 +127,12 @@
       </a>
     </p>
     <script>
-      if (document.location.protocol == "https:") {
+      // 如果不是IE 或IE版本大于等于8，就改为https
+      // 已知 Win7 x64 sp1 预装 IE 8
+      if (
+        navigator.userAgent.indexOf("MSIE") < 0 ||
+        navigator.userAgent.indexOf("Trident/") >= 0
+      ) {
         supermiuma.href = supermiuma.href.replace("http:", "https:");
       }
     </script>
@@ -172,7 +177,7 @@
         <span class="aunderline">Firefox</span>
       </a>
     </p>
-    <script>
+    <script type="module">
       if (window.myusp) {
         var debugdiv = document.createElement("div");
         debugdiv.className = "debug";

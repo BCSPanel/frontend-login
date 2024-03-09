@@ -16,7 +16,7 @@
       // ie.html 如果检测到有接口会自动跳回来
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if (!"".replaceAll) {
-        window.stop && stop();
+        window.stop && window.stop();
         document.location.assign(
           "./ie.html?jumptoiehtml=1" +
             document.location.search.replace(/^\?$/, "").replace(/^\?/, "&") +
