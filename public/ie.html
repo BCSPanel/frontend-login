@@ -17,6 +17,9 @@
               .replace(/^\?$/, "") +
             document.location.hash;
           myusp = false;
+          window.addEventListener("load", function () {
+            document.body.style.display = "none";
+          });
           document.location.assign(url);
         };
         var myusp = new window.URLSearchParams(document.location.search);
@@ -101,11 +104,6 @@
   </head>
 
   <body>
-    <script type="module">
-      if (window.myusp === false) {
-        document.body.style.display = "none";
-      }
-    </script>
     <h1 id="h1">您的浏览器版本过低，请更换浏览器。</h1>
     <p>The version of your browser is outdated, please change your browser.</p>
 
