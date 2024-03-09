@@ -2,11 +2,11 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <script type="module">
+    <script>
       // 浏览器版本似乎不低
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
-        var backToLogin = function () {
+        window.backToLogin = function () {
           if (!myusp) return;
           window.stop && stop();
           eval("myusp.delete('jumptoiehtml')");
@@ -22,7 +22,11 @@
           function setBodyDisplayNone() {
             if (document.body && document.body.style) {
               document.body.style.display = "none";
-            } else if (i < 500) {
+              if (document.body.style.display == "none") {
+                return;
+              }
+            }
+            if (i < 500) {
               setTimeout(setBodyDisplayNone, 25);
               i += 25;
             }
@@ -30,7 +34,7 @@
           setTimeout(setBodyDisplayNone);
           document.location.assign(url);
         };
-        var myusp = new window.URLSearchParams(document.location.search);
+        window.myusp = new window.URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
           backToLogin();
         }
@@ -187,7 +191,7 @@
         <span class="aunderline">Firefox</span>
       </a>
     </p>
-    <script type="module">
+    <script>
       if (window.myusp) {
         var debugdiv = document.createElement("div");
         debugdiv.className = "debug";
