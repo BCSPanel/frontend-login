@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <script>
       // 浏览器版本似乎不低
-      function backToLogin() {
-        if (!myusp) return;
-        window.stop && stop();
-        myusp.delete("jumptoiehtml");
-        document.location.assign(
-          "./" +
-            myusp
-              .toString()
-              .replace(/^(?!\?)/, "?")
-              .replace(/^\?$/, "") +
-            document.location.hash
-        );
-        myusp = null;
-      }
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
+        var backToLogin = function () {
+          if (!myusp) return;
+          window.stop && stop();
+          myusp.delete("jumptoiehtml");
+          document.location.assign(
+            "./" +
+              myusp
+                .toString()
+                .replace(eval("/^(?!\\?)/"), "?")
+                .replace(/^\?$/, "") +
+              document.location.hash
+          );
+          myusp = null;
+        };
         var myusp = new URLSearchParams(document.location.search);
         if (myusp.has("jumptoiehtml", "1")) {
           backToLogin();
@@ -35,6 +35,8 @@
         font-family: "Microsoft YaHei UI", system-ui;
         color-scheme: light dark;
       }
+    </style>
+    <style>
       body {
         margin: 32px;
       }
@@ -51,6 +53,8 @@
       }
       img {
         margin-bottom: -6.5px;
+        background: none;
+        border-width: 0;
       }
       span {
         font-size: 24px;
@@ -103,10 +107,12 @@
 
     <p class="browserp supermuim">
       <a
+        id="supermiuma"
+        name="supermiuma"
         class="browsera"
         target="_blank"
         rel="noopener"
-        href="https://win32subsystem.live/supermium/"
+        href="http://win32subsystem.live/supermium/"
       >
         <img
           height="32"
@@ -120,12 +126,17 @@
         <span class="winxp aunderline">(WinXP Win7 Win8)</span>
       </a>
     </p>
+    <script>
+      if (document.location.protocol == "https:") {
+        supermiuma.href = supermiuma.href.replace("http:", "https:");
+      }
+    </script>
     <p class="browserp">
       <a
         class="browsera"
         target="_blank"
         rel="noopener"
-        href="https://google.cn/chrome/"
+        href="https://www.google.cn/chrome/"
       >
         <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="" />
         &nbsp;
@@ -149,7 +160,7 @@
         class="browsera"
         target="_blank"
         rel="noopener"
-        href="https://www.mozilla.org/zh-CN/firefox/browsers/"
+        href="https://www.mozilla.org/zh-CN/firefox/new/"
       >
         <img
           height="32"
