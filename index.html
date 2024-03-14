@@ -12,14 +12,15 @@
       // fetch请求的超时时长（单位：秒）
       window.fetchTimeoutSeconds = 10;
 
-      // 如果浏览器不支持部分接口，那就自动跳到 ie.html
-      // ie.html 如果检测到有接口会自动跳回来
+      // Powered by https://github.com/bddjr/iehtml , Using MIT license.
+      // 如果浏览器不支持部分接口，那就自动跳到 iehtml
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if (!"".replaceAll) {
-        window.stop && window.stop();
-        document.location.assign(
-          "./ie.html?jumptoiehtml=1" +
-            document.location.search.replace(/^\?$/, "").replace(/^\?/, "&") +
+        window.stop && stop();
+        document.location.replace(
+          "./ie/#" +
+            document.location.pathname +
+            document.location.search +
             document.location.hash
         );
       }

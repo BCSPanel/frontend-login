@@ -1,53 +1,32 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
+<html>
   <head>
     <meta charset="UTF-8" />
     <script>
       // 浏览器版本似乎不低
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
-        window.backToLogin = function () {
-          if (!myusp) return;
+        if (document.location.hash[1] == "/") {
           window.stop && stop();
-          eval("myusp.delete('jumptoiehtml')");
-          var url =
-            "./" +
-            myusp
-              .toString()
-              .replace(eval("/^(?!\\?)/"), "?")
-              .replace(/^\?$/, "") +
-            document.location.hash;
-          myusp = false;
           var i = 0;
           function setBodyDisplayNone() {
             if (document.body && document.body.style) {
               document.body.style.display = "none";
-              if (document.body.style.display == "none") {
-                return;
-              }
-            }
-            if (i < 500) {
+            } else if (i < 500) {
               setTimeout(setBodyDisplayNone, 25);
               i += 25;
             }
           }
           setTimeout(setBodyDisplayNone);
-          document.location.assign(url);
-        };
-        window.myusp = new window.URLSearchParams(document.location.search);
-        if (myusp.has("jumptoiehtml", "1")) {
-          backToLogin();
-        }
+          document.location.replace(document.location.hash.slice(1));
+        } else backToLogin = "../";
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
     <title>您的浏览器版本过低</title>
-    <link
-      rel="shortcut icon"
-      href="./icon/browser/iepage-24.png"
-      type="image/png"
-    />
+    <link rel="shortcut icon" href="./icon/iepage-24.png" type="image/png" />
     <style>
       * {
         font-family: Arial, "Microsoft Yahei", "黑体", "SimHei", system-ui;
@@ -104,10 +83,6 @@
         font-size: 20px;
         word-spacing: 6px;
       }
-      /* .supermuim {
-        margin-top: 26px;
-        margin-bottom: 0px;
-      } */
       .debug {
         position: absolute;
         top: 0;
@@ -122,6 +97,17 @@
         cursor: pointer;
         text-decoration: underline;
         text-decoration-thickness: 1px;
+      }
+      .powered {
+        display: inline-block;
+        color: gray;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .powered:hover {
+        text-decoration: underline;
       }
     </style>
     <style>
@@ -161,12 +147,7 @@
         rel="noopener"
         href="http://win32subsystem.live/supermium/"
       >
-        <img
-          height="32"
-          width="32"
-          src="./icon/browser/supermium-32.png"
-          alt=""
-        />
+        <img height="32" width="32" src="./icon/supermium-32.png" alt="" />
         <span class="browseraunderline">Supermium</span>
         <br />
         <span class="displaylink" id="supermiumdisplaylink"
@@ -194,7 +175,7 @@
         rel="noopener"
         href="https://www.google.cn/chrome/"
       >
-        <img height="32" width="32" src="./icon/browser/chrome-32.png" alt="" />
+        <img height="32" width="32" src="./icon/chrome-32.png" alt="" />
         <span class="browseraunderline">Google Chrome</span>
         <br />
         <span class="displaylink">https://www.google.cn/chrome/</span>
@@ -207,7 +188,7 @@
         rel="noopener"
         href="https://www.microsoft.com/edge/download"
       >
-        <img height="32" width="32" src="./icon/browser/edge-32.png" alt="" />
+        <img height="32" width="32" src="./icon/edge-32.png" alt="" />
         <span class="browseraunderline">Microsoft Edge</span>
         <br />
         <span class="displaylink">https://www.microsoft.com/edge/download</span>
@@ -220,23 +201,25 @@
         rel="noopener"
         href="https://www.mozilla.org/firefox/new/"
       >
-        <img
-          height="32"
-          width="32"
-          src="./icon/browser/firefox-32.png"
-          alt=""
-        />
+        <img height="32" width="32" src="./icon/firefox-32.png" alt="" />
         <span class="browseraunderline">Firefox</span>
         <br />
         <span class="displaylink">https://www.mozilla.org/firefox/new/</span>
       </a>
     </p>
+    <a
+      class="powered"
+      href="https://github.com/bddjr/iehtml"
+      target="_blank"
+      rel="noopener"
+      >Powered by iehtml, using MIT license.</a
+    >
     <script>
-      if (window.myusp) {
+      if (window.backToLogin) {
         var debugdiv = document.createElement("div");
         debugdiv.className = "debug";
         debugdiv.innerHTML =
-          '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" onclick="backToLogin()">返回登录页面</a>';
+          '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" onclick="document.location.assign(backToLogin)">返回登录页面</a>';
         document.body.appendChild(debugdiv);
         (window.onresize = function () {
           document.getElementById("h1").style.marginTop =
