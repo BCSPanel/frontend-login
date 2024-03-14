@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.0.2 -->
+<!-- 1.0.3 -->
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -10,16 +10,9 @@
       if ("".replaceAll) {
         if (document.location.hash[1] == "/") {
           window.stop && stop();
-          var i = 0;
-          function setBodyDisplayNone() {
-            if (document.body && document.body.style) {
-              document.body.style.display = "none";
-            } else if (i < 500) {
-              setTimeout(setBodyDisplayNone, 25);
-              i += 25;
-            }
-          }
-          setTimeout(setBodyDisplayNone);
+          setTimeout(function () {
+            document.body.style.display = "none";
+          }, 15);
           document.location.replace(document.location.hash.slice(1));
         } else backToLogin = "../";
       }
