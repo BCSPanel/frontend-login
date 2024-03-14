@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.0.1 -->
+<!-- 1.0.2 -->
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -48,6 +48,9 @@
         display: inline-block;
         padding: 10px;
       }
+      .browseraunderline {
+        cursor: pointer;
+      }
       img {
         background: none;
         border-width: 0;
@@ -60,10 +63,7 @@
         display: inline-block;
         height: 48px;
         line-height: 24px;
-      }
-      .browsera:hover .browseraunderline {
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
+        cursor: pointer;
       }
       .displaylink {
         color: gray;
@@ -112,6 +112,12 @@
       }
       .powered:hover {
         text-decoration: underline;
+      }
+    </style>
+    <style>
+      .browsera:hover .browseraunderline {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
       }
     </style>
     <style>
