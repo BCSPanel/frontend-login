@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
+<!-- 1.0.1 -->
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -46,16 +47,19 @@
         text-decoration: none;
         display: inline-block;
         padding: 10px;
-        line-height: 24px;
       }
       img {
-        margin-bottom: -18px;
         background: none;
         border-width: 0;
-        margin-right: 6px;
+        position: absolute;
+        margin-top: 7px;
       }
-      span {
+      .browserspanbox {
         font-size: 24px;
+        padding-left: 42px;
+        display: inline-block;
+        height: 48px;
+        line-height: 24px;
       }
       .browsera:hover .browseraunderline {
         text-decoration: underline;
@@ -64,7 +68,7 @@
       .displaylink {
         color: gray;
         text-decoration: none;
-        margin-left: 43px;
+        margin-left: 1px;
         margin-top: 6px;
         font-size: 14px;
       }
@@ -148,11 +152,13 @@
         href="http://win32subsystem.live/supermium/"
       >
         <img height="32" width="32" src="./icon/supermium-32.png" alt="" />
-        <span class="browseraunderline">Supermium</span>
-        <br />
-        <span class="displaylink" id="supermiumdisplaylink"
-          >http://win32subsystem.live/supermium/</span
-        >
+        <span class="browserspanbox">
+          <span class="browseraunderline">Supermium</span>
+          <br />
+          <span class="displaylink" id="supermiumdisplaylink">
+            http://win32subsystem.live/supermium/
+          </span>
+        </span>
       </a>
     </p>
     <script>
@@ -176,9 +182,11 @@
         href="https://www.google.cn/chrome/"
       >
         <img height="32" width="32" src="./icon/chrome-32.png" alt="" />
-        <span class="browseraunderline">Google Chrome</span>
-        <br />
-        <span class="displaylink">https://www.google.cn/chrome/</span>
+        <span class="browserspanbox">
+          <span class="browseraunderline">Google Chrome</span>
+          <br />
+          <span class="displaylink"> https://www.google.cn/chrome/ </span>
+        </span>
       </a>
     </p>
     <p class="browserp">
@@ -189,9 +197,13 @@
         href="https://www.microsoft.com/edge/download"
       >
         <img height="32" width="32" src="./icon/edge-32.png" alt="" />
-        <span class="browseraunderline">Microsoft Edge</span>
-        <br />
-        <span class="displaylink">https://www.microsoft.com/edge/download</span>
+        <span class="browserspanbox">
+          <span class="browseraunderline">Microsoft Edge</span>
+          <br />
+          <span class="displaylink">
+            https://www.microsoft.com/edge/download
+          </span>
+        </span>
       </a>
     </p>
     <p class="browserp">
@@ -202,9 +214,13 @@
         href="https://www.mozilla.org/firefox/new/"
       >
         <img height="32" width="32" src="./icon/firefox-32.png" alt="" />
-        <span class="browseraunderline">Firefox</span>
-        <br />
-        <span class="displaylink">https://www.mozilla.org/firefox/new/</span>
+        <span class="browserspanbox">
+          <span class="browseraunderline">Firefox</span>
+          <br />
+          <span class="displaylink">
+            https://www.mozilla.org/firefox/new/
+          </span>
+        </span>
       </a>
     </p>
     <a
