@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.0.4 -->
+<!-- 1.0.6 -->
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -8,14 +8,14 @@
       // 浏览器版本似乎不低
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
-        if (document.location.hash[1] == "/") {
+        if (document.location.hash.indexOf("/") >= 0) {
           window.stop && stop();
           setTimeout(function () {
             document.body.style.display = "none";
           }, 15);
           window.redirecting = true;
           document.location.replace(document.location.hash.slice(1));
-        } else backToLogin = "../";
+        } else window.isdebug = true;
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,6 +26,9 @@
       * {
         font-family: Arial, "Microsoft Yahei", "黑体", "SimHei", system-ui;
         color-scheme: light dark;
+      }
+      html {
+        background-color: white;
       }
       body {
         margin: 24px;
@@ -67,7 +70,7 @@
       }
       .h1 {
         margin-bottom: 10px;
-        margin-top: 20px;
+        margin-top: 0px;
         font-weight: normal;
       }
       .h1p {
@@ -95,11 +98,12 @@
         text-decoration: underline;
         text-decoration-thickness: 1px;
       }
-      .powered {
-        display: inline-block;
-        color: gray;
+      .footer {
         margin-top: 32px;
         margin-bottom: 12px;
+      }
+      .powered {
+        color: gray;
         text-decoration: none;
         font-size: 14px;
       }
@@ -116,7 +120,7 @@
     <!--[if lte IE 6]>
       <style>
         .h1 {
-          font-family: "黑体";
+          font-family: "黑体", system-ui;
         }
       </style>
       <script>
@@ -125,6 +129,9 @@
     <![endif]-->
     <style>
       @media (prefers-color-scheme: dark) {
+        html {
+          background-color: black;
+        }
         .browsera {
           color: #8cb4ff;
         }
@@ -138,7 +145,7 @@
         .h1,
         .h1p,
         .sys {
-          color: #cccccc;
+          color: #dddddd;
         }
       }
     </style>
@@ -160,7 +167,7 @@
         rel="noopener"
         href="http://win32subsystem.live/supermium/"
       >
-        <img height="32" width="32" alt="./icon/supermium-32.png" />
+        <img height="32" width="32" alt="./icon/supermium-32" />
         <span class="browserspanbox">
           <span class="browseraunderline">Supermium</span>
           <br />
@@ -171,11 +178,12 @@
       </a>
     </p>
     <script>
-      // 如果不是IE 或IE版本大于等于8，就改为https
-      // 已知 Win7 x64 sp1 预装 IE 8
+      // 设为https
       if (
-        navigator.userAgent.indexOf("MSIE") < 0 ||
-        navigator.userAgent.indexOf("Trident/") >= 0
+        // 不是版本<=10的IE
+        !/MSIE /.test(navigator.userAgent) ||
+        // Windows NT 版本 6.1 ~ 6.9
+        /Windows NT 6\.[1-9]/.test(navigator.userAgent)
       ) {
         supermiumdisplaylink.innerHTML = supermiuma.href =
           supermiuma.href.replace("http:", "https:");
@@ -190,7 +198,7 @@
         rel="noopener"
         href="https://www.google.cn/chrome/"
       >
-        <img height="32" width="32" alt="./icon/chrome-32.png" />
+        <img height="32" width="32" alt="./icon/chrome-32" />
         <span class="browserspanbox">
           <span class="browseraunderline">Google Chrome</span>
           <br />
@@ -205,7 +213,7 @@
         rel="noopener"
         href="https://www.microsoft.com/edge/download"
       >
-        <img height="32" width="32" alt="./icon/edge-32.png" />
+        <img height="32" width="32" alt="./icon/edge-32" />
         <span class="browserspanbox">
           <span class="browseraunderline">Microsoft Edge</span>
           <br />
@@ -222,7 +230,7 @@
         rel="noopener"
         href="https://www.mozilla.org/firefox/new/"
       >
-        <img height="32" width="32" alt="./icon/firefox-32.png" />
+        <img height="32" width="32" alt="./icon/firefox-32" />
         <span class="browserspanbox">
           <span class="browseraunderline">Firefox</span>
           <br />
@@ -232,13 +240,15 @@
         </span>
       </a>
     </p>
-    <a
-      class="powered"
-      href="https://github.com/bddjr/iehtml"
-      target="_blank"
-      rel="noopener"
-      >Powered by iehtml, using MIT license.</a
-    >
+    <p class="footer">
+      <a
+        class="powered"
+        href="https://github.com/bddjr/iehtml"
+        target="_blank"
+        rel="noopener"
+        >Powered by iehtml, using MIT license.</a
+      >
+    </p>
     <script>
       if (window.redirecting) {
         document.body.style.display = "none";
@@ -247,16 +257,16 @@
           var img = document.images[i];
           if (img.alt) {
             if (window.islteie6) {
-              img.src = img.alt.replace(/-32\.png$/, "-32-ie6.png");
-            } else img.src = img.alt;
+              img.src = img.alt + "-ie6.png";
+            } else img.src = img.alt + ".png";
             img.alt = "";
           }
         }
-        if (window.backToLogin) {
+        if (window.isdebug) {
           var debugdiv = document.createElement("div");
           debugdiv.className = "debug";
           debugdiv.innerHTML =
-            '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" onclick="document.location.assign(backToLogin)">返回主页</a>';
+            '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" href="../">返回主页</a>';
           document.body.appendChild(debugdiv);
           (window.onresize = function () {
             document.getElementById("h1").style.marginTop =

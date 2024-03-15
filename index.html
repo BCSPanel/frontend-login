@@ -21,12 +21,8 @@
           setTimeout(function () {
             document.body.style.display = "none";
           }, 15);
-        document.location.replace(
-          "./ie/#" +
-            document.location.pathname +
-            document.location.search +
-            document.location.hash
-        );
+        var l = document.location;
+        document.location.replace("./ie/#" + l.pathname + l.search + l.hash);
       }
     </script>
     <title id="title">BCSPanel</title>
