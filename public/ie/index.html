@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.0.6 -->
+<!-- 1.1.0 -->
 <html>
   <head>
     <meta charset="UTF-8" />
     <script>
-      // 浏览器版本似乎不低
+      // 浏览器版本似乎不低，自动重定向到原来的网址（如果允许）
       // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
       if ("".replaceAll) {
-        if (document.location.hash.indexOf("/") >= 0) {
-          window.stop && stop();
-          setTimeout(function () {
-            document.body.style.display = "none";
-          }, 15);
-          window.redirecting = true;
-          document.location.replace(document.location.hash.slice(1));
-        } else window.isdebug = true;
+        window.isdebug = true;
+        (function () {
+          var l = document.location;
+          var h = l.hash.slice(1);
+          if (h == "") return;
+          function redirect() {
+            window.stop && stop();
+            setTimeout(function () {
+              document.body.style.display = "none";
+            }, 15);
+            window.redirecting = true;
+            document.location.replace(h);
+          }
+          // 路径开头为斜杠
+          var hSlash = /^[/\\]{1,2}/.exec(h);
+          if (hSlash) {
+            // 单斜杠自动重定向
+            if (hSlash.toString().length == 1) {
+              return redirect();
+            }
+          }
+        })();
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
