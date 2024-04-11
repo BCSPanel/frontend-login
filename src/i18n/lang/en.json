@@ -1,29 +1,26 @@
 {
     "langName": "English",
-    "loginTitle": {
-        "status": {
-            "login": "Login BCSPanel",
-            "register": "Register BCSPanel"
-        }
-    },
+    "loginTitleLogin": "Login",
+    "loginTitleRegister": "Register",
     "form_username": "User Name",
     "form_password": "Password",
     "form_repeat_password": "Repeat Your Password",
-    "form_verification_code": "Verification Code",
+    "form_verification_code": "Verify Code",
     "loginStatus": {
         "status": {
             "not_logged_in": "Not logged in",
             "user_name_or_password_not_filled_in": "The user name or password is not entered",
-            "the_verification_code_is_not_entered": "The verification code is not entered",
+            "the_verification_code_is_not_entered": "The verify code is not entered",
             "attempting_to_login": "Attempting to login……",
             "login_failed": "Login failed, {{error}}",
             "login_succeeded": "Login succeeded ✔",
             "do_not_enter_two_different_passwords": "Don't enter two different passwords",
             "wrong_username_or_password": "Wrong user name or password",
-            "wrong_verification_code": "Wrong verification code",
+            "wrong_verification_code": "Wrong verify code",
             "please_try_again": "Please try again",
             "password_strength_is_insufficient": "The password is not strong enough. It must contain uppercase and lowercase letters and digits and cannot be less than 12 characters in length",
-            "password_too_long": "The password length exceeds 128 characters"
+            "password_too_long": "The password length exceeds 128 characters",
+            "incorrect_username_format": "User name format is wrong, it must match the regular expression ^[0-9a-zA-Z\\-_]{1,32}$"
         }
     },
     "forgotPassword": "Forgot Password",
@@ -33,5 +30,5 @@
             "register": "Sign Up"
         }
     },
-    "notSecureWarning": "⚠ All your sensitive information will be transmitted in plain text and a man-in-the-middle hijacking attack may occur!<br /><span>To configure secure encrypted transmissions, click here for documentation.</span>"
+    "notSecureWarning": "⚠Unsafe"
 }

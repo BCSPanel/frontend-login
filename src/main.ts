@@ -1,6 +1,6 @@
 console.log('### main');
 
-import isRegister from './isRegister';
+import { isRegister, setRegister } from './isRegister';
 import { clickLogin } from './clickLogin';
 import { updateLang } from './i18n/i18n';
 import { changeLang, langsKeys } from './i18n/langs';
@@ -9,7 +9,7 @@ import { updateHeight } from './updateHeight';
 
 let ranMain = false
 
-function Main() {
+function main() {
   console.log('Main');
   if (ranMain) return;
 
@@ -50,18 +50,26 @@ function Main() {
   }
   // 添加输入框按回车键的响应
   add_doc_Enter_listener("username", "password");
-  if (isRegister) {
-    add_doc_Enter_listener("password", "repeat_password");
-    add_doc_Enter_listener("repeat_password", "verification_code");
-    add_doc_Enter_listener("verification_code", clickLogin);
-  } else {
-    add_doc_Enter_listener("password", clickLogin);
-  }
+  add_doc_Enter_listener("password", () => {
+    if (isRegister()) {
+      (document.getElementById("repeat_password") as HTMLInputElement).focus();
+    } else {
+      clickLogin()
+    }
+  });
+  add_doc_Enter_listener("repeat_password", "verification_code");
+  add_doc_Enter_listener("verification_code", clickLogin);
 
 
 
   // 添加登录按钮的响应
   (document.getElementById("loginbutton") as HTMLButtonElement).addEventListener('click', clickLogin);
+
+
+
+  // 添加登录与注册模式切换按钮的响应
+  (document.getElementById("loginTitleLogin") as HTMLSpanElement).addEventListener('click', () => setRegister(false));
+  (document.getElementById("loginTitleRegister") as HTMLSpanElement).addEventListener('click', () => setRegister(true));
 
 
 
@@ -74,7 +82,7 @@ function Main() {
   }
   // 遍历添加语言切换按钮的响应
   for (const i of langsKeys.concat('default')) {
-    (document.getElementById('changeLang_' + i) as HTMLElement).addEventListener('click', clickChangeLang);
+    document.getElementById('changeLang_' + i)?.addEventListener('click', clickChangeLang);
   }
 
 
@@ -83,16 +91,6 @@ function Main() {
   if (!window.isSecureContext) {
     // 显示警告
     (document.getElementById("notSecureWarning") as HTMLElement).style.display = '';
-  }
-
-
-
-  // 配置注册页
-  if (isRegister) {
-    (document.getElementById('repeat_password') as HTMLElement).style.display = '';
-    (document.getElementById('verification_code') as HTMLElement).style.display = '';
-    updateLang('loginTitle', 'register', undefined, true);
-    updateLang('loginbutton', 'register', undefined, true);
   }
 
 
@@ -129,7 +127,7 @@ function Main() {
 if (document.getElementById('htmlloaded')) {
   console.log('htmlloaded');
   try {
-    Main();
+    main();
     // 加载完成后再次更新高，修复部分情况出现的高度错误
     window.addEventListener('load', () => {
       console.log("### Event load updateHeight");
@@ -144,6 +142,6 @@ if (!ranMain) {
   // 修复方式：等待网页加载完成再运行Main
   window.addEventListener('load', () => {
     console.log("### Event load Main");
-    Main();
+    main();
   });
 }

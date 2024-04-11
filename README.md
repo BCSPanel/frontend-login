@@ -9,8 +9,8 @@
 
 会尝试适配最新版 [Mozilla Firefox](https://www.mozilla.org/zh-CN/firefox/browsers/) ，但不保证它正常显示。  
 
-HTTPS [预览安全登录界面](https://bcspanel-web-login-preview.bddjr.com/web-login/) | [预览安全注册界面](https://bcspanel-web-login-preview.bddjr.com/web-login/?r=1)  
-HTTP [预览不安全登录界面](http://bcspanel-web-login-preview.bddjr.com/web-login/) | [预览不安全注册界面](http://bcspanel-web-login-preview.bddjr.com/web-login/?r=1)  
+HTTPS [预览安全界面](https://bcspanel-web-login-preview.bddjr.com/web-login/)  
+HTTP [预览不安全界面](http://bcspanel-web-login-preview.bddjr.com/web-login/)  
 
 [使用MIT开源许可协议。](https://mit-license.org)  
 
@@ -55,8 +55,6 @@ npm run bview
 
 ![2](README/img/2.jpg)
 
-![3](README/img/3.png)
+![3](README/img/3.jpg)
 
 ![4](README/img/4.jpg)
-
-![5](README/img/5.jpg)

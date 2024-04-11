@@ -1,14 +1,8 @@
 import { changeLoginStats } from "./i18n/i18n";
-import isRegister from "./isRegister";
+import { isRegister } from "./isRegister";
 import fetchWithTimeout from "./fetchWithTimeout";
 import loginConfig from "./loginConfig";
 import asyncSleep from "./asyncSleep";
-
-
-// 异步预加载 clickLogin_noSecure_encrypt
-if (!window.isSecureContext) {
-    import('./clickLogin_noSecure_encrypt');
-}
 
 
 /** 函数用于启用或禁用登录按钮 */
@@ -53,7 +47,7 @@ export async function clickLogin() {
         }
 
         // 如果是注册模式
-        if (isRegister) {
+        if (isRegister()) {
             // 密码强度不足
             {
                 const password = (document.getElementById("password") as HTMLButtonElement).value;
@@ -88,30 +82,18 @@ export async function clickLogin() {
             // boolean 安全上下文
             "secure": window.isSecureContext,
             // boolean 是否处于注册模式
-            "isregister": isRegister,
+            "isregister": isRegister(),
             // string 用户名
             "username": (document.getElementById("username") as HTMLInputElement).value,
             // string 密码
             "password": (document.getElementById("password") as HTMLInputElement).value,
-            // string 盐 登录模式发送随机盐 注册模式发送验证码
-            "salt": '',
-            // string cookie存储路径
-            // "/web-login/index.html" -> "/"
-            // "/bcspanel/web-login/"  -> "/bcspanel/"
-            "path": document.location.pathname.replace(/\/web-login\/[^\/]*$/, "/")
-        }
-        // 如果不安全
-        if (!window.isSecureContext) {
-            // 加密
-            await (await import('./clickLogin_noSecure_encrypt')).updateBody(postLoginBody)
-        } else if (isRegister) {// 安全的情况下注册
-            // 将验证码作为盐，直接发送
-            postLoginBody.salt = (document.getElementById("verification_code") as HTMLInputElement).value.trim();
+            // string 注册模式发送验证码
+            "verification_code": (document.getElementById("verification_code") as HTMLInputElement).value,
         }
 
         // 准备提交
         console.log('clickLogin POST');
-        console.log(postLoginBody);
+        // console.log(postLoginBody);
         // 如果运行了另一个函数，另一个函数可以终止当前请求
         const controller = new AbortController();
         abortLogin = () => {
@@ -119,7 +101,7 @@ export async function clickLogin() {
             loginAborted = true;
             controller?.abort();
         }
-        // 2秒内还没提交完，先允许登录按钮
+        // 1.5秒内还没提交完，先允许登录按钮
         Timeout = setTimeout(() => {
             setDisabledLoginButton(false);
         }, 1500);
@@ -141,7 +123,7 @@ export async function clickLogin() {
             const text = (await response.text()).trim();
             if (text === '') throw 401;
             changeLoginStats(text, 'red');
-            await asyncSleep(1500);
+            await asyncSleep(1000);
             setDisabledLoginButton(false)
         } else {
             // 未知状态码

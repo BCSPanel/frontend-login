@@ -1,183 +1,128 @@
 <!-- Using MIT license. https://github.com/bddjr/BCSPanel-web-login -->
 <!-- Don't add doctype! -->
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <template id="template_footer">
-      <!-- 在此处添加备案号即可： -->
-      <!-- <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备99999999号-9</a><br/> -->
-      <!-- <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=99999999999999">京公网安备99999999999999号</a><br/> -->
-    </template>
-    <script>
-      // fetch请求的超时时长（单位：秒）
-      window.fetchTimeoutSeconds = 10;
 
-      // Powered by https://github.com/bddjr/iehtml , Using MIT license.
-      // 如果浏览器不支持部分接口，那就自动跳到 iehtml
-      // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
-      if (!"".replaceAll) {
-        window.stop && stop();
-        var l = document.location;
-        document.location.replace("./ie/#" + l.pathname + l.search + l.hash);
-      }
-    </script>
-    <title id="title">BCSPanel</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=0"
-    />
-    <meta name="robots" content="noindex, nofollow" />
-    <link rel="icon" href="/icon/BCSP-64x64.png" />
-    <style id="loading_style">
-      body {
-        background-color: gray;
-      }
-    </style>
-    <link
-      rel="preload"
-      as="image"
-      type="image/webp"
-      href="src/img/login-background-384x195-tinify.webp"
-    />
-    <link rel="stylesheet" href="/src/css/index.css" />
-    <link rel="stylesheet" href="/src/css/index-dark.css" />
-    <link rel="stylesheet" href="/src/css/login-background-img.css" />
-    <script src="../api-login/color-scheme.js">
-      // window.BCSPanelColorScheme="";window.matchMediaDarkChange&&window.matchMediaDarkChange()
-    </script>
-    <script type="module" src="/src/main.ts"></script>
-  </head>
-  <body>
-    <div id="divmain" class="main" style="display: none">
-      <div id="divmain2" class="main2">
-        <p
-          id="loginTitle"
-          class="loginTitle"
-          i18n_id="loginTitle"
-          i18n_property_name="innerText"
-          i18n_statu="login"
-          i18n_mirror_elementIds="title"
-        >
-          I18nElement
-        </p>
-        <a
-          href="https://bcspanel.bddjr.com/docs/https"
-          target="_blank"
-          rel="noopener"
-          id="notSecureWarning"
-          class="notSecureWarning"
-          style="display: none"
-        >
-          <div i18n_id="notSecureWarning" i18n_property_name="innerHTML">
+<head>
+  <meta charset="utf-8" />
+
+  <!--#BCSPanelConfigStart#-->
+  <template id="template_footer">
+    <!-- 在此处添加备案号即可： -->
+    <!-- <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备99999999号-9</a><br/> -->
+    <!-- <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=99999999999999">京公网安备99999999999999号</a><br/> -->
+  </template>
+  <script>
+    // fetch请求的超时时长（单位：秒）
+    window.fetchTimeoutSeconds = 10;
+  </script>
+  <!--#BCSPanelConfigEnd#-->
+
+  <script>
+    // Powered by https://github.com/bddjr/iehtml , Using MIT license.
+    // 如果浏览器不支持部分接口，那就自动跳到 iehtml
+    // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
+    if (!"".replaceAll) {
+      window.stop && stop();
+      var l = document.location;
+      document.location.replace("./ie/#" + l.pathname + l.search + l.hash);
+    }
+  </script>
+  <title id="title">BCSPanel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="icon/BCSP-64x64.png" />
+  <style id="loading_style">
+    body {
+      background-color: gray;
+    }
+  </style>
+  <!-- <link rel="preload" as="image" type="image/webp" href="src/img/login-background-384x195-tinify.webp" /> -->
+  <link rel="preload" as="image" type="image/png" href="icon/BCSPanel.png" />
+  <link rel="preload" as="image" type="image/png" href="icon/BCSP-64x64.png" />
+  <link rel="stylesheet" href="/src/css/index.css" />
+  <link rel="stylesheet" href="/src/css/index-dark.css" />
+  <link rel="stylesheet" href="/src/css/login-background-color.css" />
+  <script src="../api-login/color-scheme.js">
+    // window.BCSPanelColorScheme="";window.matchMediaDarkChange&&window.matchMediaDarkChange()
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+
+<body>
+  <div id="divmain" class="main" style="display: none">
+    <div id="divmain2" class="main2">
+      <div id="titleBox" class="titleBox">
+        <div id="titleBoxLeft" class="titleBoxLeft">
+          <span id="loginTitleLogin" class="loginTitle loginTitleSelect" i18n_id="loginTitleLogin"
+            i18n_property_name="innerText" i18n_statu="login">
             I18nElement
-          </div>
-        </a>
-        <div id="divLoginInput">
-          <form id="form" class="form">
-            <input
-              type="text"
-              id="username"
-              name="username"
-              autocomplete="username"
-              placeholder="I18nElement"
-              i18n_id="form_username"
-              i18n_property_name="placeholder"
-            /><br />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              autocomplete="current-password"
-              placeholder="I18nElement"
-              i18n_id="form_password"
-              i18n_property_name="placeholder"
-            /><br />
-            <input
-              style="display: none"
-              type="password"
-              id="repeat_password"
-              name="repeat_password"
-              autocomplete="off"
-              i18n_id="form_repeat_password"
-              i18n_property_name="placeholder"
-              placeholder="I18nElement"
-            />
-            <input
-              style="display: none"
-              type="text"
-              id="verification_code"
-              name="verification_code"
-              autocomplete="off"
-              i18n_id="form_verification_code"
-              i18n_property_name="placeholder"
-              placeholder="I18nElement"
-            />
-          </form>
-          <div id="divLoginButton" class="divLoginButton">
-            <p class="loginStatus">
-              <span
-                id="loginStatus"
-                i18n_id="loginStatus"
-                i18n_property_name="innerText"
-                i18n_statu="not_logged_in"
-                >I18nElement</span
-              ><br />
-              <a
-                id="forgotPassword"
-                class="forgotPassword"
-                href="https://bcspanel.bddjr.com/docs/forgotPassword"
-                target="_blank"
-                rel="noopener"
-                i18n_id="forgotPassword"
-                i18n_property_name="innerText"
-              >
-                I18nElement
-              </a>
-            </p>
-            <button
-              id="loginbutton"
-              class="loginbutton"
-              i18n_id="loginbutton"
-              i18n_property_name="innerText"
-              i18n_statu="login"
-            >
-              I18nElement
-            </button>
-          </div>
+          </span>
+          <div class="loginTitleTab"></div>
+          <span id="loginTitleRegister" class="loginTitle" i18n_id="loginTitleRegister" i18n_property_name="innerText"
+            i18n_statu="login">
+            I18nElement
+          </span>
         </div>
-        <footer>
-          <a
-            href="https://github.com/bddjr/BCSPanel"
-            target="_blank"
-            rel="noopener"
-            >BCSPanel</a
-          ><br />
-        </footer>
-        <div id="div_change_lang" class="div_change_lang">
-          <button class="button_lang">
-            <svg
-              viewBox="0 0 24 24"
-              height="24"
-              style="transform: translateY(4px)"
-            >
-              <path
-                d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z"
-              ></path>
-            </svg>
-          </button>
-          <div id="div_change_lang_content" class="div_change_lang_content">
-            <a id="changeLang_en" class="div_change_lang_content_a"> English </a
-            ><br />
-            <a id="changeLang_zh-CN" class="div_change_lang_content_a">
-              简体中文 </a
-            ><br />
-            <a id="changeLang_default" class="div_change_lang_content_a">
-              Default </a
-            ><br />
+        <a href="https://bcspanel.bddjr.com/docs/https" target="_blank" rel="noopener" id="notSecureWarning"
+          class="notSecureWarning" style="display: none" i18n_id="notSecureWarning" i18n_property_name="innerHTML">
+          I18nElement
+        </a>
+        <div id="titleBoxRight" class="titleBoxRight">
+          <div id="div_change_lang" class="div_change_lang">
+            <button class="button_lang">
+              <svg viewBox="0 0 24 24" height="24" style="transform: translateY(1px)">
+                <path
+                  d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z">
+                </path>
+              </svg>
+            </button>
+            <div id="div_change_lang_content" class="div_change_lang_content">
+              <a id="changeLang_default" class="div_change_lang_content_a">
+                Default </a><br />
+              <a id="changeLang_zh-CN" class="div_change_lang_content_a">
+                简体中文 </a><br />
+              <a id="changeLang_en" class="div_change_lang_content_a"> English </a><br />
+            </div>
           </div>
+          <img id="titleImg" class="titleImg" src="icon/BCSPanel.png" alt="">
         </div>
       </div>
+
+      <div id="divLoginInput">
+        <form id="form" class="form">
+          <input type="text" id="username" name="username" autocomplete="username" maxlength="32"
+            placeholder="I18nElement" i18n_id="form_username" i18n_property_name="placeholder" /><br />
+          <input class="inputLastChild" type="password" id="password" name="password" autocomplete="current-password"
+            maxlength="128" placeholder="I18nElement" i18n_id="form_password" i18n_property_name="placeholder" /><br />
+          <input style="display: none" type="password" id="repeat_password" name="repeat_password" maxlength="128"
+            autocomplete="off" i18n_id="form_repeat_password" i18n_property_name="placeholder"
+            placeholder="I18nElement" />
+          <input style="display: none" class="inputLastChild" type="text" id="verification_code"
+            name="verification_code" maxlength="16" autocomplete="off" i18n_id="form_verification_code"
+            i18n_property_name="placeholder" placeholder="I18nElement" />
+        </form>
+        <div id="divLoginButton" class="divLoginButton">
+          <p class="loginStatus">
+            <span id="loginStatus" i18n_id="loginStatus" i18n_property_name="innerText"
+              i18n_statu="not_logged_in">I18nElement</span><br />
+            <a id="forgotPassword" class="forgotPassword" href="https://bcspanel.bddjr.com/docs/forgotPassword"
+              target="_blank" rel="noopener" i18n_id="forgotPassword" i18n_property_name="innerText">
+              I18nElement
+            </a>
+          </p>
+          <button id="loginbutton" class="loginbutton" i18n_id="loginbutton" i18n_property_name="innerText"
+            i18n_statu="login">
+            I18nElement
+          </button>
+        </div>
+      </div>
+      <footer>
+        <a href="https://github.com/bddjr/BCSPanel" target="_blank" rel="noopener">BCSPanel</a><br />
+      </footer>
+
     </div>
-    <span id="htmlloaded" style="display: none"></span>
-  </body>
+  </div>
+  <span id="htmlloaded" style="display: none"></span>
+</body>
+
 </html>

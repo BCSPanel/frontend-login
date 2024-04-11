@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 // import viteCompression from 'vite-plugin-compression'
+import fs from 'fs'
 
 
 // https://vitejs.dev/config/
@@ -29,6 +30,15 @@ export default defineConfig({
           '<script type="module" blocking="render" async'
         );
       }
+    },
+    {
+      // 添加版本号
+      name: "WriteVersion",
+      apply: 'build',
+      closeBundle() {
+        fs.writeFileSync("./dist/version.txt", process.env.npm_package_version)
+        console.log("WriteVersion Done");
+      },
     },
   ],
   resolve: {

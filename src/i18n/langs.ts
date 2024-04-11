@@ -6,6 +6,7 @@ import lang_zh_CN from './lang/zh-CN.json'
 export const langs = {
     'en': lang_en,
     'zh-CN': lang_zh_CN,
+    'zh-Hans-CN': lang_zh_CN, // Firefox Android
 }
 /** Object.keys(langs) */
 export const langsKeys = Object.keys(langs);

@@ -1,3 +1,7 @@
+html.dark * {
+  color-scheme: dark;
+}
+
 html.dark p {
   color: white;
 }
@@ -6,14 +10,46 @@ html.dark .main {
   background-color: rgba(16, 16, 16, 0.94);
 }
 
-html.dark input {
-  background-color: #2f2f2f;
+html.dark .loginTitleTab {
+  background-color: gray;
+}
+
+html.dark .loginTitle {
   color: white;
+}
+
+html.dark .loginTitle:hover {
+  color: #1aadff;
+}
+
+html.dark .loginTitleSelect {
+  text-decoration-color: #1aadff;
+  color: #1aadff;
+}
+
+html.dark .form {
   border-color: gray;
+  background-color: gray;
+}
+
+html.dark input {
+  color-scheme: light;
+  color: white;
+  background-color: #424242;
+  border-top-color: gray;
+  outline-color: #1aadff;
 }
 
 html.dark .loginbutton {
   background-color: #0066d3;
+}
+
+html.dark .loginbutton:hover {
+  background-color: #0072eb;
+}
+
+html.dark .loginbutton:active {
+  background-color: #004ea2;
 }
 
 html.dark .loginbutton:disabled {
