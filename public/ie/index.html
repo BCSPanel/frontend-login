@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.1.0 -->
+<!-- 1.1.1 -->
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -28,37 +28,58 @@
             if (hSlash.toString().length == 1) {
               return redirect();
             }
+            // 双斜杠自动补全协议
+            h = l.protocol + h;
           }
+          // 允许白名单域名
+          /* try {
+          var n = new URL(h).hostname;
+          if (
+            // 普通域名
+            [l.hostname, "example.com", "example.org"].includes(n) ||
+            // 通配域名
+            ["*.example.com", "*.example.org"].includes(
+              n.replace(/^[^\.]+/, "*")
+            )
+          ) {
+            return redirect();
+          }
+        } catch (e) {} */
         })();
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
     <title>您的浏览器版本过低</title>
-    <link rel="shortcut icon" href="./icon/iepage-24.png" type="image/png" />
+    <link rel="shortcut icon" href="data:," />
     <style>
       * {
         font-family: Arial, "Microsoft Yahei", "黑体", "SimHei", system-ui;
-        color-scheme: light dark;
       }
+
       html {
         background-color: white;
       }
+
       body {
         margin: 24px;
       }
+
       .browserp {
         margin-top: 6px;
         margin-bottom: 0px;
       }
+
       .browsera {
         color: #0069c2;
         text-decoration: none;
         display: inline-block;
       }
+
       .browseraunderline {
         cursor: pointer;
       }
+
       img {
         background: none;
         border-width: 0;
@@ -66,6 +87,7 @@
         margin-top: 16px;
         margin-left: 10px;
       }
+
       .browserspanbox {
         font-size: 24px;
         padding-left: 42px;
@@ -75,6 +97,7 @@
         cursor: pointer;
         margin: 10px;
       }
+
       .displaylink {
         color: gray;
         text-decoration: none;
@@ -82,21 +105,25 @@
         margin-top: 6px;
         font-size: 14px;
       }
+
       .h1 {
         margin-bottom: 10px;
         margin-top: 0px;
         font-weight: normal;
       }
+
       .h1p {
         margin-bottom: 36px;
         margin-top: 0px;
       }
+
       .sys {
         margin-top: 32px;
         margin-bottom: 0px;
         font-size: 20px;
         word-spacing: 6px;
       }
+
       .debug {
         position: absolute;
         top: 0;
@@ -106,27 +133,33 @@
         background-color: #d4ffd1;
         color: #006f00;
       }
+
       .backtologin {
         color: #0079eb;
         cursor: pointer;
         text-decoration: underline;
         text-decoration-thickness: 1px;
       }
+
       .footer {
         margin-top: 32px;
         margin-bottom: 12px;
       }
+
       .powered {
         color: gray;
         text-decoration: none;
         font-size: 14px;
       }
+
       .aunderline {
         text-decoration: underline;
       }
+
       .powered:hover {
         text-decoration: underline;
       }
+
       .browsera:hover .browseraunderline {
         text-decoration: underline;
       }
@@ -141,28 +174,6 @@
         window.islteie6 = true;
       </script>
     <![endif]-->
-    <style>
-      @media (prefers-color-scheme: dark) {
-        html {
-          background-color: black;
-        }
-        .browsera {
-          color: #8cb4ff;
-        }
-        .debug {
-          background-color: #006f00;
-          color: #d4ffd1;
-        }
-        .backtologin {
-          color: #b4ceff;
-        }
-        .h1,
-        .h1p,
-        .sys {
-          color: #dddddd;
-        }
-      }
-    </style>
   </head>
 
   <body>
@@ -181,7 +192,7 @@
         rel="noopener"
         href="http://win32subsystem.live/supermium/"
       >
-        <img height="32" width="32" alt="./icon/supermium-32" />
+        <img height="32" width="32" src="./icon/supermium-32-ie6.png" />
         <span class="browserspanbox">
           <span class="browseraunderline">Supermium</span>
           <br />
@@ -212,7 +223,7 @@
         rel="noopener"
         href="https://www.google.cn/chrome/"
       >
-        <img height="32" width="32" alt="./icon/chrome-32" />
+        <img height="32" width="32" src="./icon/chrome-32-ie6.png" />
         <span class="browserspanbox">
           <span class="browseraunderline">Google Chrome</span>
           <br />
@@ -227,7 +238,7 @@
         rel="noopener"
         href="https://www.microsoft.com/edge/download"
       >
-        <img height="32" width="32" alt="./icon/edge-32" />
+        <img height="32" width="32" src="./icon/edge-32-ie6.png" />
         <span class="browserspanbox">
           <span class="browseraunderline">Microsoft Edge</span>
           <br />
@@ -244,7 +255,7 @@
         rel="noopener"
         href="https://www.mozilla.org/firefox/new/"
       >
-        <img height="32" width="32" alt="./icon/firefox-32" />
+        <img height="32" width="32" src="./icon/firefox-32-ie6.png" />
         <span class="browserspanbox">
           <span class="browseraunderline">Firefox</span>
           <br />
@@ -266,27 +277,16 @@
     <script>
       if (window.redirecting) {
         document.body.style.display = "none";
-      } else {
-        for (var i = 0; i < document.images.length; i++) {
-          var img = document.images[i];
-          if (img.alt) {
-            if (window.islteie6) {
-              img.src = img.alt + "-ie6.png";
-            } else img.src = img.alt + ".png";
-            img.alt = "";
-          }
-        }
-        if (window.isdebug) {
-          var debugdiv = document.createElement("div");
-          debugdiv.className = "debug";
-          debugdiv.innerHTML =
-            '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" href="../">返回主页</a>';
-          document.body.appendChild(debugdiv);
-          (window.onresize = function () {
-            document.getElementById("h1").style.marginTop =
-              debugdiv.clientHeight + 20 + "px";
-          })();
-        }
+      } else if (window.isdebug) {
+        var debugdiv = document.createElement("div");
+        debugdiv.className = "debug";
+        debugdiv.innerHTML =
+          '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" href="../">返回主页</a>';
+        document.body.appendChild(debugdiv);
+        (window.onresize = function () {
+          document.getElementById("h1").style.marginTop =
+            debugdiv.clientHeight + 20 + "px";
+        })();
       }
     </script>
   </body>
