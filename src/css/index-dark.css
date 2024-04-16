@@ -7,7 +7,8 @@ html.dark p {
 }
 
 html.dark .main {
-  background-color: rgba(16, 16, 16, 0.94);
+  background-color: #1d1e1f;
+  border: 1px solid #414243;
 }
 
 html.dark .loginTitleTab {

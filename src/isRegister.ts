@@ -7,6 +7,7 @@ export function isRegister() {
 }
 
 export function setRegister(enable: boolean) {
+    if (isReg === enable) return;
     isReg = enable
     if (enable) {
         (document.getElementById('repeat_password') as HTMLElement).style.display = '';

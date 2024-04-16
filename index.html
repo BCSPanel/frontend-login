@@ -31,9 +31,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" href="icon/BCSP-64x64.png" />
-  <style id="loading_style">
+  <style>
     body {
-      background-color: gray;
+      background-color: hsl(206, 100%, 90%);
+      --body-dark-bgcolor: #1d3043
+    }
+
+    html.dark body {
+      background-color: var(--body-dark-bgcolor);
+    }
+  </style>
+  <style id="loading_style">
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--body-dark-bgcolor);
+      }
     }
   </style>
   <!-- <link rel="preload" as="image" type="image/webp" href="src/img/login-background-384x195-tinify.webp" /> -->
@@ -41,7 +53,6 @@
   <link rel="preload" as="image" type="image/png" href="icon/BCSP-64x64.png" />
   <link rel="stylesheet" href="/src/css/index.css" />
   <link rel="stylesheet" href="/src/css/index-dark.css" />
-  <link rel="stylesheet" href="/src/css/login-background-color.css" />
   <script src="../api-login/color-scheme.js">
     // window.BCSPanelColorScheme="";window.matchMediaDarkChange&&window.matchMediaDarkChange()
   </script>
@@ -53,15 +64,15 @@
     <div id="divmain2" class="main2">
       <div id="titleBox" class="titleBox">
         <div id="titleBoxLeft" class="titleBoxLeft">
-          <a id="loginTitleLogin" class="loginTitle loginTitleSelect" i18n_id="loginTitleLogin"
+          <button id="loginTitleLogin" class="loginTitle loginTitleSelect" i18n_id="loginTitleLogin"
             i18n_property_name="innerText" i18n_statu="login">
             I18nElement
-          </a>
+          </button>
           <div class="loginTitleTab"></div>
-          <a id="loginTitleRegister" class="loginTitle" i18n_id="loginTitleRegister" i18n_property_name="innerText"
+          <button id="loginTitleRegister" class="loginTitle" i18n_id="loginTitleRegister" i18n_property_name="innerText"
             i18n_statu="login">
             I18nElement
-          </a>
+          </button>
         </div>
         <a href="https://bcspanel.bddjr.com/docs/https" target="_blank" rel="noopener" id="notSecureWarning"
           class="notSecureWarning" style="display: none" i18n_id="notSecureWarning" i18n_property_name="innerHTML">

@@ -134,7 +134,12 @@ export async function clickLogin() {
     // 判断返回
     if (response.ok) {
       // 成功
-      changeLoginStats("login_succeeded", "green");
+      changeLoginStats(
+        "login_succeeded",
+        document.getElementsByTagName("html")[0].classList.contains("dark")
+          ? "lightgreen"
+          : "green"
+      );
       setDisabledLoginButton(true);
       loginConfig.login_success_redirect();
     } else if (response.status == 401) {
