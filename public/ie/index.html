@@ -1,293 +1,226 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.1.1 -->
+<!-- 1.1.2 -->
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <script>
-      // 浏览器版本似乎不低，自动重定向到原来的网址（如果允许）
-      // ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
-      if ("".replaceAll) {
-        window.isdebug = true;
-        (function () {
-          var l = document.location;
-          var h = l.hash.slice(1);
-          if (h == "") return;
-          function redirect() {
-            window.stop && stop();
-            setTimeout(function () {
-              document.body.style.display = "none";
-            }, 15);
-            window.redirecting = true;
-            document.location.replace(h);
-          }
-          // 路径开头为斜杠
-          var hSlash = /^[/\\]{1,2}/.exec(h);
-          if (hSlash) {
-            // 单斜杠自动重定向
-            if (hSlash.toString().length == 1) {
-              return redirect();
-            }
-            // 双斜杠自动补全协议
-            h = l.protocol + h;
-          }
-          // 允许白名单域名
-          /* try {
-          var n = new URL(h).hostname;
-          if (
-            // 普通域名
-            [l.hostname, "example.com", "example.org"].includes(n) ||
-            // 通配域名
-            ["*.example.com", "*.example.org"].includes(
-              n.replace(/^[^\.]+/, "*")
-            )
-          ) {
-            return redirect();
-          }
-        } catch (e) {} */
-        })();
-      }
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>您的浏览器版本过低</title>
-    <link rel="shortcut icon" href="data:," />
-    <style>
-      * {
-        font-family: Arial, "Microsoft Yahei", "黑体", "SimHei", system-ui;
-      }
 
-      html {
-        background-color: white;
-      }
+<head>
+	<meta charset="UTF-8" />
+	<script>
+		// 浏览器版本似乎不低，自动重定向到原来的网址（如果允许）
+		// ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
+		if ("".replaceAll) {
+			window.isdebug = true;
+			(function () {
+				var l = document.location;
+				var h = l.hash.slice(1);
+				if (h == "") return;
+				function redirect() {
+					window.stop && stop();
+					setTimeout(function () {
+						document.body.style.display = "none";
+					}, 15);
+					window.redirecting = true;
+					document.location.replace(h);
+				}
+				// 路径开头为斜杠
+				var hSlash = /^[/\\]{1,2}/.exec(h);
+				if (hSlash) {
+					// 单斜杠自动重定向
+					if (hSlash.toString().length == 1) {
+						return redirect();
+					}
+					// 双斜杠自动补全协议
+					h = l.protocol + h;
+				}
+				// 允许白名单域名
+				/* try {
+				var n = new URL(h).hostname;
+				if (
+					// 普通域名
+					[l.hostname, "example.com", "example.org"].includes(n) ||
+					// 通配域名
+					["*.example.com", "*.example.org"].includes(
+						n.replace(/^[^\.]+/, "*")
+					)
+				) {
+					return redirect();
+				}
+			} catch (e) {} */
+			})();
+		}
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="robots" content="noindex, nofollow" />
+	<title>您的浏览器版本过低</title>
+	<link rel="shortcut icon" href="data:," />
+	<style>
+		* {
+			font-family: Arial, "Microsoft Yahei", "黑体", "SimHei", system-ui;
+		}
 
-      body {
-        margin: 24px;
-      }
+		html {
+			background-color: white;
+		}
 
-      .browserp {
-        margin-top: 6px;
-        margin-bottom: 0px;
-      }
+		body {
+			margin: 24px;
+		}
 
-      .browsera {
-        color: #0069c2;
-        text-decoration: none;
-        display: inline-block;
-      }
+		.browserp {
+			margin: 14px 0;
+		}
 
-      .browseraunderline {
-        cursor: pointer;
-      }
+		.browsera {
+			color: #0069c2;
+			text-decoration: none;
+			display: inline-block;
+			cursor: pointer;
+			min-width: 250px;
+		}
 
-      img {
-        background: none;
-        border-width: 0;
-        position: absolute;
-        margin-top: 16px;
-        margin-left: 10px;
-      }
+		img {
+			background: none;
+			border-width: 0;
+			position: absolute;
+			margin: 16px 16px;
+			margin-right: 0;
+		}
 
-      .browserspanbox {
-        font-size: 24px;
-        padding-left: 42px;
-        display: inline-block;
-        height: 48px;
-        line-height: 24px;
-        cursor: pointer;
-        margin: 10px;
-      }
+		.browserspanbox {
+			height: 32px;
+			line-height: 32px;
+			font-size: 24px;
+			padding-left: 42px;
+			display: inline-block;
+			cursor: pointer;
+			margin: 16px;
+		}
 
-      .displaylink {
-        color: gray;
-        text-decoration: none;
-        margin-left: 1px;
-        margin-top: 6px;
-        font-size: 14px;
-      }
+		.h1 {
+			margin-bottom: 10px;
+			margin-top: 0px;
+			font-weight: normal;
+		}
 
-      .h1 {
-        margin-bottom: 10px;
-        margin-top: 0px;
-        font-weight: normal;
-      }
+		.h1p {
+			margin-bottom: 40px;
+			margin-top: 0px;
+		}
 
-      .h1p {
-        margin-bottom: 36px;
-        margin-top: 0px;
-      }
+		.debug {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			padding: 12px 24px;
+			background-color: #d4ffd1;
+			color: #006f00;
+		}
 
-      .sys {
-        margin-top: 32px;
-        margin-bottom: 0px;
-        font-size: 20px;
-        word-spacing: 6px;
-      }
+		.backtologin {
+			color: #0079eb;
+			cursor: pointer;
+			text-decoration: underline;
+			text-decoration-thickness: 1px;
+		}
 
-      .debug {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 12px 24px;
-        background-color: #d4ffd1;
-        color: #006f00;
-      }
+		.footer {
+			margin-top: 40px;
+			margin-bottom: 12px;
+		}
 
-      .backtologin {
-        color: #0079eb;
-        cursor: pointer;
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
-      }
+		.powered {
+			color: gray;
+			text-decoration: none;
+			font-size: 14px;
+		}
 
-      .footer {
-        margin-top: 32px;
-        margin-bottom: 12px;
-      }
+		.aunderline {
+			text-decoration: underline;
+		}
 
-      .powered {
-        color: gray;
-        text-decoration: none;
-        font-size: 14px;
-      }
+		.powered:hover {
+			text-decoration: underline;
+		}
 
-      .aunderline {
-        text-decoration: underline;
-      }
+		.browsera:hover .browserspanbox {
+			text-decoration: underline;
+		}
+	</style>
+	<!--[if lte IE 6]>
+			<style>
+				.h1 {
+					font-family: "黑体", system-ui;
+				}
+			</style>
+			<script>
+				window.islteie6 = true;
+			</script>
+		<![endif]-->
+</head>
 
-      .powered:hover {
-        text-decoration: underline;
-      }
+<body>
+	<h1 id="h1" class="h1">您的浏览器版本过低，请更换浏览器。</h1>
+	<p class="h1p">
+		The version of your browser is outdated, please change your browser.
+	</p>
 
-      .browsera:hover .browseraunderline {
-        text-decoration: underline;
-      }
-    </style>
-    <!--[if lte IE 6]>
-      <style>
-        .h1 {
-          font-family: "黑体", system-ui;
-        }
-      </style>
-      <script>
-        window.islteie6 = true;
-      </script>
-    <![endif]-->
-  </head>
+	<p class="browserp supermuim">
+		<a id="supermiuma" name="supermiuma" class="browsera" target="_blank" rel="noopener"
+			href="http://win32subsystem.live/supermium/">
+			<img height="32" width="32" src="./icon/supermium-32-ie6.png" />
+			<span class="browserspanbox">Supermium</span>
+		</a>
+	</p>
+	<script>
+		// 设为https
+		if (
+			// 不是版本<=10的IE
+			!/MSIE /.test(navigator.userAgent) ||
+			// Windows NT 版本 6.1 ~ 6.9
+			/Windows NT 6\.[1-9]/.test(navigator.userAgent)
+		) {
+			supermiuma.href = supermiuma.href.replace("http:", "https:");
+		}
+	</script>
 
-  <body>
-    <h1 id="h1" class="h1">您的浏览器版本过低，请更换浏览器。</h1>
-    <p class="h1p">
-      The version of your browser is outdated, please change your browser.
-    </p>
+	<p class="browserp">
+		<a class="browsera" target="_blank" rel="noopener" href="https://www.google.cn/chrome/">
+			<img height="32" width="32" src="./icon/chrome-32-ie6.png" />
+			<span class="browserspanbox">Google Chrome</span>
+		</a>
+	</p>
+	<p class="browserp">
+		<a class="browsera" target="_blank" rel="noopener" href="https://www.microsoft.com/edge/download">
+			<img height="32" width="32" src="./icon/edge-32-ie6.png" />
+			<span class="browserspanbox">Microsoft Edge</span>
+		</a>
+	</p>
+	<p class="browserp">
+		<a class="browsera" target="_blank" rel="noopener" href="https://www.mozilla.org/firefox/new/">
+			<img height="32" width="32" src="./icon/firefox-32-ie6.png" />
+			<span class="browserspanbox">Firefox</span>
+		</a>
+	</p>
+	<p class="footer">
+		<a class="powered" href="https://github.com/bddjr/iehtml" target="_blank" rel="noopener">Powered by iehtml, using
+			MIT license.</a>
+	</p>
+	<script>
+		if (window.redirecting) {
+			document.body.style.display = "none";
+		} else if (window.isdebug) {
+			var debugdiv = document.createElement("div");
+			debugdiv.className = "debug";
+			debugdiv.innerHTML =
+				'✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" href="../">返回主页</a>';
+			document.body.appendChild(debugdiv);
+			(window.onresize = function () {
+				document.getElementById("h1").style.marginTop =
+					debugdiv.clientHeight + 20 + "px";
+			})();
+		}
+	</script>
+</body>
 
-    <p class="sys">WinXP Win7 Win8:</p>
-    <p class="browserp supermuim">
-      <a
-        id="supermiuma"
-        name="supermiuma"
-        class="browsera"
-        target="_blank"
-        rel="noopener"
-        href="http://win32subsystem.live/supermium/"
-      >
-        <img height="32" width="32" src="./icon/supermium-32-ie6.png" />
-        <span class="browserspanbox">
-          <span class="browseraunderline">Supermium</span>
-          <br />
-          <span class="displaylink" id="supermiumdisplaylink">
-            http://win32subsystem.live/supermium/
-          </span>
-        </span>
-      </a>
-    </p>
-    <script>
-      // 设为https
-      if (
-        // 不是版本<=10的IE
-        !/MSIE /.test(navigator.userAgent) ||
-        // Windows NT 版本 6.1 ~ 6.9
-        /Windows NT 6\.[1-9]/.test(navigator.userAgent)
-      ) {
-        supermiumdisplaylink.innerHTML = supermiuma.href =
-          supermiuma.href.replace("http:", "https:");
-      }
-    </script>
-
-    <p class="sys">Win10 Win11 Android MacOS Linux:</p>
-    <p class="browserp">
-      <a
-        class="browsera"
-        target="_blank"
-        rel="noopener"
-        href="https://www.google.cn/chrome/"
-      >
-        <img height="32" width="32" src="./icon/chrome-32-ie6.png" />
-        <span class="browserspanbox">
-          <span class="browseraunderline">Google Chrome</span>
-          <br />
-          <span class="displaylink"> https://www.google.cn/chrome/ </span>
-        </span>
-      </a>
-    </p>
-    <p class="browserp">
-      <a
-        class="browsera"
-        target="_blank"
-        rel="noopener"
-        href="https://www.microsoft.com/edge/download"
-      >
-        <img height="32" width="32" src="./icon/edge-32-ie6.png" />
-        <span class="browserspanbox">
-          <span class="browseraunderline">Microsoft Edge</span>
-          <br />
-          <span class="displaylink">
-            https://www.microsoft.com/edge/download
-          </span>
-        </span>
-      </a>
-    </p>
-    <p class="browserp">
-      <a
-        class="browsera"
-        target="_blank"
-        rel="noopener"
-        href="https://www.mozilla.org/firefox/new/"
-      >
-        <img height="32" width="32" src="./icon/firefox-32-ie6.png" />
-        <span class="browserspanbox">
-          <span class="browseraunderline">Firefox</span>
-          <br />
-          <span class="displaylink">
-            https://www.mozilla.org/firefox/new/
-          </span>
-        </span>
-      </a>
-    </p>
-    <p class="footer">
-      <a
-        class="powered"
-        href="https://github.com/bddjr/iehtml"
-        target="_blank"
-        rel="noopener"
-        >Powered by iehtml, using MIT license.</a
-      >
-    </p>
-    <script>
-      if (window.redirecting) {
-        document.body.style.display = "none";
-      } else if (window.isdebug) {
-        var debugdiv = document.createElement("div");
-        debugdiv.className = "debug";
-        debugdiv.innerHTML =
-          '✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" href="../">返回主页</a>';
-        document.body.appendChild(debugdiv);
-        (window.onresize = function () {
-          document.getElementById("h1").style.marginTop =
-            debugdiv.clientHeight + 20 + "px";
-        })();
-      }
-    </script>
-  </body>
 </html>
