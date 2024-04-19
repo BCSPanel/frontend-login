@@ -36,8 +36,10 @@ export default defineConfig({
       name: "WriteVersion",
       apply: 'build',
       closeBundle() {
-        fs.writeFileSync("./dist/version.txt", process.env.npm_package_version)
-        console.log("WriteVersion Done");
+        if (process.env.npm_package_version) {
+          fs.writeFileSync("./dist/version.txt", process.env.npm_package_version)
+          console.log("WriteVersion Done");
+        }
       },
     },
   ],
@@ -47,7 +49,7 @@ export default defineConfig({
     }
   },
   build: {
-    target: 'es2021',
+    target: 'es2022',
     reportCompressedSize: false, // 不使用vite自带的方式打印压缩后的大小
     rollupOptions: {
       output: {
