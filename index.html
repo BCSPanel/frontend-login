@@ -19,14 +19,17 @@
 
 	<script>
 		// Powered by https://github.com/bddjr/iehtml , Using MIT license.
-		// 如果浏览器不支持部分接口，那就自动跳到 iehtml
-		// ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
-		if (!"".replaceAll) {
-			window.stop && stop();
-			var l = document.location;
-			document.location.replace("./ie/#" + l.pathname + l.search + l.hash);
+		try {
+			// ES2022
+			eval("(class { static { this.a = 1 } })").a.b
+		} catch (e) {
+			if (window.stop) { stop() }
+			document.location.replace(
+				"./ie/#" + document.location.pathname + document.location.search + document.location.hash
+			);
 		}
 	</script>
+
 	<title id="title">BCSPanel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
 	<meta name="robots" content="noindex, nofollow" />
@@ -69,13 +72,14 @@
 						I18nElement
 					</button>
 					<div class="loginTitleTab"></div>
-					<button id="loginTitleRegister" class="loginTitle" i18n_id="loginTitleRegister" i18n_property_name="innerText"
-						i18n_statu="login">
+					<button id="loginTitleRegister" class="loginTitle" i18n_id="loginTitleRegister"
+						i18n_property_name="innerText" i18n_statu="login">
 						I18nElement
 					</button>
 				</div>
 				<a href="https://bcspanel.bddjr.com/docs/https" target="_blank" rel="noopener" id="notSecureWarning"
-					class="notSecureWarning" style="display: none" i18n_id="notSecureWarning" i18n_property_name="innerHTML">
+					class="notSecureWarning" style="display: none" i18n_id="notSecureWarning"
+					i18n_property_name="innerHTML">
 					I18nElement
 				</a>
 				<div id="titleBoxRight" class="titleBoxRight">
@@ -103,11 +107,12 @@
 				<form id="form" class="form">
 					<input type="text" id="username" name="username" autocomplete="username" maxlength="32"
 						placeholder="I18nElement" i18n_id="form_username" i18n_property_name="placeholder" /><br />
-					<input class="inputLastChild" type="password" id="password" name="password" autocomplete="current-password"
-						maxlength="128" placeholder="I18nElement" i18n_id="form_password" i18n_property_name="placeholder" /><br />
-					<input style="display: none" type="password" id="repeat_password" name="repeat_password" maxlength="128"
-						autocomplete="off" i18n_id="form_repeat_password" i18n_property_name="placeholder"
-						placeholder="I18nElement" />
+					<input class="inputLastChild" type="password" id="password" name="password"
+						autocomplete="current-password" maxlength="128" placeholder="I18nElement"
+						i18n_id="form_password" i18n_property_name="placeholder" /><br />
+					<input style="display: none" type="password" id="repeat_password" name="repeat_password"
+						maxlength="128" autocomplete="off" i18n_id="form_repeat_password"
+						i18n_property_name="placeholder" placeholder="I18nElement" />
 					<input style="display: none" class="inputLastChild" type="text" id="verification_code"
 						name="verification_code" maxlength="16" autocomplete="off" i18n_id="form_verification_code"
 						i18n_property_name="placeholder" placeholder="I18nElement" />
@@ -116,8 +121,9 @@
 					<p class="loginStatus">
 						<span id="loginStatus" i18n_id="loginStatus" i18n_property_name="innerText"
 							i18n_statu="not_logged_in">I18nElement</span><br />
-						<a id="forgotPassword" class="forgotPassword" href="https://bcspanel.bddjr.com/docs/forgotPassword"
-							target="_blank" rel="noopener" i18n_id="forgotPassword" i18n_property_name="innerText">
+						<a id="forgotPassword" class="forgotPassword"
+							href="https://bcspanel.bddjr.com/docs/forgotPassword" target="_blank" rel="noopener"
+							i18n_id="forgotPassword" i18n_property_name="innerText">
 							I18nElement
 						</a>
 					</p>

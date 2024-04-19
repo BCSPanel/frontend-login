@@ -1,89 +1,65 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.1.2 -->
+<!-- 1.2.0 -->
 <html>
 
 <head>
 	<meta charset="UTF-8" />
-	<script>
-		// 浏览器版本似乎不低，自动重定向到原来的网址（如果允许）
-		// ES 2021, Chrome 85, Edge 85, Firefox 77, Opera 71, Safari 13.1
-		if ("".replaceAll) {
-			window.isdebug = true;
-			(function () {
-				var l = document.location;
-				var h = l.hash.slice(1);
-				if (h == "") return;
-				function redirect() {
-					window.stop && stop();
-					setTimeout(function () {
-						document.body.style.display = "none";
-					}, 15);
-					window.redirecting = true;
-					document.location.replace(h);
-				}
-				// 路径开头为斜杠
-				var hSlash = /^[/\\]{1,2}/.exec(h);
-				if (hSlash) {
-					// 单斜杠自动重定向
-					if (hSlash.toString().length == 1) {
-						return redirect();
-					}
-					// 双斜杠自动补全协议
-					h = l.protocol + h;
-				}
-				// 允许白名单域名
-				/* try {
-				var n = new URL(h).hostname;
-				if (
-					// 普通域名
-					[l.hostname, "example.com", "example.org"].includes(n) ||
-					// 通配域名
-					["*.example.com", "*.example.org"].includes(
-						n.replace(/^[^\.]+/, "*")
-					)
-				) {
-					return redirect();
-				}
-			} catch (e) {} */
-			})();
+
+	<script type="module">
+		// ES2022
+		if ((class {
+			static {
+				this.a = location.hash[1]
+			}
+		}).a == '/') {
+			stop()
+			location.replace(location.origin + location.hash.slice(1))
 		}
 	</script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 	<meta name="robots" content="noindex, nofollow" />
-	<title>您的浏览器版本过低</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Upgrade or change browser</title>
 	<link rel="shortcut icon" href="data:," />
+	<link rel="icon" href="data:," />
 	<style>
 		* {
-			font-family: Arial, "Microsoft Yahei", "黑体", "SimHei", system-ui;
+			font-family: Arial, system-ui;
 		}
 
 		html {
-			background-color: white;
+			background-color: #ffffff;
 		}
 
 		body {
-			margin: 24px;
-		}
-
-		.browserp {
-			margin: 14px 0;
+			margin: 32px 16px;
+			text-align: center;
 		}
 
 		.browsera {
 			color: #0069c2;
+			border: 3px solid #d3d3d3;
+			background-color: #ffffff;
 			text-decoration: none;
 			display: inline-block;
 			cursor: pointer;
-			min-width: 250px;
+			width: 220px;
+			border-radius: 12px;
+			text-align: left;
+			padding: 16px;
+		}
+
+		.browsera:hover {
+			border: 3px solid #0069c2;
 		}
 
 		img {
 			background: none;
 			border-width: 0;
 			position: absolute;
-			margin: 16px 16px;
-			margin-right: 0;
+			width: 32px;
+			height: 32px;
 		}
 
 		.browserspanbox {
@@ -93,35 +69,12 @@
 			padding-left: 42px;
 			display: inline-block;
 			cursor: pointer;
-			margin: 16px;
 		}
 
 		.h1 {
-			margin-bottom: 10px;
-			margin-top: 0px;
-			font-weight: normal;
-		}
-
-		.h1p {
 			margin-bottom: 40px;
-			margin-top: 0px;
-		}
-
-		.debug {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			padding: 12px 24px;
-			background-color: #d4ffd1;
-			color: #006f00;
-		}
-
-		.backtologin {
-			color: #0079eb;
-			cursor: pointer;
-			text-decoration: underline;
-			text-decoration-thickness: 1px;
+			margin-top: 0;
+			font-weight: normal;
 		}
 
 		.footer {
@@ -130,97 +83,49 @@
 		}
 
 		.powered {
-			color: gray;
+			color: #808080;
 			text-decoration: none;
 			font-size: 14px;
-		}
-
-		.aunderline {
-			text-decoration: underline;
 		}
 
 		.powered:hover {
 			text-decoration: underline;
 		}
-
-		.browsera:hover .browserspanbox {
-			text-decoration: underline;
-		}
 	</style>
-	<!--[if lte IE 6]>
-			<style>
-				.h1 {
-					font-family: "黑体", system-ui;
-				}
-			</style>
-			<script>
-				window.islteie6 = true;
-			</script>
-		<![endif]-->
 </head>
 
 <body>
-	<h1 id="h1" class="h1">您的浏览器版本过低，请更换浏览器。</h1>
-	<p class="h1p">
-		The version of your browser is outdated, please change your browser.
-	</p>
+	<h1 class="h1">Upgrade or change browser</h1>
 
-	<p class="browserp supermuim">
-		<a id="supermiuma" name="supermiuma" class="browsera" target="_blank" rel="noopener"
-			href="http://win32subsystem.live/supermium/">
-			<img height="32" width="32" src="./icon/supermium-32-ie6.png" />
+	<p class="browserp">
+		<a class="browsera" target="_blank" rel="noopener" href="http://win32subsystem.live/supermium/">
+			<img src="./icon/supermium-32-ie6.png" alt />
 			<span class="browserspanbox">Supermium</span>
 		</a>
 	</p>
-	<script>
-		// 设为https
-		if (
-			// 不是版本<=10的IE
-			!/MSIE /.test(navigator.userAgent) ||
-			// Windows NT 版本 6.1 ~ 6.9
-			/Windows NT 6\.[1-9]/.test(navigator.userAgent)
-		) {
-			supermiuma.href = supermiuma.href.replace("http:", "https:");
-		}
-	</script>
-
 	<p class="browserp">
 		<a class="browsera" target="_blank" rel="noopener" href="https://www.google.cn/chrome/">
-			<img height="32" width="32" src="./icon/chrome-32-ie6.png" />
+			<img src="./icon/chrome-32-ie6.png" alt />
 			<span class="browserspanbox">Google Chrome</span>
 		</a>
 	</p>
 	<p class="browserp">
 		<a class="browsera" target="_blank" rel="noopener" href="https://www.microsoft.com/edge/download">
-			<img height="32" width="32" src="./icon/edge-32-ie6.png" />
+			<img src="./icon/edge-32-ie6.png" alt />
 			<span class="browserspanbox">Microsoft Edge</span>
 		</a>
 	</p>
 	<p class="browserp">
 		<a class="browsera" target="_blank" rel="noopener" href="https://www.mozilla.org/firefox/new/">
-			<img height="32" width="32" src="./icon/firefox-32-ie6.png" />
+			<img src="./icon/firefox-32-ie6.png" alt />
 			<span class="browserspanbox">Firefox</span>
 		</a>
 	</p>
+
 	<p class="footer">
-		<a class="powered" href="https://github.com/bddjr/iehtml" target="_blank" rel="noopener">Powered by iehtml, using
-			MIT license.</a>
+		<a class="powered" href="https://github.com/bddjr/iehtml" target="_blank" rel="noopener">Powered by iehtml,
+			using MIT license.</a>
 	</p>
-	<script>
-		if (window.redirecting) {
-			document.body.style.display = "none";
-		} else if (window.isdebug) {
-			var debugdiv = document.createElement("div");
-			debugdiv.className = "debug";
-			debugdiv.innerHTML =
-				'✔ 您的浏览器版本不低，该页面仅用于调试。<a class="backtologin aunderline" href="../">返回主页</a>';
-			document.body.appendChild(debugdiv);
-			(window.onresize = function () {
-				document.getElementById("h1").style.marginTop =
-					debugdiv.clientHeight + 20 + "px";
-			})();
-		}
-	</script>
 </body>
 
 </html>
