@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.2.0 -->
+<!-- 1.2.1 -->
 <html>
 
 <head>
@@ -20,12 +20,12 @@
 
 	<meta name="robots" content="noindex, nofollow" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Upgrade or change browser</title>
+	<title id="title">Please upgrade or change browser</title>
 	<link rel="shortcut icon" href="data:," />
 	<link rel="icon" href="data:," />
 	<style>
 		* {
-			font-family: Arial, system-ui;
+			font-family: Arial, "Microsoft Yahei", system-ui;
 		}
 
 		html {
@@ -95,7 +95,22 @@
 </head>
 
 <body>
-	<h1 class="h1">Upgrade or change browser</h1>
+	<h1 class="h1" id="h1">Please upgrade or change browser</h1>
+	<script>
+		(function (langs) {
+			for (var i = 0; i < langs.length; i++) {
+				switch (langs[i].toLowerCase()) {
+					case 'en':
+					case 'en-us':
+						return
+					case 'zh-cn':
+					case 'zh-hans-cn':
+						title.innerHTML = h1.innerHTML = '请升级或更换浏览器'
+						return
+				}
+			}
+		})(navigator.languages || [navigator.language || ''])
+	</script>
 
 	<p class="browserp">
 		<a class="browsera" target="_blank" rel="noopener" href="http://win32subsystem.live/supermium/">
