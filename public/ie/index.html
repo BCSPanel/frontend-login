@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.2.1 -->
+<!-- 1.2.2 -->
 <html>
 
 <head>
@@ -29,12 +29,21 @@
 		}
 
 		html {
-			background-color: #ffffff;
+			background-color: #f1f1f1;
 		}
 
 		body {
-			margin: 32px 16px;
+			margin: 32px auto;
 			text-align: center;
+		}
+
+		.divBrowsers {
+			width: 310px;
+			max-width: 100%;
+			margin: auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 
 		.browsera {
@@ -44,10 +53,11 @@
 			text-decoration: none;
 			display: inline-block;
 			cursor: pointer;
-			width: 220px;
+			width: 110px;
 			border-radius: 12px;
-			text-align: left;
-			padding: 16px;
+			/* text-align: left; */
+			padding: 8px;
+			margin: 10px;
 		}
 
 		.browsera:hover {
@@ -57,18 +67,23 @@
 		img {
 			background: none;
 			border-width: 0;
-			position: absolute;
 			width: 32px;
 			height: 32px;
+			display: block;
+			margin: 0 auto 10px;
 		}
 
-		.browserspanbox {
-			height: 32px;
-			line-height: 32px;
-			font-size: 24px;
-			padding-left: 42px;
-			display: inline-block;
+		.browserspantitle {
+			font-size: 20px;
 			cursor: pointer;
+			display: block;
+		}
+
+		.browserspanVersion {
+			color: #808080;
+			font-size: 12px;
+			display: block;
+			margin-top: 3px;
 		}
 
 		.h1 {
@@ -112,30 +127,28 @@
 		})(navigator.languages || [navigator.language || ''])
 	</script>
 
-	<p class="browserp">
-		<a class="browsera" target="_blank" rel="noopener" href="http://win32subsystem.live/supermium/">
-			<img src="./icon/supermium-32-ie6.png" alt />
-			<span class="browserspanbox">Supermium</span>
-		</a>
-	</p>
-	<p class="browserp">
+	<div class="divBrowsers">
 		<a class="browsera" target="_blank" rel="noopener" href="https://www.google.cn/chrome/">
 			<img src="./icon/chrome-32-ie6.png" alt />
-			<span class="browserspanbox">Google Chrome</span>
+			<span class="browserspantitle">Chrome</span>
+			<span class="browserspanVersion">≥ 94</span>
 		</a>
-	</p>
-	<p class="browserp">
 		<a class="browsera" target="_blank" rel="noopener" href="https://www.microsoft.com/edge/download">
 			<img src="./icon/edge-32-ie6.png" alt />
-			<span class="browserspanbox">Microsoft Edge</span>
+			<span class="browserspantitle">Edge</span>
+			<span class="browserspanVersion">≥ 94</span>
 		</a>
-	</p>
-	<p class="browserp">
+		<a class="browsera" target="_blank" rel="noopener" href="http://win32subsystem.live/supermium/">
+			<img src="./icon/supermium-32-ie6.png" alt />
+			<span class="browserspantitle">Supermium</span>
+			<span class="browserspanVersion">≥ 115</span>
+		</a>
 		<a class="browsera" target="_blank" rel="noopener" href="https://www.mozilla.org/firefox/new/">
 			<img src="./icon/firefox-32-ie6.png" alt />
-			<span class="browserspanbox">Firefox</span>
+			<span class="browserspantitle">Firefox</span>
+			<span class="browserspanVersion">≥ 93</span>
 		</a>
-	</p>
+	</div>
 
 	<p class="footer">
 		<a class="powered" href="https://github.com/bddjr/iehtml" target="_blank" rel="noopener">Powered by iehtml,
