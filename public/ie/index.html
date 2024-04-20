@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- Powered by https://github.com/bddjr/iehtml , Using MIT license. -->
-<!-- 1.2.2 -->
+<!-- v1.2.3 , MIT license. https://github.com/bddjr/iehtml -->
 <html>
 
 <head>
@@ -29,7 +28,7 @@
 		}
 
 		html {
-			background-color: #f1f1f1;
+			background-color: #ececec;
 		}
 
 		body {
@@ -38,9 +37,9 @@
 		}
 
 		.divBrowsers {
-			width: 310px;
+			width: 280px;
 			max-width: 100%;
-			margin: auto;
+			margin: 50px auto;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
@@ -48,20 +47,18 @@
 
 		.browsera {
 			color: #0069c2;
-			border: 3px solid #d3d3d3;
+			border: 2px solid #ffffff;
 			background-color: #ffffff;
 			text-decoration: none;
 			display: inline-block;
 			cursor: pointer;
-			width: 110px;
-			border-radius: 12px;
-			/* text-align: left; */
-			padding: 8px;
-			margin: 10px;
+			width: 100px;
+			padding: 11px 8px;
+			margin: 8px;
 		}
 
 		.browsera:hover {
-			border: 3px solid #0069c2;
+			border-color: #0069c2;
 		}
 
 		img {
@@ -70,40 +67,39 @@
 			width: 32px;
 			height: 32px;
 			display: block;
-			margin: 0 auto 10px;
+			margin: 0 auto;
 		}
 
 		.browserspantitle {
-			font-size: 20px;
+			font-size: 18px;
+			line-height: 22px;
+			height: 22px;
 			cursor: pointer;
 			display: block;
+			margin: 12px 0;
 		}
 
 		.browserspanVersion {
 			color: #808080;
-			font-size: 12px;
+			font-size: 14px;
 			display: block;
-			margin-top: 3px;
 		}
 
 		.h1 {
-			margin-bottom: 40px;
-			margin-top: 0;
 			font-weight: normal;
 		}
 
-		.footer {
-			margin-top: 40px;
-			margin-bottom: 12px;
+		.footerLinkP {
+			margin: 8px auto;
 		}
 
-		.powered {
+		.footerLinkA {
 			color: #808080;
 			text-decoration: none;
 			font-size: 14px;
 		}
 
-		.powered:hover {
+		.footerLinkA:hover {
 			text-decoration: underline;
 		}
 	</style>
@@ -150,10 +146,11 @@
 		</a>
 	</div>
 
-	<p class="footer">
-		<a class="powered" href="https://github.com/bddjr/iehtml" target="_blank" rel="noopener">Powered by iehtml,
-			using MIT license.</a>
-	</p>
+	<div class="footer">
+		<p class="footerLinkP">
+			<a class="footerLinkA" href="https://github.com/bddjr/iehtml" target="_blank" rel="noopener">iehtml</a>
+		</p>
+	</div>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 import { changeLoginStats } from "./i18n/i18n";
 import { isRegister } from "./isRegister";
-import fetchWithTimeout from "./fetchWithTimeout";
 import loginConfig from "./loginConfig";
 import asyncSleep from "./asyncSleep";
 
@@ -116,19 +115,18 @@ export async function clickLogin() {
       loginAborted = true;
       controller?.abort();
     };
-    // 1.5秒内还没提交完，先允许登录按钮
+    // 1.3秒内还没提交完，先允许登录按钮
     Timeout = setTimeout(() => {
       setDisabledLoginButton(false);
-    }, 1500);
+    }, 1300);
     // 提交
-    const response = await fetchWithTimeout(
+    const response = await fetch(
       loginConfig.login_api,
       {
         method: "POST",
         body: JSON.stringify(postLoginBody),
+        signal: controller.signal,
       },
-      undefined,
-      controller
     );
 
     // 判断返回
