@@ -29,6 +29,9 @@ function main() {
   matchMediaDark.addEventListener("change", matchMediaDarkChange);
   matchMediaDarkChange();
 
+  // 移除加载时的style
+  document.getElementById("loading_style")?.remove();
+
   // 函数用于添加输入框按回车键时的响应
   function add_doc_Enter_listener(doc_name: string, func: string | Function) {
     if (typeof func === "function") {
@@ -110,9 +113,6 @@ function main() {
 
   // 更新语言
   updateLang();
-
-  // 移除加载时的style
-  document.getElementById("loading_style")?.remove();
 
   ranMain = true;
 }

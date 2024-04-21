@@ -14,12 +14,13 @@
 	<!--#ConfigEnd#-->
 
 	<script>
-		// Powered by https://github.com/bddjr/iehtml , Using MIT license.
+		// https://github.com/bddjr/iehtml , Using MIT license.
 		try {
 			// ES2022
 			eval("(class { static { this.a = 1 } })").a.b
 		} catch (e) {
 			if (window.stop) { stop() }
+			try { document.getElementsByTagName('html')[0].style.display = 'none' } catch (e) { }
 			document.location.replace(
 				"./ie/#" + document.location.pathname + document.location.search + document.location.hash
 			);
@@ -31,18 +32,18 @@
 	<meta name="robots" content="noindex, nofollow" />
 	<link rel="icon" href="icon/BCSP-64x64.png" />
 	<style>
-		body {
+		html {
 			background-color: hsl(206, 100%, 90%);
 			--body-dark-bgcolor: #1d3043;
 		}
 
-		html.dark body {
+		html.dark {
 			background-color: var(--body-dark-bgcolor);
 		}
 	</style>
 	<style id="loading_style">
 		@media (prefers-color-scheme: dark) {
-			body {
+			html {
 				background-color: var(--body-dark-bgcolor);
 			}
 		}
