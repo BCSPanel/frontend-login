@@ -17,8 +17,10 @@ a {
 body {
   /* 修复FireFox的bug */
   height: 100%;
+
   margin: 0;
   min-width: 300px;
+  display: flex;
 }
 
 .main {
@@ -30,13 +32,14 @@ body {
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
   border-radius: 12px;
   border: 1px solid #e4e7ed;
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   right: 0;
   /* bottom: 0; */
   left: 0;
   margin: auto;
   padding: 20px;
+  width: 100%;
 }
 
 .main2 {
@@ -53,7 +56,6 @@ body {
   align-items: center;
   justify-content: space-between;
   min-width: 100%;
-  margin-bottom: 14px;
   white-space: nowrap;
 }
 
@@ -124,6 +126,7 @@ body {
   background-color: lightgray;
   border-radius: 8px;
   overflow: hidden;
+  margin: 16px 0;
 }
 
 input {
@@ -154,7 +157,6 @@ input:first-child {
 .divLoginButton {
   display: block flex;
   justify-content: space-between;
-  margin: 10px 0 6px 0;
   width: 100%;
 }
 
@@ -238,11 +240,6 @@ input:first-child {
   box-shadow: 0 0 8px gray;
 }
 
-.titleBoxImgHide .div_change_lang_content {
-  /* margin-left: -28px; */
-  /* right: 0; */
-}
-
 .div_change_lang_content_a {
   color: black;
 }
@@ -277,15 +274,14 @@ input:first-child {
   margin-right: 5px;
 }
 
-.notSecureWarning:hover{
+.notSecureWarning:hover {
   text-decoration: underline;
 }
 
 footer {
   color: gray;
   font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 8px;
+  margin-top: 16px;
 }
 
 footer a {

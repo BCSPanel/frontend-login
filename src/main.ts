@@ -118,23 +118,9 @@ function main() {
 }
 
 if (document.getElementById("htmlloaded")) {
-  console.log("htmlloaded");
-  try {
-    main();
-    // 加载完成后再次更新高，修复部分情况出现的高度错误
-    window.addEventListener("load", () => {
-      console.log("### Event load updateHeight");
-      updateHeight();
-    });
-  } catch (e) {
-    console.error(e);
-  }
-}
-if (!ranMain) {
-  // 修复XP虚拟机出现的bug：未加载元素就已经运行script导致不显示内容
-  // 修复方式：等待网页加载完成再运行Main
-  window.addEventListener("load", () => {
-    console.log("### Event load Main");
-    main();
-  });
+  main();
+  // 加载完成后再次更新高，修复部分情况出现的高度错误
+  window.addEventListener("load", updateHeight);
+} else {
+  window.addEventListener("load", main);
 }
