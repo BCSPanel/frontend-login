@@ -5,32 +5,46 @@ import { clickLogin } from "./clickLogin";
 import { updateLang } from "./i18n/i18n";
 import { changeLang, langsKeys } from "./i18n/langs";
 import { updateHeight } from "./updateHeight";
+import { icons } from "./icons";
+
+
+
+// 深色模式
+const matchMediaDark = window.matchMedia("(prefers-color-scheme: dark)");
+let BCSPanelColorScheme = ''
+try {
+  BCSPanelColorScheme = (await (await fetch('../api-login/color-scheme')).text()).trim()
+} catch (e) {
+  console.error(e);
+}
+
+function matchMediaDarkChange() {
+  let dark = false;
+  if (BCSPanelColorScheme) {
+    dark = BCSPanelColorScheme == "dark";
+  } else {
+    dark = matchMediaDark.matches;
+  }
+  const htmlclass = document.getElementsByTagName("html")[0].classList;
+  if (dark) htmlclass.add("dark");
+  else htmlclass.remove("dark");
+}
+matchMediaDarkChange();
+if (!BCSPanelColorScheme) matchMediaDark.addEventListener("change", matchMediaDarkChange);
+
+// 移除加载时的style
+document.getElementById("loading_style")?.remove();
+
+
+// 网页小图标
+(document.querySelector('link[rel=icon]') as HTMLLinkElement).href = icons.BCSP
+
 
 let ranMain = false;
 
 function main() {
   console.log("Main");
   if (ranMain) return;
-
-  // 深色模式
-  const matchMediaDark = window.matchMedia("(prefers-color-scheme: dark)");
-  function matchMediaDarkChange() {
-    let dark = false;
-    if (window.BCSPanelColorScheme) {
-      dark = window.BCSPanelColorScheme == "dark";
-    } else {
-      dark = matchMediaDark.matches;
-    }
-    const htmlclass = document.getElementsByTagName("html")[0].classList;
-    if (dark) htmlclass.add("dark");
-    else htmlclass.remove("dark");
-  }
-  window.matchMediaDarkChange = matchMediaDarkChange;
-  matchMediaDark.addEventListener("change", matchMediaDarkChange);
-  matchMediaDarkChange();
-
-  // 移除加载时的style
-  document.getElementById("loading_style")?.remove();
 
   // 函数用于添加输入框按回车键时的响应
   function add_doc_Enter_listener(doc_name: string, func: string | Function) {

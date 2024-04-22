@@ -2,8 +2,6 @@
 
 declare interface Window {
   fetchTimeoutSeconds: number;
-  matchMediaDarkChange(): void;
-  BCSPanelColorScheme: string | undefined;
 }
 
 interface postLoginBodyType {

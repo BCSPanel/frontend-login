@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "prettier": "^3.2.4",
-    "rollup": "^4.9.6"
+    "rollup": "^4.9.6",
+    "vite-plugin-mock-dev-server": "^1.5.0"
   }
 }

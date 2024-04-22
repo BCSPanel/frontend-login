@@ -1,4 +1,5 @@
 import { getDefaultLang } from "./i18n/langs";
+import { icons } from "./icons";
 
 /** 函数用于更新页面高度 */
 export function updateHeight() {
@@ -41,11 +42,12 @@ export function updateHeight() {
     default:
       main2Max = window.isSecureContext ? 292 : 375;
   }
-  var setImgSrc = "icon/BCSPanel.png";
+  var setImgSrc: string
   if (divmain2.offsetWidth < main2Max + 24) {
-    setImgSrc = "icon/BCSP-64x64.png";
+    setImgSrc = icons.BCSP;
     titleBox.classList.add("titleBoxImgHide");
   } else {
+    setImgSrc = icons.BCSPanel;
     titleBox.classList.remove("titleBoxImgHide");
   }
   if (!titleImg.src.endsWith(setImgSrc)) titleImg.src = setImgSrc;

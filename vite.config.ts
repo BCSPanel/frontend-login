@@ -1,7 +1,8 @@
+import fs from 'fs'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 // import viteCompression from 'vite-plugin-compression'
-import fs from 'fs'
+import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
 
 
 // https://vitejs.dev/config/
@@ -9,9 +10,13 @@ export default defineConfig({
   server: {
     // 监听所有地址（包括局域网与公网），方便内网调试
     host: '0.0.0.0',
+    proxy: {
+			'^/api(-login)?/': 'http://0.0.0.0',
+		},
   },
   base: './',
   plugins: [
+    mockDevServerPlugin(),
     // viteCompression({
     //   algorithm: 'gzip',
     //   threshold: 256, // >=256字节时压缩
