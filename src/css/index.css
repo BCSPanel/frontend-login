@@ -71,16 +71,12 @@ body {
   margin: 0 9px;
 }
 
-.titleImg {
-  height: 20px;
-  width: 115px;
+.titleBox:not(.titleBoxImgHide) #titleImg-BCSP {
+  display: none;
 }
 
-.titleBoxImgHide .titleImg {
-  /* display: none; */
-  /* margin-left: 14px; */
-  height: 24px;
-  width: 24px;
+.titleBoxImgHide #titleImg-BCSPanel {
+  display: none;
 }
 
 .loginTitle {

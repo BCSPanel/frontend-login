@@ -1,5 +1,4 @@
 import { getDefaultLang } from "./i18n/langs";
-import { icons } from "./icons";
 
 /** 函数用于更新页面高度 */
 export function updateHeight() {
@@ -15,7 +14,6 @@ export function updateHeight() {
 
   // 看情况决定隐藏右上角图标
   const divmain2 = document.getElementById("divmain2") as HTMLDivElement;
-  const titleImg = document.getElementById("titleImg") as HTMLImageElement;
   const titleBox = document.getElementById("titleBox") as HTMLImageElement;
   var main2Max = 0;
   switch (getDefaultLang()) {
@@ -25,13 +23,9 @@ export function updateHeight() {
     default:
       main2Max = window.isSecureContext ? 292 : 375;
   }
-  var setImgSrc: string
   if (divmain2.offsetWidth < main2Max + 24) {
-    setImgSrc = icons.BCSP;
     titleBox.classList.add("titleBoxImgHide");
   } else {
-    setImgSrc = icons.BCSPanel;
     titleBox.classList.remove("titleBoxImgHide");
   }
-  if (!titleImg.src.endsWith(setImgSrc)) titleImg.src = setImgSrc;
 }

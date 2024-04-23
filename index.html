@@ -30,7 +30,7 @@
 	<title id="title">BCSPanel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
 	<meta name="robots" content="noindex, nofollow" />
-	<link rel="icon" href="data:," />
+
 	<style>
 		html {
 			background-color: hsl(206, 100%, 90%);
@@ -48,13 +48,11 @@
 			}
 		}
 	</style>
-	<!-- <link rel="preload" as="image" type="image/webp" href="src/img/login-background-384x195-tinify.webp" /> -->
+
+	<link rel="icon" href="icon/BCSP-64x64.png" />
+	<link rel="preload" as="fetch" crossorigin href="../api-login/color-scheme">
 	<link rel="stylesheet" href="/src/css/index.css" />
 	<link rel="stylesheet" href="/src/css/index-dark.css" />
-
-	<link rel="preload" as="fetch" crossorigin href="icon/BCSPanel.png" />
-	<link rel="preload" as="fetch" crossorigin href="icon/BCSP-64x64.png" />
-	<link rel="preload" as="fetch" crossorigin href="../api-login/color-scheme">
 	<script type="module" src="/src/main.ts"></script>
 </head>
 
@@ -95,7 +93,8 @@
 							<a id="changeLang_en" class="div_change_lang_content_a"> English </a><br />
 						</div>
 					</div>
-					<img id="titleImg" class="titleImg" src alt="" draggable="false">
+					<img id="titleImg-BCSP" alt="" draggable="false" src="icon/BCSP-64x64.png" height="24">
+					<img id="titleImg-BCSPanel" alt="" draggable="false" src="icon/BCSPanel.png" height="20">
 				</div>
 			</div>
 
@@ -132,9 +131,8 @@
 			</footer>
 		</div>
 	</div>
-	<script>
-		window.createMain?.(console.log('createMain from index.html'))
-		window.createMain = false
+	<script id="bodyLoadedScript">
+		window.createMain ? createMain() : addEventListener('load', () => window.createMain?.())
 	</script>
 </body>
 

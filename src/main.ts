@@ -5,7 +5,6 @@ import { clickLogin } from "./clickLogin";
 import { updateLang } from "./i18n/i18n";
 import { changeLang, langsKeys } from "./i18n/langs";
 import { updateHeight } from "./updateHeight";
-import { icons } from "./icons";
 
 
 
@@ -34,10 +33,6 @@ if (!BCSPanelColorScheme) matchMediaDark.addEventListener("change", matchMediaDa
 
 // 移除加载时的style
 document.getElementById("loading_style")?.remove();
-
-
-// 网页小图标
-(document.querySelector('link[rel=icon]') as HTMLLinkElement).href = icons.BCSP
 
 
 let ranMain = false;
@@ -131,7 +126,7 @@ function main() {
   ranMain = true;
 }
 
-if (window.createMain === false) {
+if (window.bodyLoadedScript) {
   // body已加载
   console.log('createMain from main.ts');
   main();

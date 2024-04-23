@@ -3,6 +3,9 @@
     https://www.minecraft.net/zh-hans/login
     https://www.minecraft.net/content/dam/minecraft/backgrounds/MSA_Stage5_Login.png
 */
+
+/* <link rel="preload" as="image" type="image/webp" href="src/img/login-background-384x195-tinify.webp" /> */
+
 body {
     margin: 0;
     background-image: url('../img/login-background-384x195-tinify.webp');
