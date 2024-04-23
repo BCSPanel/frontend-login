@@ -60,7 +60,7 @@
 
 <body>
 	<div id="divmain" class="main" style="display: none">
-		<div id="divmain2" class="main2">
+		<div id="divmain2">
 			<div id="titleBox" class="titleBox">
 				<div id="titleBoxLeft" class="titleBoxLeft">
 					<button id="loginTitleLogin" class="loginTitle loginTitleSelect" i18n_id="loginTitleLogin"
@@ -99,43 +99,43 @@
 				</div>
 			</div>
 
-			<div id="divLoginInput">
-				<form id="form" class="form">
-					<input type="text" id="username" name="username" autocomplete="username" maxlength="32"
-						placeholder="I18nElement" i18n_id="form_username" i18n_property_name="placeholder" /><br />
-					<input class="inputLastChild" type="password" id="password" name="password"
-						autocomplete="current-password" maxlength="128" placeholder="I18nElement"
-						i18n_id="form_password" i18n_property_name="placeholder" /><br />
-					<input style="display: none" type="password" id="repeat_password" name="repeat_password"
-						maxlength="128" autocomplete="off" i18n_id="form_repeat_password"
-						i18n_property_name="placeholder" placeholder="I18nElement" />
-					<input style="display: none" class="inputLastChild" type="text" id="verification_code"
-						name="verification_code" maxlength="16" autocomplete="off" i18n_id="form_verification_code"
-						i18n_property_name="placeholder" placeholder="I18nElement" />
-				</form>
-				<div id="divLoginButton" class="divLoginButton">
-					<p class="loginStatus">
-						<span id="loginStatus" i18n_id="loginStatus" i18n_property_name="innerText"
-							i18n_statu="not_logged_in">I18nElement</span><br />
-						<a id="forgotPassword" class="forgotPassword"
-							href="https://bcspanel.bddjr.com/docs/forgotPassword" target="_blank" rel="noopener"
-							i18n_id="forgotPassword" i18n_property_name="innerText">
-							I18nElement
-						</a>
-					</p>
-					<button id="loginbutton" class="loginbutton" i18n_id="loginbutton" i18n_property_name="innerText"
-						i18n_statu="login">
+			<form id="form" class="form">
+				<input type="text" id="username" name="username" autocomplete="username" maxlength="32"
+					placeholder="I18nElement" i18n_id="form_username" i18n_property_name="placeholder" /><br />
+				<input class="inputLastChild" type="password" id="password" name="password"
+					autocomplete="current-password" maxlength="128" placeholder="I18nElement" i18n_id="form_password"
+					i18n_property_name="placeholder" /><br />
+				<input style="display: none" type="password" id="repeat_password" name="repeat_password" maxlength="128"
+					autocomplete="off" i18n_id="form_repeat_password" i18n_property_name="placeholder"
+					placeholder="I18nElement" />
+				<input style="display: none" class="inputLastChild" type="text" id="verification_code"
+					name="verification_code" maxlength="16" autocomplete="off" i18n_id="form_verification_code"
+					i18n_property_name="placeholder" placeholder="I18nElement" />
+			</form>
+			<div id="divLoginButton" class="divLoginButton">
+				<p class="loginStatus">
+					<span id="loginStatus" i18n_id="loginStatus" i18n_property_name="innerText"
+						i18n_statu="not_logged_in">I18nElement</span><br />
+					<a id="forgotPassword" class="forgotPassword" href="https://bcspanel.bddjr.com/docs/forgotPassword"
+						target="_blank" rel="noopener" i18n_id="forgotPassword" i18n_property_name="innerText">
 						I18nElement
-					</button>
-				</div>
+					</a>
+				</p>
+				<button id="loginbutton" class="loginbutton" i18n_id="loginbutton" i18n_property_name="innerText"
+					i18n_statu="login">
+					I18nElement
+				</button>
 			</div>
+
 			<footer>
 				<a href="https://github.com/bddjr/BCSPanel" target="_blank" rel="noopener">BCSPanel</a><br />
 			</footer>
-
 		</div>
 	</div>
-	<span id="htmlloaded" style="display: none"></span>
+	<script>
+		window.createMain?.(console.log('createMain from index.html'))
+		window.createMain = false
+	</script>
 </body>
 
 </html>

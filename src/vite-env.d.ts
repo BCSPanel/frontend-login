@@ -2,6 +2,7 @@
 
 declare interface Window {
   fetchTimeoutSeconds: number;
+  createMain: (() => void) | false | undefined;
 }
 
 interface postLoginBodyType {

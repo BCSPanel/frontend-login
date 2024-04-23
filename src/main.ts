@@ -131,10 +131,11 @@ function main() {
   ranMain = true;
 }
 
-if (document.getElementById("htmlloaded")) {
+if (window.createMain === false) {
+  // body已加载
+  console.log('createMain from main.ts');
   main();
-  // 加载完成后再次更新高，修复部分情况出现的高度错误
-  window.addEventListener("load", updateHeight);
 } else {
-  window.addEventListener("load", main);
+  // body未加载
+  window.createMain = main
 }

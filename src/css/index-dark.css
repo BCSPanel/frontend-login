@@ -36,8 +36,8 @@ html.dark .form {
 html.dark input {
   color-scheme: light;
   color: white;
-  background-color: #424242;
-  border-top-color: gray;
+  background-color: #343434;
+  border-color: gray;
   outline-color: #1aadff;
 }
 
