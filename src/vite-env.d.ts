@@ -1,9 +1,9 @@
 /// <reference types="vite/client" />
 
 declare interface Window {
-  fetchTimeoutSeconds: number
-  createMain: (() => void) | undefined
-  bodyLoadedScript: HTMLScriptElement | undefined
+  fetchTimeoutSeconds?: number
+  createMain?: (() => void)
+  bodyLoadedScript?: HTMLScriptElement
 }
 
 interface postLoginBodyType {
