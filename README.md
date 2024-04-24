@@ -2,15 +2,9 @@
 
 [BCSPanel](https://github.com/bddjr/BCSPanel) 的登录页面，体积小巧，使用 [Vite](https://cn.vitejs.dev) + [TypeScript](https://www.typescriptlang.org) 编写。  
 
-请使用最新 Chromium 内核浏览器访问，确保正常运行。  
-> [Google Chrome](https://google.cn/chrome/)  
-> [Microsoft Edge](https://www.microsoft.com/zh-cn/edge/download)  
-> [Supermium (WinXP Win7 Win8)](https://win32subsystem.live/supermium/)  
+预览 https://bcspanel-web-login-preview.bddjr.com/web-login/
 
-会尝试适配最新版 [Mozilla Firefox](https://www.mozilla.org/zh-CN/firefox/browsers/) ，但不保证它正常显示。  
-
-HTTPS [预览安全界面](https://bcspanel-web-login-preview.bddjr.com/web-login/)  
-HTTP [预览不安全界面](http://bcspanel-web-login-preview.bddjr.com/web-login/)  
+浏览器兼容性请看 https://bcspanel-web-login-preview.bddjr.com/web-login/ie/
 
 [使用MIT开源许可协议。](https://mit-license.org)  
 
@@ -43,18 +37,3 @@ npm run preview
 ```
 npm run bview
 ```
-
-***
-## 图
-
-不保证是最新版本的截图，仅供参考
-
-![0](README/img/0.jpg)
-
-![1](README/img/1.jpg)
-
-![2](README/img/2.jpg)
-
-![3](README/img/3.jpg)
-
-![4](README/img/4.jpg)
