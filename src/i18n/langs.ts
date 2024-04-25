@@ -4,8 +4,8 @@ import lang_zh_CN from "./lang/zh-CN.json";
 
 /** 将语言文件全部汇集成一个对象 */
 export const langs = {
-  en: lang_en,
-  "zh-CN": lang_zh_CN,
+  en: lang_en as langType,
+  "zh-CN": lang_zh_CN as langType,
 };
 /** Object.keys(langs) */
 export const langsKeys = Object.keys(langs);
@@ -70,7 +70,7 @@ export function getDefaultLang() {
 }
 
 /** 依据当前语言获取内容 */
-export function getThisLang() {
+export function getThisLang(): langType {
   //@ts-ignore
   return langs[defaultLang];
 }

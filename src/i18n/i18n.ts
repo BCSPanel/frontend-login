@@ -2,18 +2,6 @@ import { updateHeight } from "../updateHeight";
 import { getThisLang, langsParams } from "./langs";
 
 
-/** 自定义元素类型，基于原版添加了一些参数 */
-export interface I18nElementAttributes extends NamedNodeMap {
-    i18n_id: Attr // loginTitle
-    i18n_statu: Attr | undefined // login
-    i18n_property_name: Attr // innerText
-    i18n_mirror_elementIds: Attr | undefined // title,title2,title3
-}
-export interface I18nElement extends HTMLElement {
-    attributes: I18nElementAttributes
-}
-
-
 /** 函数用于更新显示语言 */
 export function updateLang(
     i18n_id?: string,
@@ -40,6 +28,7 @@ export function updateLang(
         if (eles.length === 0) return;
 
         // 获取对应i18n_id的语言文件
+        //@ts-ignore
         let property = thisLang[i18n_id]
         // console.log(property);
 
