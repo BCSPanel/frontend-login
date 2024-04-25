@@ -2,9 +2,9 @@
 
 [BCSPanel](https://github.com/bddjr/BCSPanel) 的登录页面，体积小巧，使用 [Vite](https://cn.vitejs.dev) + [TypeScript](https://www.typescriptlang.org) 编写。  
 
-预览 https://bcspanel-web-login-preview.bddjr.com/web-login/
+预览 https://bcspanel-web-login-preview.bddjr.com/login/
 
-浏览器兼容性请看 https://bcspanel-web-login-preview.bddjr.com/web-login/ie/
+浏览器兼容性请看 https://bcspanel-web-login-preview.bddjr.com/login/ie/
 
 [使用MIT开源许可协议。](https://mit-license.org)  
 
