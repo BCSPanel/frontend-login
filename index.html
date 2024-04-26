@@ -5,14 +5,6 @@
 <head>
 	<meta charset="utf-8" />
 
-	<!--#ConfigStart#-->
-	<template id="template_footer">
-		<!-- 在此处添加备案号即可： -->
-		<!-- <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备99999999号-9</a><br/> -->
-		<!-- <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=99999999999999">京公网安备99999999999999号</a><br/> -->
-	</template>
-	<!--#ConfigEnd#-->
-
 	<script>
 		// https://github.com/bddjr/iehtml , Using MIT license.
 		try {
@@ -51,6 +43,7 @@
 
 	<link rel="icon" href="icon/BCSP-64x64.png" />
 	<link rel="preload" as="fetch" crossorigin href="../api-login/color-scheme">
+	<link rel="preload" as="fetch" crossorigin href="config/footer.html">
 	<link rel="stylesheet" href="/src/css/index.css" />
 	<link rel="stylesheet" href="/src/css/index-dark.css" />
 	<script type="module" src="/src/main.ts"></script>
@@ -127,13 +120,11 @@
 			</div>
 
 			<footer>
-				<a href="https://github.com/bddjr/BCSPanel" target="_blank" rel="noopener">BCSPanel</a><br />
+				<p><a href="https://github.com/bddjr/BCSPanel" target="_blank" rel="noopener">BCSPanel</a></p>
 			</footer>
 		</div>
 	</div>
-	<script id="bodyLoadedScript">
-		window.createMain ? createMain() : addEventListener('load', () => window.createMain?.())
-	</script>
+	<template id="bodyLoaded"></template>
 </body>
 
 </html>

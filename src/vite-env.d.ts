@@ -2,8 +2,7 @@
 
 declare interface Window {
   fetchTimeoutSeconds?: number
-  createMain?: (() => void)
-  bodyLoadedScript?: HTMLScriptElement
+  bodyLoaded?: HTMLElement
 }
 
 interface postLoginBodyType {

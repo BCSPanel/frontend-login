@@ -256,12 +256,18 @@ input:first-child {
 }
 
 footer {
-  color: gray;
   font-size: 14px;
   margin-top: 16px;
 }
 
+footer p {
+  margin: 6px auto;
+}
+
+footer :last-child {
+  margin-bottom: 0;
+}
+
 footer a {
   color: gray;
-  line-height: 20px;
 }

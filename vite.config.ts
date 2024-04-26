@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 // import viteCompression from 'vite-plugin-compression'
 import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 
 // https://vitejs.dev/config/
@@ -12,7 +13,7 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '^/api(-login)?/': 'http://0.0.0.0',
-      '^/$': 'http://0.0.0.0',
+      '^/login/$': 'http://0.0.0.0',
     },
   },
   base: './',
@@ -25,6 +26,9 @@ export default defineConfig({
     //   deleteOriginFile: false, // 不删除源文件
     //   filter: /\.(js|json|css)$/i // 文件名匹配
     // }),
+    createHtmlPlugin({
+      minify: true,
+    }),
     {
       // script执行前阻止网页渲染
       // https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script
@@ -37,17 +41,17 @@ export default defineConfig({
         );
       }
     },
-    {
-      // 添加版本号
-      name: "WriteVersion",
-      apply: 'build',
-      closeBundle() {
-        if (process.env.npm_package_version) {
-          fs.writeFileSync("./dist/version.txt", process.env.npm_package_version)
-          console.log("WriteVersion Done");
-        }
-      },
-    },
+    // {
+    //   // 添加版本号
+    //   name: "WriteVersion",
+    //   apply: 'build',
+    //   closeBundle() {
+    //     if (process.env.npm_package_version) {
+    //       fs.writeFileSync("./dist/version.txt", process.env.npm_package_version)
+    //       console.log("WriteVersion Done");
+    //     }
+    //   },
+    // },
   ],
   resolve: {
     alias: {

@@ -35,9 +35,14 @@ if (!BCSPanelColorScheme) matchMediaDark.addEventListener("change", matchMediaDa
 document.getElementById("loading_style")?.remove();
 
 
+// 获取footer结尾追加的配置内容
+const footerAddTemplate = document.createElement('template')
+footerAddTemplate.innerHTML = await (await fetch('./config/footer.html')).text()
+
+
 let ranMain = false;
 
-function main() {
+async function main() {
   console.log("Main");
   if (ranMain) return;
 
@@ -112,13 +117,9 @@ function main() {
   }
 
   // footer结尾追加内容
-  document
-    .getElementsByTagName("footer")[0]
-    .appendChild(
-      (
-        document.getElementById("template_footer") as HTMLTemplateElement
-      ).content.cloneNode(true)
-    );
+  document.getElementsByTagName("footer")[0].appendChild(
+    footerAddTemplate.content.cloneNode(true)
+  );
 
   // resize触发更新高度
   window.addEventListener("resize", updateHeight);
@@ -132,11 +133,11 @@ function main() {
   ranMain = true;
 }
 
-if (window.bodyLoadedScript) {
+if (window.bodyLoaded) {
   // body已加载
-  console.log('createMain from main.ts');
-  main();
+  console.log('body loaded');
+  await main();
 } else {
   // body未加载
-  window.createMain = main
+  window.addEventListener('load', main)
 }
