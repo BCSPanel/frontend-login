@@ -11,8 +11,9 @@ export default defineConfig({
     // 监听所有地址（包括局域网与公网），方便内网调试
     host: '0.0.0.0',
     proxy: {
-			'^/api(-login)?/': 'http://0.0.0.0',
-		},
+      '^/api(-login)?/': 'http://0.0.0.0',
+      '^/$': 'http://0.0.0.0',
+    },
   },
   base: './',
   plugins: [

@@ -43,24 +43,30 @@ function main() {
 
   // 函数用于添加输入框按回车键时的响应
   function add_doc_Enter_listener(doc_name: string, func: string | Function) {
-    if (typeof func === "function") {
-      // 运行函数，例如 clickLogin
-      var thisfunc = (event: KeyboardEvent) => {
-        if (event.key === "Enter") func();
-      };
-    } else if (typeof func === "string") {
-      // 选中对应名称的元素
-      var thisfunc = (event: KeyboardEvent) => {
-        if (event.key === "Enter")
-          (document.getElementById(func) as HTMLInputElement).focus();
-      };
-    } else throw new TypeError("Don't input other type to func!");
+    switch (typeof func) {
+      case "function":
+        // 运行函数，例如 clickLogin
+        var thisfunc = (event: KeyboardEvent) => {
+          if (event.key === "Enter") func();
+        }
+        break;
+      case "string":
+        // 选中对应名称的元素
+        var thisfunc = (event: KeyboardEvent) => {
+          if (event.key === "Enter")
+            (document.getElementById(func) as HTMLInputElement).focus();
+        }
+        break;
+      default:
+        throw new TypeError("Don't input other type to func!");
+    }
 
     (document.getElementById(doc_name) as HTMLInputElement).addEventListener(
       "keyup",
       thisfunc
     );
   }
+
   // 添加输入框按回车键的响应
   add_doc_Enter_listener("username", "password");
   add_doc_Enter_listener("password", () => {
