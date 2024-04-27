@@ -140,7 +140,7 @@ export async function clickLogin() {
       // 服务器拒绝
       console.error(401);
       const text = (await response.text()).trim();
-      if (text === "") throw 401;
+      if (text == "") throw 401;
       changeLoginStats(text, "red");
       await asyncSleep(1000);
       setDisabledLoginButton(false);

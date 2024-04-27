@@ -1,5 +1,6 @@
 import ElementClassListAddOrRemove from "./elementClassListAddOrRemove";
 import { updateLang } from "./i18n/i18n";
+import setStyleDisplay from "./setStyleDisplay";
 
 
 var isReg = false
@@ -9,12 +10,10 @@ export function isRegister() {
 }
 
 export function setRegister(enable: boolean) {
-    if (isReg === enable) return;
+    if (isReg == enable) return;
     isReg = enable
 
-    self.repeat_password.style.display =
-        self.verification_code.style.display =
-        enable ? '' : 'none';
+    setStyleDisplay(enable, self.repeat_password, self.verification_code)
 
     updateLang('loginbutton', enable ? 'register' : 'login', undefined, false);
 

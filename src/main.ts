@@ -6,6 +6,7 @@ import { updateLang } from "./i18n/i18n";
 import { changeLang, langsKeys } from "./i18n/langs";
 import { updateHeight } from "./updateHeight";
 import ElementClassListAddOrRemove from "./elementClassListAddOrRemove";
+import setStyleDisplay from "./setStyleDisplay";
 
 
 
@@ -37,11 +38,8 @@ const footerAddTemplate = document.createElement('template')
 footerAddTemplate.innerHTML = await (await fetch('./config/footer.html')).text()
 
 
-let ranMain = false;
-
 async function main() {
   // console.log("Main");
-  if (ranMain) return;
 
   // 函数用于添加输入框按回车键时的响应
   function add_doc_Enter_listener(doc_name: string, func: string | Function) {
@@ -49,13 +47,13 @@ async function main() {
       case "function":
         // 运行函数，例如 clickLogin
         var thisfunc = (event: KeyboardEvent) => {
-          if (event.key === "Enter") func();
+          if (event.key == "Enter") func();
         }
         break;
       case "string":
         // 选中对应名称的元素
         var thisfunc = (event: KeyboardEvent) => {
-          if (event.key === "Enter")
+          if (event.key == "Enter")
             (document.getElementById(func) as HTMLInputElement).focus();
         }
         break;
@@ -100,11 +98,8 @@ async function main() {
       ?.addEventListener("click", clickChangeLang);
   }
 
-  // HTTP不安全
-  if (!isSecureContext) {
-    // 显示警告
-    self.notSecureWarning.style.display = ""
-  }
+  // HTTP不安全警告
+  setStyleDisplay(!isSecureContext, self.notSecureWarning)
 
   // footer结尾追加内容
   self.footer.appendChild(
@@ -115,16 +110,14 @@ async function main() {
   self.addEventListener("resize", updateHeight);
 
   // 显示
-  self.divmain.style.display = "";
+  setStyleDisplay(true, self.divmain)
 
   // 更新语言
   updateLang();
-
-  ranMain = true;
 }
 
 // console.log('document.readyState:', document.readyState)
-if (document.readyState === 'loading') {
+if (document.readyState == 'loading') {
   // body未加载
   document.addEventListener("DOMContentLoaded", main)
 } else {

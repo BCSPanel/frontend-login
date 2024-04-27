@@ -25,7 +25,7 @@ export function updateLang(
         // console.log(eles);
 
         // 如果找不到元素，滚出去
-        if (eles.length === 0) return;
+        if (eles.length == 0) return;
 
         // 获取对应i18n_id的语言文件
         //@ts-ignore
@@ -33,7 +33,7 @@ export function updateLang(
         // console.log(property);
 
         // 如果对应语言文件是对象
-        if (typeof property === 'object') {
+        if (typeof property == 'object') {
             // 如果已经输入了参数对象
             if (params) {
                 // 那么将语言文件的参数合集设置成输入的
@@ -95,7 +95,7 @@ export function updateLang(
         // 否则遍历更新语言文件里提到的所有i18n_id
         for (let i in thisLang) {
             // 跳过保留名称
-            if (i === 'langName') continue;
+            if (i == 'langName') continue;
             // 更新
             updateI18nElement(i, statu, params)
         }

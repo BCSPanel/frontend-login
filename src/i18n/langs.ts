@@ -46,7 +46,7 @@ export function changeLang(
   localStorage.removeItem(storageCacheName);
   // 从浏览器语言列表里查找支持的语言
   for (let i of navigator.languages) {
-    if (i === "zh-Hans-CN") i = "zh-CN"; // Firefox Android
+    if (i == "zh-Hans-CN") i = "zh-CN"; // Firefox Android
     if (langsKeys.includes(i)) {
       // 找到了，选中
       defaultLang = i;
