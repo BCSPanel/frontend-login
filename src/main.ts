@@ -19,13 +19,11 @@ try {
 }
 
 function matchMediaDarkChange() {
-  let dark = false;
-  if (BCSPanelColorScheme) {
-    dark = BCSPanelColorScheme == "dark";
-  } else {
-    dark = matchMediaDark.matches;
-  }
-  ElementClassListAddOrRemove(document.children[0], dark, "dark")
+  ElementClassListAddOrRemove(
+    document.children[0],
+    BCSPanelColorScheme ? BCSPanelColorScheme == "dark" : matchMediaDark.matches,
+    "dark"
+  )
 }
 matchMediaDarkChange();
 if (!BCSPanelColorScheme) matchMediaDark.addEventListener("change", matchMediaDarkChange);
