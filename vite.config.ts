@@ -1,4 +1,3 @@
-import fs from 'fs'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 // import viteCompression from 'vite-plugin-compression'
