@@ -66,6 +66,9 @@ export default defineConfig({
         chunkFileNames: `assets/[name].[hash:22].js`,
         assetFileNames: `assets/[name].[hash:22].[ext]`,
       }
-    }
+    },
+    modulePreload: {
+      polyfill: false,
+    },
   }
 })
