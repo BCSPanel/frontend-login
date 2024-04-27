@@ -4,8 +4,8 @@ import { getDefaultLang } from "./i18n/langs";
 export function updateHeight() {
   // console.log('updateHeight');
   // 更新登录按钮那块的高度
-  window.divLoginButton.style.height = "";
-  window.divLoginButton.style.height =
+  self.divLoginButton.style.height = "";
+  self.divLoginButton.style.height =
     (document.getElementsByClassName("loginStatus")[0] as HTMLElement)
       .offsetHeight + "px";
 
@@ -13,14 +13,14 @@ export function updateHeight() {
   var main2Max = 0;
   switch (getDefaultLang()) {
     case "zh-CN":
-      main2Max = window.isSecureContext ? 0 : 316;
+      main2Max = self.isSecureContext ? 0 : 316;
       break;
     default:
-      main2Max = window.isSecureContext ? 292 : 375;
+      main2Max = self.isSecureContext ? 292 : 375;
   }
-  if (window.divmain2.offsetWidth < main2Max + 24) {
-    window.titleBox.classList.add("titleBoxImgHide");
+  if (self.divmain2.offsetWidth < main2Max + 24) {
+    self.titleBox.classList.add("titleBoxImgHide");
   } else {
-    window.titleBox.classList.remove("titleBoxImgHide");
+    self.titleBox.classList.remove("titleBoxImgHide");
   }
 }

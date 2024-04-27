@@ -5,7 +5,7 @@ import asyncSleep from "./asyncSleep";
 
 /** 函数用于启用或禁用登录按钮 */
 export function setDisabledLoginButton(a: boolean) {
-  window.loginbutton.disabled = a;
+  self.loginbutton.disabled = a;
 }
 
 var abortLogin: (() => void) | null = null;
@@ -14,7 +14,7 @@ var abortLogin: (() => void) | null = null;
 export async function clickLogin() {
   // console.log("clickLogin");
   // 如果登录按钮被禁止，退出函数
-  if (window.loginbutton.disabled) {
+  if (self.loginbutton.disabled) {
     return;
   }
   var loginAborted: boolean = false;
@@ -42,7 +42,7 @@ export async function clickLogin() {
     if (not_filled_in("password")) return;
     // 密码超过128个字符
     if (
-      window.password.value.length >
+      self.password.value.length >
       128
     ) {
       changeLoginStats("password_too_long", "red");
@@ -53,7 +53,7 @@ export async function clickLogin() {
     if (isRegister()) {
       // 密码强度不足
       {
-        const password = window.password.value;
+        const password = self.password.value;
         if (
           password.length < 12 ||
           !/[a-z]/.test(password) ||
@@ -76,8 +76,8 @@ export async function clickLogin() {
         return;
       // 密码与重复密码不相等
       if (
-        window.password.value !==
-        window.repeat_password.value
+        self.password.value !==
+        self.repeat_password.value
       ) {
         changeLoginStats("do_not_enter_two_different_passwords", "red");
         return;
@@ -90,15 +90,15 @@ export async function clickLogin() {
 
     const postLoginBody: postLoginBodyType = {
       // boolean 安全上下文
-      secure: window.isSecureContext,
+      secure: self.isSecureContext,
       // boolean 是否处于注册模式
       isregister: isRegister(),
       // string 用户名
-      username: window.username.value,
+      username: self.username.value,
       // string 密码
-      password: window.password.value,
+      password: self.password.value,
       // string 注册模式发送验证码
-      verification_code: window.verification_code.value,
+      verification_code: self.verification_code.value,
     };
 
     // 准备提交

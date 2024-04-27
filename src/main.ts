@@ -9,7 +9,7 @@ import { updateHeight } from "./updateHeight";
 
 
 // 深色模式
-const matchMediaDark = window.matchMedia("(prefers-color-scheme: dark)");
+const matchMediaDark = self.matchMedia("(prefers-color-scheme: dark)");
 let BCSPanelColorScheme = ''
 try {
   BCSPanelColorScheme = (await (await fetch('../api-login/color-scheme')).text()).trim()
@@ -32,7 +32,7 @@ matchMediaDarkChange();
 if (!BCSPanelColorScheme) matchMediaDark.addEventListener("change", matchMediaDarkChange);
 
 // 移除加载时的style
-window.loading_style?.remove();
+self.loading_style?.remove();
 
 
 // 获取footer结尾追加的配置内容
@@ -76,7 +76,7 @@ async function main() {
   add_doc_Enter_listener("username", "password");
   add_doc_Enter_listener("password", () => {
     if (isRegister()) {
-      window.repeat_password.focus();
+      self.repeat_password.focus();
     } else {
       clickLogin();
     }
@@ -85,11 +85,11 @@ async function main() {
   add_doc_Enter_listener("verification_code", clickLogin);
 
   // 添加登录按钮的响应
-  window.loginbutton.addEventListener("click", clickLogin);
+  self.loginbutton.addEventListener("click", clickLogin);
 
   // 添加登录与注册模式切换按钮的响应
-  window.loginTitleLogin.addEventListener("click", () => setRegister(false));
-  window.loginTitleRegister.addEventListener("click", () => setRegister(true));
+  self.loginTitleLogin.addEventListener("click", () => setRegister(false));
+  self.loginTitleRegister.addEventListener("click", () => setRegister(true));
 
   /* 函数用于添加语言切换按钮的响应 */
   function clickChangeLang(event: MouseEvent) {
@@ -104,21 +104,21 @@ async function main() {
   }
 
   // HTTP不安全
-  if (!window.isSecureContext) {
+  if (!self.isSecureContext) {
     // 显示警告
-    window.notSecureWarning.style.display = ""
+    self.notSecureWarning.style.display = ""
   }
 
   // footer结尾追加内容
-  window.footer.appendChild(
+  self.footer.appendChild(
     footerAddTemplate.content.cloneNode(true)
   );
 
   // resize触发更新高度
-  window.addEventListener("resize", updateHeight);
+  self.addEventListener("resize", updateHeight);
 
   // 显示
-  window.divmain.style.display = "";
+  self.divmain.style.display = "";
 
   // 更新语言
   updateLang();

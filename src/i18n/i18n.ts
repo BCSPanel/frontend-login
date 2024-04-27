@@ -120,6 +120,6 @@ export function changeLoginStats(
     updateLang('loginStatus', statu, params)
     // 如果输入了颜色，那么切换颜色
     if (color !== undefined) {
-        window.loginStatus.style.color = color;
+        self.loginStatus.style.color = color;
     }
 }
