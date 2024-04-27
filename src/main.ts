@@ -5,6 +5,7 @@ import { clickLogin } from "./clickLogin";
 import { updateLang } from "./i18n/i18n";
 import { changeLang, langsKeys } from "./i18n/langs";
 import { updateHeight } from "./updateHeight";
+import ElementClassListAddOrRemove from "./elementClassListAddOrRemove";
 
 
 
@@ -24,9 +25,7 @@ function matchMediaDarkChange() {
   } else {
     dark = matchMediaDark.matches;
   }
-  const htmlclass = document.children[0].classList;
-  if (dark) htmlclass.add("dark");
-  else htmlclass.remove("dark");
+  ElementClassListAddOrRemove(document.children[0], dark, "dark")
 }
 matchMediaDarkChange();
 if (!BCSPanelColorScheme) matchMediaDark.addEventListener("change", matchMediaDarkChange);
@@ -104,7 +103,7 @@ async function main() {
   }
 
   // HTTP不安全
-  if (!self.isSecureContext) {
+  if (!isSecureContext) {
     // 显示警告
     self.notSecureWarning.style.display = ""
   }

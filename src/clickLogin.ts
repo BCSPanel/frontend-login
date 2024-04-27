@@ -90,7 +90,7 @@ export async function clickLogin() {
 
     const postLoginBody: postLoginBodyType = {
       // boolean 安全上下文
-      secure: self.isSecureContext,
+      secure: isSecureContext,
       // boolean 是否处于注册模式
       isregister: isRegister(),
       // string 用户名

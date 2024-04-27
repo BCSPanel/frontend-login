@@ -13,14 +13,16 @@ export function updateHeight() {
   var main2Max = 0;
   switch (getDefaultLang()) {
     case "zh-CN":
-      main2Max = self.isSecureContext ? 0 : 316;
+      main2Max = isSecureContext ? 0 : 316;
       break;
     default:
-      main2Max = self.isSecureContext ? 292 : 375;
+      main2Max = isSecureContext ? 292 : 375;
   }
+  const classList = self.titleBox.classList
+  const className = "titleBoxImgHide"
   if (self.divmain2.offsetWidth < main2Max + 24) {
-    self.titleBox.classList.add("titleBoxImgHide");
+    classList.add(className);
   } else {
-    self.titleBox.classList.remove("titleBoxImgHide");
+    classList.remove(className);
   }
 }
