@@ -10,18 +10,18 @@ export function setRegister(enable: boolean) {
     if (isReg === enable) return;
     isReg = enable
     if (enable) {
-        (document.getElementById('repeat_password') as HTMLElement).style.display = '';
-        (document.getElementById('verification_code') as HTMLElement).style.display = '';
+        window.repeat_password.style.display = '';
+        window.verification_code.style.display = '';
         updateLang('loginbutton', 'register', undefined, false);
-        (document.getElementById("loginTitleLogin") as HTMLSpanElement).classList.remove("loginTitleSelect");
-        (document.getElementById("loginTitleRegister") as HTMLSpanElement).classList.add("loginTitleSelect");
-        (document.getElementById("password") as HTMLSpanElement).classList.remove("inputLastChild");
+        window.loginTitleLogin.classList.remove("loginTitleSelect");
+        window.loginTitleRegister.classList.add("loginTitleSelect");
+        window.password.classList.remove("inputLastChild");
     } else {
-        (document.getElementById('repeat_password') as HTMLElement).style.display = 'none';
-        (document.getElementById('verification_code') as HTMLElement).style.display = 'none';
+        window.repeat_password.style.display = 'none';
+        window.verification_code.style.display = 'none';
         updateLang('loginbutton', 'login', undefined, false);
-        (document.getElementById("loginTitleLogin") as HTMLSpanElement).classList.add("loginTitleSelect");
-        (document.getElementById("loginTitleRegister") as HTMLSpanElement).classList.remove("loginTitleSelect");
-        (document.getElementById("password") as HTMLSpanElement).classList.add("inputLastChild");
+        window.loginTitleLogin.classList.add("loginTitleSelect");
+        window.loginTitleRegister.classList.remove("loginTitleSelect");
+        window.password.classList.add("inputLastChild");
     }
 }

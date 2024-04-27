@@ -8,7 +8,7 @@ export default async function (
     controller?: AbortController
 ): Promise<Response> {
     if (!timeout_seconds) timeout_seconds = Number(window.fetchTimeoutSeconds);
-    console.log(`myFetch ${timeout_seconds}`);
+    // console.log(`myFetch ${timeout_seconds}`);
     if (controller == undefined) controller = new AbortController();
     init.signal = controller.signal;
     var isTimeoutError = false;

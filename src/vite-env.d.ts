@@ -2,7 +2,28 @@
 
 declare interface Window {
   fetchTimeoutSeconds?: number
-  bodyLoaded?: HTMLElement
+
+  loading_style?: HTMLStyleElement
+
+  divmain: HTMLDivElement
+  divmain2: HTMLDivElement
+  divLoginButton: HTMLDivElement
+  titleBox: HTMLDivElement
+
+  loginTitleLogin: HTMLButtonElement
+  loginTitleRegister: HTMLButtonElement
+  loginbutton: HTMLButtonElement
+
+  loginStatus: HTMLSpanElement
+
+  notSecureWarning: HTMLAnchorElement
+
+  username: HTMLInputElement
+  password: HTMLInputElement
+  repeat_password: HTMLInputElement
+  verification_code: HTMLInputElement
+
+  footer: HTMLElement
 }
 
 interface postLoginBodyType {

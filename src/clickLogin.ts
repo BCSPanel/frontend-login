@@ -5,16 +5,16 @@ import asyncSleep from "./asyncSleep";
 
 /** 函数用于启用或禁用登录按钮 */
 export function setDisabledLoginButton(a: boolean) {
-  (document.getElementById("loginbutton") as HTMLButtonElement).disabled = a;
+  window.loginbutton.disabled = a;
 }
 
 var abortLogin: (() => void) | null = null;
 
 /** 函数用于触发提交表单 */
 export async function clickLogin() {
-  console.log("clickLogin");
+  // console.log("clickLogin");
   // 如果登录按钮被禁止，退出函数
-  if ((document.getElementById("loginbutton") as HTMLButtonElement).disabled) {
+  if (window.loginbutton.disabled) {
     return;
   }
   var loginAborted: boolean = false;
@@ -42,7 +42,7 @@ export async function clickLogin() {
     if (not_filled_in("password")) return;
     // 密码超过128个字符
     if (
-      (document.getElementById("password") as HTMLButtonElement).value.length >
+      window.password.value.length >
       128
     ) {
       changeLoginStats("password_too_long", "red");
@@ -53,9 +53,7 @@ export async function clickLogin() {
     if (isRegister()) {
       // 密码强度不足
       {
-        const password = (
-          document.getElementById("password") as HTMLButtonElement
-        ).value;
+        const password = window.password.value;
         if (
           password.length < 12 ||
           !/[a-z]/.test(password) ||
@@ -78,8 +76,8 @@ export async function clickLogin() {
         return;
       // 密码与重复密码不相等
       if (
-        (document.getElementById("password") as HTMLInputElement).value !==
-        (document.getElementById("repeat_password") as HTMLInputElement).value
+        window.password.value !==
+        window.repeat_password.value
       ) {
         changeLoginStats("do_not_enter_two_different_passwords", "red");
         return;
@@ -87,7 +85,7 @@ export async function clickLogin() {
     }
     // 禁用登录按钮
     setDisabledLoginButton(true);
-    console.log("clickLogin running");
+    // console.log("clickLogin running");
     changeLoginStats("attempting_to_login", "gray");
 
     const postLoginBody: postLoginBodyType = {
@@ -96,22 +94,20 @@ export async function clickLogin() {
       // boolean 是否处于注册模式
       isregister: isRegister(),
       // string 用户名
-      username: (document.getElementById("username") as HTMLInputElement).value,
+      username: window.username.value,
       // string 密码
-      password: (document.getElementById("password") as HTMLInputElement).value,
+      password: window.password.value,
       // string 注册模式发送验证码
-      verification_code: (
-        document.getElementById("verification_code") as HTMLInputElement
-      ).value,
+      verification_code: window.verification_code.value,
     };
 
     // 准备提交
-    console.log("clickLogin POST");
+    // console.log("clickLogin POST");
     // console.log(postLoginBody);
     // 如果运行了另一个函数，另一个函数可以终止当前请求
     const controller = new AbortController();
     abortLogin = () => {
-      console.log("abortLogin");
+      // console.log("abortLogin");
       loginAborted = true;
       controller?.abort();
     };
@@ -134,7 +130,7 @@ export async function clickLogin() {
       // 成功
       changeLoginStats(
         "login_succeeded",
-        document.getElementsByTagName("html")[0].classList.contains("dark")
+        document.children[0].classList.contains("dark")
           ? "lightgreen"
           : "green"
       );

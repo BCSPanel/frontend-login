@@ -4,17 +4,12 @@ import { getDefaultLang } from "./i18n/langs";
 export function updateHeight() {
   // console.log('updateHeight');
   // 更新登录按钮那块的高度
-  const divLoginButton = document.getElementById(
-    "divLoginButton"
-  ) as HTMLElement;
-  divLoginButton.style.height = "";
-  divLoginButton.style.height =
+  window.divLoginButton.style.height = "";
+  window.divLoginButton.style.height =
     (document.getElementsByClassName("loginStatus")[0] as HTMLElement)
       .offsetHeight + "px";
 
   // 看情况决定隐藏右上角图标
-  const divmain2 = document.getElementById("divmain2") as HTMLDivElement;
-  const titleBox = document.getElementById("titleBox") as HTMLImageElement;
   var main2Max = 0;
   switch (getDefaultLang()) {
     case "zh-CN":
@@ -23,9 +18,9 @@ export function updateHeight() {
     default:
       main2Max = window.isSecureContext ? 292 : 375;
   }
-  if (divmain2.offsetWidth < main2Max + 24) {
-    titleBox.classList.add("titleBoxImgHide");
+  if (window.divmain2.offsetWidth < main2Max + 24) {
+    window.titleBox.classList.add("titleBoxImgHide");
   } else {
-    titleBox.classList.remove("titleBoxImgHide");
+    window.titleBox.classList.remove("titleBoxImgHide");
   }
 }

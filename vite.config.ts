@@ -32,7 +32,6 @@ export default defineConfig({
     {
       // script执行前阻止网页渲染
       // https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script
-      // https://segmentfault.com/q/1010000042185350
       name: "scriptBlockingRender",
       transformIndexHtml(html) {
         return html.replaceAll(

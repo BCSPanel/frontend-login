@@ -9,7 +9,7 @@ export function updateLang(
     params?: any,
     ignore_update_property: boolean = false
 ) {
-    console.log('updateLang');
+    // console.log('updateLang');
     /** 获取当前语言对象 */
     const thisLang = getThisLang()
     /** 函数用于更新元素显示内容 */
@@ -18,7 +18,7 @@ export function updateLang(
         statu?: string | undefined,
         params?: any | undefined
     ) {
-        console.log(`updateI18nElement ${i18n_id}`);
+        // console.log(`updateI18nElement ${i18n_id}`);
 
         /** 依据i18n_id获取所有匹配的元素 */
         const eles = document.querySelectorAll(`[i18n_id="${i18n_id}"]`) as NodeListOf<I18nElement>
@@ -115,11 +115,11 @@ export function changeLoginStats(
     color: string | undefined = undefined,
     params: any | undefined = undefined
 ) {
-    console.log(`changeLoginStats ${statu}`);
+    // console.log(`changeLoginStats ${statu}`);
     // 切换文本内容
     updateLang('loginStatus', statu, params)
     // 如果输入了颜色，那么切换颜色
     if (color !== undefined) {
-        (document.getElementById('loginStatus') as HTMLElement).style.color = color;
+        window.loginStatus.style.color = color;
     }
 }

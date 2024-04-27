@@ -27,7 +27,7 @@ export function changeLang(
   langName?: string | undefined | null,
   ignoreUpdate: boolean = false
 ) {
-  console.log(`changeLang ${langName}`);
+  // console.log(`changeLang ${langName}`);
   // 如果没输入语言名称，那就读缓存
   if (typeof langName !== "string") {
     langName = localStorage.getItem(storageCacheName);
