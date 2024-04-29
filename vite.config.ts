@@ -79,7 +79,7 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
-    reportCompressedSize: false, // 不使用vite自带的方式打印压缩后的大小
+    reportCompressedSize: true, // 是否使用vite自带的方式打印压缩后的大小
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].[hash:22].js`,
