@@ -8,6 +8,15 @@
 
 [使用MIT开源许可协议。](https://mit-license.org)  
 
+```
+vite v5.0.13 building for production...
+✓ 17 modules transformed.
+dist/index.html                               4.15 kB │ gzip: 1.62 kB
+dist/assets/index.R-YT0X1kwH2kpNStk98AYg.css  4.12 kB │ gzip: 1.27 kB
+dist/assets/index.qvZcGotdSfGHdaP6HCfl9A.js   7.16 kB │ gzip: 3.33 kB
+✓ built in 229ms
+```
+
 ***
 ## 开始
 
