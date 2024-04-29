@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 // import viteCompression from 'vite-plugin-compression'
 import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
-import { createHtmlPlugin } from 'vite-plugin-html'
+import htmlMinimize from '@sergeymakinen/vite-plugin-html-minimize'
 
 
 // https://vitejs.dev/config/
@@ -25,8 +25,20 @@ export default defineConfig({
     //   deleteOriginFile: false, // 不删除源文件
     //   filter: /\.(js|json|css)$/i // 文件名匹配
     // }),
-    createHtmlPlugin({
-      minify: true,
+    htmlMinimize({
+      minifierOptions: {
+        collapseWhitespace: true,
+        html5: true,
+        keepClosingSlash: false,
+        minifyCSS: true,
+        minifyJS: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      }
     }),
     {
       // script执行前阻止网页渲染
@@ -36,6 +48,15 @@ export default defineConfig({
         return html.replaceAll(
           '<script type="module"',
           '<script type="module" blocking="render" async'
+        );
+      }
+    },
+    {
+      name: "removeI18nElement",
+      transformIndexHtml(html) {
+        return html.replaceAll(
+          'I18nElement',
+          ''
         );
       }
     },
