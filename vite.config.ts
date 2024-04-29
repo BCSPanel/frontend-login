@@ -90,5 +90,8 @@ export default defineConfig({
     modulePreload: {
       polyfill: false,
     },
+    chunkSizeWarningLimit: Infinity,
+    cssCodeSplit: false,
+    assetsInlineLimit: 0,
   }
 })
