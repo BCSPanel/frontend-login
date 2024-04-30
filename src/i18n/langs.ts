@@ -10,6 +10,12 @@ export const langs = {
 /** Object.keys(langs) */
 export const langsKeys = Object.keys(langs);
 
+const anotherName = {
+  'en-US': 'en',
+  'en-GB': 'en',
+  'zh-Hans-CN': 'zh-CN',
+}
+
 /** 语言参数 */
 export const langsParams: any = {
   /* "loginStatus": {
@@ -46,8 +52,11 @@ export function changeLang(
   localStorage.removeItem(storageCacheName);
   // 从浏览器语言列表里查找支持的语言
   for (let i of navigator.languages) {
-    if (i == "zh-Hans-CN") i = "zh-CN"; // Firefox Android
-    if (langsKeys.includes(i)) {
+    if (Object.hasOwn(anotherName, i)) {
+      //@ts-ignore
+      i = anotherName[i]
+    }
+    if (Object.hasOwn(langs, i)) {
       // 找到了，选中
       defaultLang = i;
       // 更新并退出
