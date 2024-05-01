@@ -1,4 +1,3 @@
-<!-- Using MIT license. https://github.com/bddjr/BCSPanel-web-login -->
 <!-- Don't add doctype! -->
 <html>
 
@@ -9,10 +8,10 @@
 		// https://github.com/bddjr/iehtml , Using MIT license.
 		try {
 			// ES2022
-			eval("(class { static { this.a = 1 } })").a.b
+			eval("(class { static { this.a = 1 } })").a.b;
 		} catch (e) {
-			if (window.stop) { stop() }
-			try { document.getElementsByTagName('html')[0].style.display = 'none' } catch (e) { }
+			if (window.stop) { stop(); }
+			try { document.getElementsByTagName('html')[0].style.display = 'none'; } catch (e) { }
 			document.location.replace(
 				"./ie/#" + document.location.pathname + document.location.search + document.location.hash
 			);
