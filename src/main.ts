@@ -98,9 +98,6 @@ async function main() {
       ?.addEventListener("click", clickChangeLang);
   }
 
-  // HTTP不安全警告
-  setStyleDisplay(!isSecureContext, self.notSecureWarning)
-
   // footer结尾追加内容
   self.footer.appendChild(
     footerAddTemplate.content.cloneNode(true)

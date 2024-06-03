@@ -29,6 +29,5 @@
             "login": "Login",
             "register": "Sign Up"
         }
-    },
-    "notSecureWarning": "⚠Unsafe"
+    }
 }

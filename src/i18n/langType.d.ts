@@ -30,5 +30,4 @@ interface langType {
             register: string;
         };
     };
-    notSecureWarning: string;
 }

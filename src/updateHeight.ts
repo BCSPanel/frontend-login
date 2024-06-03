@@ -13,10 +13,10 @@ export function updateHeight() {
   var main2Max = 0;
   switch (getDefaultLang()) {
     case "zh-CN":
-      main2Max = isSecureContext ? 0 : 316;
+      main2Max = 0;
       break;
     default:
-      main2Max = isSecureContext ? 292 : 375;
+      main2Max = 292;
   }
   const classList = self.titleBox.classList
   const className = "titleBoxImgHide"

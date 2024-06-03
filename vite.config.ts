@@ -83,9 +83,9 @@ export default defineConfig({
     reportCompressedSize: true, // 是否使用vite自带的方式打印压缩后的大小
     rollupOptions: {
       output: {
-        entryFileNames: `assets/[name].[hash:22].js`,
-        chunkFileNames: `assets/[name].[hash:22].js`,
-        assetFileNames: `assets/[name].[hash:22].[ext]`,
+        entryFileNames: `assets/[name].[hash].js`,
+        chunkFileNames: `assets/[name].[hash].js`,
+        assetFileNames: `assets/[name].[hash].[ext]`,
       }
     },
     modulePreload: {
