@@ -79,6 +79,7 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
+    minify: 'terser',
     reportCompressedSize: true, // 是否使用vite自带的方式打印压缩后的大小
     rollupOptions: {
       output: {

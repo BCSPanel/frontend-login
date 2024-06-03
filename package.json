@@ -10,6 +10,7 @@
     "bview": "tsc && vite build && vite preview"
   },
   "devDependencies": {
+    "terser": "^5.31.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.13"
   },
