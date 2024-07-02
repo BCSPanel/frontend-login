@@ -14,7 +14,7 @@ import setStyleDisplay from "./setStyleDisplay";
 const matchMediaDark = self.matchMedia("(prefers-color-scheme: dark)");
 let BCSPanelColorScheme = ''
 try {
-  BCSPanelColorScheme = (await (await fetch('../api-login/color-scheme')).text()).trim()
+  BCSPanelColorScheme = (await (await fetch('../api/color-scheme')).text()).trim()
 } catch (e) {
   console.error(e);
 }
