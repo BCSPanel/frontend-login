@@ -1,7 +1,7 @@
 import { defineMock } from 'vite-plugin-mock-dev-server'
 
 export default defineMock({
-    url: '/api-login/color-scheme',
-    body: '\n',
+    url: '/api/color-scheme/',
+    body: '',
     type: 'text/plain',
 })
