@@ -14,6 +14,7 @@ export function setRegister(enable: boolean) {
     isReg = enable
 
     setStyleDisplay(enable, self.repeat_password, self.verification_code)
+    setStyleDisplay(enable, self.divSettingsAllowWeakPassword)
 
     updateLang('loginbutton', enable ? 'register' : 'login', undefined, false);
 

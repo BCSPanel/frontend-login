@@ -77,6 +77,9 @@ changeLang(null, true);
 export function getDefaultLang() {
   return defaultLang;
 }
+export function getStorageLang() {
+  return localStorage.getItem(storageCacheName) || "default"
+}
 
 /** 依据当前语言获取内容 */
 export function getThisLang(): langType {

@@ -9,19 +9,25 @@ declare interface Window {
   divmain2: HTMLDivElement
   divLoginButton: HTMLDivElement
   titleBox: HTMLDivElement
+  divDialogSettingsMain: HTMLDivElement
+  divSettingsAllowWeakPassword: HTMLDivElement
 
   loginTitleLogin: HTMLButtonElement
   loginTitleRegister: HTMLButtonElement
   loginbutton: HTMLButtonElement
+  buttonOpenSettings: HTMLButtonElement
+  divDialogSettingsHeaderClose: HTMLButtonElement
+
+  settingsLanguage: HTMLSelectElement
+  settingsColorScheme: HTMLSelectElement
 
   loginStatus: HTMLSpanElement
-
-  notSecureWarning: HTMLAnchorElement
 
   username: HTMLInputElement
   password: HTMLInputElement
   repeat_password: HTMLInputElement
   verification_code: HTMLInputElement
+  settingsAllowWeakPassword: HTMLInputElement
 
   footer: HTMLElement
 }

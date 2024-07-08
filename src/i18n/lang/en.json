@@ -29,5 +29,11 @@
             "login": "Login",
             "register": "Sign Up"
         }
-    }
+    },
+    "settingsHeader": "Settings",
+    "settingsLabelColorScheme": "Color Scheme",
+    "settingsOptionAuto": "Automatic",
+    "settingsColorSchemeOptionLight": "Light",
+    "settingsColorSchemeOptionDark": "Dark",
+    "settingsAllowWeakPassword": "Allow weak password"
 }

@@ -30,5 +30,11 @@
             "login": "登录",
             "register": "注册"
         }
-    }
+    },
+    "settingsHeader": "设置",
+    "settingsLabelColorScheme": "配色方案",
+    "settingsOptionAuto": "自动",
+    "settingsColorSchemeOptionLight": "浅色",
+    "settingsColorSchemeOptionDark": "深色",
+    "settingsAllowWeakPassword": "允许弱密码"
 }

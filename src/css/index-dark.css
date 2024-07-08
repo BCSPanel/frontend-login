@@ -6,7 +6,8 @@ html.dark p {
   color: white;
 }
 
-html.dark .main {
+html.dark .main,
+html.dark .divDialogSettingsMain2 {
   background-color: #1d1e1f;
   border: 1px solid #414243;
 }
@@ -57,26 +58,19 @@ html.dark .loginbutton:disabled {
   background-color: #212a34;
 }
 
-html.dark .div_button_lang {
-  color: black;
-}
-
-html.dark .div_change_lang_content {
-  background-color: #333;
-}
-
-html.dark .div_change_lang_content_a {
-  color: white;
-}
-
-html.dark .div_change_lang_content_a:hover {
-  color: #d1d1d1;
-}
-
-html.dark .div_change_lang_content_a:active {
-  color: #a0a0a0;
-}
-
-html.dark .button_lang>svg>path {
+html.dark .buttonOpenSettings>svg>path,
+html.dark .divDialogSettingsHeaderClose>svg>path {
   fill: #fff;
+}
+
+html.dark .divDialogSettingsMain {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+html.dark .divDialogSettingsBody>div>select {
+  background-color: #000;
+}
+
+html.dark .divDialogSettingsMain2 {
+  color: white;
 }

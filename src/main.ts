@@ -3,35 +3,12 @@
 import { isRegister, setRegister } from "./isRegister";
 import { clickLogin } from "./clickLogin";
 import { updateLang } from "./i18n/i18n";
-import { changeLang, langsKeys } from "./i18n/langs";
+import { changeLang, getStorageLang } from "./i18n/langs";
 import { updateHeight } from "./updateHeight";
-import ElementClassListAddOrRemove from "./elementClassListAddOrRemove";
-import setStyleDisplay from "./setStyleDisplay";
+import setStyleDisplay from "./setStyleDisplay"
+import { changeColorScheme, getStorageColorScheme, initColorScheme } from './colorScheme'
 
-
-
-// 深色模式
-const matchMediaDark = self.matchMedia("(prefers-color-scheme: dark)");
-let BCSPanelColorScheme = ''
-try {
-  BCSPanelColorScheme = (await (await fetch('../api/color-scheme/')).text()).trim()
-} catch (e) {
-  console.error(e);
-}
-
-function matchMediaDarkChange() {
-  ElementClassListAddOrRemove(
-    document.children[0],
-    BCSPanelColorScheme ? BCSPanelColorScheme == "dark" : matchMediaDark.matches,
-    "dark"
-  )
-}
-matchMediaDarkChange();
-if (!BCSPanelColorScheme) matchMediaDark.addEventListener("change", matchMediaDarkChange);
-
-// 移除加载时的style
-self.loading_style?.remove();
-
+initColorScheme()
 
 // 获取footer结尾追加的配置内容
 const footerAddTemplate = document.createElement('template')
@@ -86,17 +63,30 @@ async function main() {
   self.loginTitleLogin.addEventListener("click", () => setRegister(false));
   self.loginTitleRegister.addEventListener("click", () => setRegister(true));
 
-  /* 函数用于添加语言切换按钮的响应 */
-  function clickChangeLang(event: MouseEvent) {
-    // 依据元素id切换对应语言
-    changeLang((event.target as HTMLElement).id.replace("changeLang_", ""));
-  }
-  // 遍历添加语言切换按钮的响应
-  for (const i of langsKeys.concat("default")) {
-    document
-      .getElementById("changeLang_" + i)
-      ?.addEventListener("click", clickChangeLang);
-  }
+  // Settings
+  self.settingsLanguage.addEventListener("change", () => {
+    changeLang(self.settingsLanguage.value)
+  })
+  self.settingsLanguage.value = getStorageLang()
+
+  self.settingsColorScheme.addEventListener("change", () => {
+    changeColorScheme(self.settingsColorScheme.value)
+  })
+  self.settingsColorScheme.value = getStorageColorScheme()
+
+  self.buttonOpenSettings.addEventListener("click", () => {
+    setStyleDisplay(true, self.divDialogSettingsMain)
+  })
+  self.divDialogSettingsHeaderClose.addEventListener("click", () => {
+    setStyleDisplay(false, self.divDialogSettingsMain)
+  })
+  self.addEventListener("keydown", (e) => {
+    if (e.key == 'Escape') {
+      if (self.divDialogSettingsMain.style.display == "") {
+        setStyleDisplay(false, self.divDialogSettingsMain)
+      }
+    }
+  })
 
   // footer结尾追加内容
   self.footer.appendChild(

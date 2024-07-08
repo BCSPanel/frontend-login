@@ -52,7 +52,7 @@ export async function clickLogin() {
     // 如果是注册模式
     if (isRegister()) {
       // 密码强度不足
-      {
+      if (!self.settingsAllowWeakPassword.checked) {
         const password = self.password.value;
         if (
           password.length < 12 ||
