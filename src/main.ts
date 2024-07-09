@@ -65,27 +65,45 @@ async function main() {
 
   // Settings
   self.settingsLanguage.addEventListener("change", () => {
+    // 切换语言
     changeLang(self.settingsLanguage.value)
   })
   self.settingsLanguage.value = getStorageLang()
 
   self.settingsColorScheme.addEventListener("change", () => {
+    // 切换配色方案
     changeColorScheme(self.settingsColorScheme.value)
   })
   self.settingsColorScheme.value = getStorageColorScheme()
 
   self.buttonOpenSettings.addEventListener("click", () => {
+    // 按钮打开设置
     setStyleDisplay(true, self.divDialogSettingsMain)
   })
   self.divDialogSettingsHeaderClose.addEventListener("click", () => {
+    // 按钮关闭设置
     setStyleDisplay(false, self.divDialogSettingsMain)
   })
   self.addEventListener("keydown", (e) => {
     if (e.key == 'Escape') {
       if (self.divDialogSettingsMain.style.display == "") {
+        // 键盘关闭设置
         setStyleDisplay(false, self.divDialogSettingsMain)
       }
     }
+  })
+
+  let settingsIgnoreMouseUp = false
+  function setSettingsIgnoreMouseUp() {
+    // 弹窗内阻止单击背景关闭设置
+    settingsIgnoreMouseUp = true
+  }
+  self.divDialogSettingsMain2.addEventListener('mouseup', setSettingsIgnoreMouseUp)
+  self.divDialogSettingsMain2.addEventListener('mousedown', setSettingsIgnoreMouseUp)
+  self.divDialogSettingsMain.addEventListener('mouseup', () => {
+    // 单击背景关闭设置
+    if (settingsIgnoreMouseUp) settingsIgnoreMouseUp = false;
+    else setStyleDisplay(false, self.divDialogSettingsMain)
   })
 
   // footer结尾追加内容

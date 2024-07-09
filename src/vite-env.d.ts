@@ -10,6 +10,7 @@ declare interface Window {
   divLoginButton: HTMLDivElement
   titleBox: HTMLDivElement
   divDialogSettingsMain: HTMLDivElement
+  divDialogSettingsMain2: HTMLDivElement
   divSettingsAllowWeakPassword: HTMLDivElement
 
   loginTitleLogin: HTMLButtonElement
