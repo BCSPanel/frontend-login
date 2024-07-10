@@ -8,11 +8,11 @@
 
 ```
 vite v5.0.13 building for production...
-✓ 17 modules transformed.
-dist/index.html        6.11 kB │ gzip: 2.19 kB
-dist/assets/index.css  4.55 kB │ gzip: 1.36 kB
-dist/assets/index.js   8.26 kB │ gzip: 3.47 kB
-✓ built in 359ms
+✓ 15 modules transformed.
+dist/index.html        5.99 kB │ gzip: 2.14 kB
+dist/assets/index.css  4.70 kB │ gzip: 1.40 kB
+dist/assets/index.js   8.27 kB │ gzip: 3.47 kB
+✓ built in 631ms
 ```
 
 ---

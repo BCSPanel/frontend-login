@@ -1,7 +1,7 @@
 {
   "name": "frontend-login",
   "private": true,
-  "version": "2024.07.09",
+  "version": "2024.07.10",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
     "bview": "tsc && vite build && vite preview"
   },
   "devDependencies": {
+    "sass": "^1.77.7",
     "terser": "^5.31.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.13"

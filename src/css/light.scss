@@ -1,0 +1,309 @@
+* {
+	font-family: system-ui;
+	color-scheme: light;
+}
+
+html {
+	background-color: hsl(206, 100%, 90%);
+	--transition: background-color 0.3s;
+}
+
+div {
+	margin: 0;
+}
+
+a {
+	/* 无论是否有href都当作有href的状态显示 */
+	text-decoration: underline 1px;
+	cursor: pointer;
+}
+
+body {
+	/* 修复FireFox的bug */
+	height: 100%;
+
+	margin: 0;
+	min-width: 300px;
+	display: flex;
+}
+
+@mixin mainColor() {
+	background-color: #fff;
+	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+	border: 1px solid #e4e7ed;
+}
+
+.main {
+	@include mainColor();
+	max-width: 400px;
+	min-width: 300px;
+	border-radius: 12px;
+	margin: auto;
+	padding: 16px 20px;
+	width: 100%;
+	text-align: center;
+}
+
+.titleBox {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 100%;
+	white-space: nowrap;
+
+	.titleBoxLeft {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding-left: 2px;
+	}
+
+	.titleBoxRight {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 153px;
+	}
+
+	.loginTitleTab {
+		background-color: lightgray;
+		width: 1px;
+		height: 24px;
+		margin: 0 9px;
+	}
+}
+
+.titleBox:not(.titleBoxImgHide) #titleImg-BCSP {
+	display: none;
+}
+
+.titleBoxImgHide {
+	.titleBoxRight {
+		width: 70px;
+	}
+	#titleImg-BCSPanel {
+		display: none;
+	}
+}
+
+.loginTitle {
+	font-size: 20px;
+	/* margin: 10px 0; */
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	background: none;
+	border: none;
+	padding: 0;
+
+	&:hover {
+		color: #0072eb;
+	}
+}
+
+.loginTitleSelect {
+	text-decoration-line: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: #0072eb;
+	text-underline-offset: 8px;
+	color: #0069da;
+	cursor: default;
+}
+
+.form {
+	margin: 0;
+	border: 1px solid lightgray;
+	background-color: lightgray;
+	border-radius: 8px;
+	overflow: hidden;
+	margin: 16px 0;
+
+	& > input {
+		width: 100%;
+		height: 40px;
+		padding: 0 8px;
+		font-size: 14px;
+		border: 1px solid lightgray;
+		outline-color: #0072eb;
+		outline-width: 2px;
+		outline-offset: -2px;
+
+		&:focus {
+			outline-style: solid;
+		}
+		&:first-child {
+			border-radius: 8px 8px 0 0;
+		}
+
+		&.inputLastChild {
+			border-radius: 0 0 8px 8px;
+		}
+	}
+}
+
+.divLoginButton {
+	display: block flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.loginStatus {
+	margin: 0 0 0 0;
+	text-align: left;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.forgotPassword {
+	color: gray;
+	font-size: 14px;
+}
+
+.loginbutton {
+	width: 100px;
+	padding: 8px;
+	height: 100%;
+	color: white;
+	background-color: #1987fd;
+	border-style: none;
+	border-radius: 8px;
+	font-size: 18px;
+	margin: 0;
+	float: right;
+	/* outline: none; */
+	cursor: pointer;
+	transition: background-color 0.2s;
+
+	&:hover {
+		background-color: #0072eb;
+	}
+	&:active {
+		background-color: #004ea2;
+	}
+	&:disabled {
+		background-color: #a2cfff;
+		cursor: no-drop;
+	}
+}
+
+.buttonOpenSettings {
+	text-align: center;
+	display: flex;
+	border: none;
+	text-decoration: none;
+	background-color: #0000;
+	color: white;
+	cursor: pointer;
+	height: 26px;
+
+	& > svg {
+		height: 22px;
+		width: 22px;
+
+		& > path {
+			fill: #000;
+		}
+	}
+}
+
+.divOpenSettings {
+	position: relative;
+	display: inline-block;
+}
+
+.divDialogSettingsMain {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	background-color: rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(8px);
+}
+
+.divDialogSettingsMain2 {
+	@include mainColor();
+	border-radius: 8px;
+	margin: auto;
+	padding: 14px;
+	padding-top: 10px;
+	width: 280px;
+	text-align: left;
+}
+
+.divDialogSettingsHeader {
+	text-align: left;
+	font-size: 16px;
+}
+
+.divDialogSettingsHeaderClose {
+	position: relative;
+	top: -10;
+	right: -14;
+	float: right;
+	background: none;
+	height: 40px;
+	width: 40px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+
+	& > svg > path {
+		fill: #000;
+	}
+}
+
+.divDialogSettingsBody {
+	padding: 12px;
+
+	& > div {
+		margin: 18px 0 0;
+		height: 28px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		& > select {
+			font-size: 15px;
+			min-width: 120px;
+			height: 28px;
+			border-radius: 6px;
+			padding-left: 1px;
+			background-color: #fff;
+			border: gray solid 1px;
+			cursor: pointer;
+
+			@-moz-document url-prefix() {
+				padding-left: 6px;
+			}
+		}
+
+		& > input[type="checkbox"] {
+			height: 18px;
+			width: 18px;
+			margin: 0;
+			cursor: pointer;
+		}
+	}
+}
+
+footer {
+	font-size: 14px;
+	margin-top: 16px;
+
+	p {
+		margin: 6px auto;
+	}
+	a {
+		color: gray;
+	}
+	:last-child {
+		margin-bottom: 0;
+	}
+}

@@ -1,0 +1,77 @@
+html.dark {
+	background-color: #1d3043;
+
+	* {
+		color-scheme: dark;
+	}
+
+	p {
+		color: white;
+	}
+
+	.main,
+	.divDialogSettingsMain2 {
+		background-color: #1d1e1f;
+		border: 1px solid #414243;
+	}
+
+	.loginTitleTab {
+		background-color: gray;
+	}
+
+	.loginTitle {
+		color: white;
+
+		&:hover {
+			color: #1aadff;
+		}
+	}
+
+	.loginTitleSelect {
+		text-decoration-color: #1aadff;
+		color: #1aadff;
+	}
+
+	.form {
+		border-color: gray;
+		background-color: gray;
+
+		& > input {
+			color: white;
+			background-color: #343434;
+			border-color: gray;
+			outline-color: #1aadff;
+		}
+	}
+
+	.loginbutton {
+		background-color: #0066d3;
+
+		&:hover {
+			background-color: #0072eb;
+		}
+
+		&:active {
+			background-color: #004ea2;
+		}
+
+		&:disabled {
+			background-color: #212a34;
+		}
+	}
+
+	.buttonOpenSettings,
+	.divDialogSettingsHeaderClose {
+		& > svg > path {
+			fill: #fff;
+		}
+	}
+
+	.divDialogSettingsBody > div > select {
+		background-color: #000;
+	}
+
+	.divDialogSettingsMain2 {
+		color: white;
+	}
+}
