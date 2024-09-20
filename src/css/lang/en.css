@@ -40,7 +40,15 @@ html {
         }
 
         &.repeat-password-mistake::after {
-            content: "Repeat password mistake";
+            content: "Repeat password mistake"
+        }
+
+        &.verify-code-mismatch::after {
+            content: "Verify code mismatch"
+        }
+
+        &.username-already-exists::after {
+            content: "User name already exists"
         }
     }
 }

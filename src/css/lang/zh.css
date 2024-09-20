@@ -31,15 +31,24 @@ html:lang(zh) {
     }
 
     #pStatus {
-        &.wait-a-moment::after{
+        &.wait-a-moment::after {
             content: "请稍等..."
         }
-        &.welcome::after{
+
+        &.welcome::after {
             content: "欢迎使用"
         }
+
         &.repeat-password-mistake::after {
-            content: "重复密码错误";
+            content: "重复密码错误"
+        }
+
+        &.verify-code-mismatch::after {
+            content: "验证码不匹配"
+        }
+
+        &.username-already-exists::after {
+            content: "用户名已存在"
         }
     }
-
 }

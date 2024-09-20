@@ -5,6 +5,7 @@ function disable(b: boolean) {
 function status(s: string, colorClass: string = 'red') {
     if (s.startsWith('@')) {
         self.pStatus.className = s.slice(1) + ' ' + colorClass
+        self.pStatus.innerText = ''
     } else {
         self.pStatus.className = 'red'
         self.pStatus.innerText = s
