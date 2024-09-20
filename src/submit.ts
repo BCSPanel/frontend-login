@@ -58,10 +58,8 @@ export async function submit(e: SubmitEvent) {
             },
         );
 
-        //@ts-ignore
-        clearTimeout()
-
         if (resp.ok) {
+            clearTimeout(undefined)
             status('@welcome', 'green')
             disable(true)
             return location.replace('../')
