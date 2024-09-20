@@ -65,7 +65,8 @@
     </form>
     <form id="formLogin">
       <label for="inputUserName"></label>
-      <input type="text" id="inputUserName" name="username" autocomplete="username" required pattern="^[\w\-]{1,32}$">
+      <input type="text" id="inputUserName" name="username" autocomplete="username" required pattern="^[\w\-]{1,32}$"
+        oninput="value=value.replace(/[^\w\-]/g,'')">
 
       <a id=aForgotPassword href="https://bcspanel.bddjr.com/forgotpassword.html"></a>
       <label for="inputPassword"></label>
