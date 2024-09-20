@@ -53,5 +53,9 @@ html:lang(zh) {
 		&.username-already-exists::after {
 			content: "用户名已存在";
 		}
+
+		&.invalid-username-or-password::after {
+			content: "用户名或密码错误";
+		}
 	}
 }

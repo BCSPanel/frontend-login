@@ -53,5 +53,9 @@ html {
 		&.username-already-exists::after {
 			content: "User name already exists";
 		}
+
+		&.invalid-username-or-password::after {
+			content: "Invalid username or password";
+		}
 	}
 }
