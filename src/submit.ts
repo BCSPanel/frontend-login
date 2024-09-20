@@ -62,7 +62,8 @@ export async function submit(e: SubmitEvent) {
             clearTimeout(undefined)
             status('@welcome', 'green')
             disable(true)
-            return location.replace('../')
+            setTimeout(() => location.replace('../'), 100)
+            return
         }
         if (resp.status == 401) {
             const text = (await resp.text()).trim();

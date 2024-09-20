@@ -117,6 +117,7 @@ html {
 
 	#pStatus {
 		font-size: 16px;
+		transition: none;
 		&.red {
 			color: red;
 		}
