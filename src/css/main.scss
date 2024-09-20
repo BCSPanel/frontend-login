@@ -1,6 +1,6 @@
 * {
 	box-sizing: border-box;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	transition-duration: 0.2s;
 	transition-property: color, background-color, box-shadow, border-color;
 }
@@ -22,10 +22,18 @@ html {
 	text-align: center;
 }
 
-.imgBCSPanel {
+#imgBCSPanel {
 	height: 32px;
 	margin: 40px auto;
 	display: block;
+}
+
+#unsupportedES2023 {
+	background-color: #ffebe9;
+	border: 1px solid #f8514966;
+	border-radius: 8px;
+	padding: 16px 8px;
+	color: black;
 }
 
 #formLoginMode {
@@ -50,7 +58,7 @@ html {
 	input {
 		display: none;
 
-		&:checked+label {
+		&:checked + label {
 			color: var(--blue);
 			text-decoration-line: underline;
 			text-decoration-thickness: 1px;

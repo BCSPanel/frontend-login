@@ -1,54 +1,57 @@
 html:lang(zh) {
+	#unsupportedES2023::before {
+		content: "浏览器不支持ES2023，请升级浏览器！";
+	}
 
-    label[for="inputModeReg"]::after,
-    #submit::after {
-        content: "注册";
-    }
+	label[for="inputModeReg"]::after,
+	#submit::after {
+		content: "注册";
+	}
 
-    label[for="inputModeLogin"]::after,
-    &.login #submit::after {
-        content: "登录";
-    }
+	label[for="inputModeLogin"]::after,
+	&.login #submit::after {
+		content: "登录";
+	}
 
-    label[for="inputUserName"]::after {
-        content: "用户名";
-    }
+	label[for="inputUserName"]::after {
+		content: "用户名";
+	}
 
-    #aForgotPassword::after {
-        content: "忘记密码";
-    }
+	#aForgotPassword::after {
+		content: "忘记密码";
+	}
 
-    label[for="inputPassword"]::after {
-        content: "密码";
-    }
+	label[for="inputPassword"]::after {
+		content: "密码";
+	}
 
-    label[for="inputRepeatPassword"]::after {
-        content: "重复密码";
-    }
+	label[for="inputRepeatPassword"]::after {
+		content: "重复密码";
+	}
 
-    label[for="inputVerifyCode"]::after {
-        content: "验证码";
-    }
+	label[for="inputVerifyCode"]::after {
+		content: "验证码";
+	}
 
-    #pStatus {
-        &.wait-a-moment::after {
-            content: "请稍等..."
-        }
+	#pStatus {
+		&.wait-a-moment::after {
+			content: "请稍等...";
+		}
 
-        &.welcome::after {
-            content: "欢迎使用"
-        }
+		&.welcome::after {
+			content: "欢迎使用";
+		}
 
-        &.repeat-password-mistake::after {
-            content: "重复密码错误"
-        }
+		&.repeat-password-mistake::after {
+			content: "重复密码错误";
+		}
 
-        &.verify-code-mismatch::after {
-            content: "验证码不匹配"
-        }
+		&.verify-code-mismatch::after {
+			content: "验证码不匹配";
+		}
 
-        &.username-already-exists::after {
-            content: "用户名已存在"
-        }
-    }
+		&.username-already-exists::after {
+			content: "用户名已存在";
+		}
+	}
 }

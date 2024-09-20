@@ -16,5 +16,12 @@ export default defineConfig({
 		chunkSizeWarningLimit: Infinity,
 		cssCodeSplit: true,
 		assetsInlineLimit: 0,
-	}
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern',
+			},
+		},
+	},
 })

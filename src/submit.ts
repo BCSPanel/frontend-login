@@ -58,8 +58,10 @@ export async function submit(e: SubmitEvent) {
             },
         );
 
+        //@ts-ignore
+        clearTimeout()
+
         if (resp.ok) {
-            clearTimeout(undefined)
             status('@welcome', 'green')
             disable(true)
             return location.replace('../')
@@ -71,7 +73,8 @@ export async function submit(e: SubmitEvent) {
         status(resp.status + ' ' + resp.statusText)
     } catch (e) {
         console.error(e);
-        status(String(e))
+        if ((e as DOMException | void)?.name != 'AbortError')
+            status(String(e))
     } finally {
         abort = null
     }

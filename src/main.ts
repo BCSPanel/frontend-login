@@ -4,6 +4,8 @@ function init() {
     const html = document.querySelector('html') as HTMLHtmlElement
     html.lang = navigator.language;
 
+    if (self.supportES2023) self.unsupportedES2023.style.display = 'none';
+
     (self.formLoginMode.onchange = () => {
         if (self.inputModeLogin.checked) {
             html.classList.add('login')

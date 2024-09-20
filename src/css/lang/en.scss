@@ -1,54 +1,57 @@
 html {
+	#unsupportedES2023::before {
+		content: "The browser does not support ES2023, please upgrade your browser!";
+	}
 
-    label[for="inputModeReg"]::after,
-    #submit::after {
-        content: "Register";
-    }
+	label[for="inputModeReg"]::after,
+	#submit::after {
+		content: "Register";
+	}
 
-    label[for="inputModeLogin"]::after,
-    &.login #submit::after {
-        content: "Login";
-    }
+	label[for="inputModeLogin"]::after,
+	&.login #submit::after {
+		content: "Login";
+	}
 
-    label[for="inputUserName"]::after {
-        content: "User name";
-    }
+	label[for="inputUserName"]::after {
+		content: "User name";
+	}
 
-    #aForgotPassword::after {
-        content: "Forgot password";
-    }
+	#aForgotPassword::after {
+		content: "Forgot password";
+	}
 
-    label[for="inputPassword"]::after {
-        content: "Password";
-    }
+	label[for="inputPassword"]::after {
+		content: "Password";
+	}
 
-    label[for="inputRepeatPassword"]::after {
-        content: "Repeat your password";
-    }
+	label[for="inputRepeatPassword"]::after {
+		content: "Repeat your password";
+	}
 
-    label[for="inputVerifyCode"]::after {
-        content: "Verify code";
-    }
+	label[for="inputVerifyCode"]::after {
+		content: "Verify code";
+	}
 
-    #pStatus {
-        &.wait-a-moment::after {
-            content: "Wait a moment..."
-        }
+	#pStatus {
+		&.wait-a-moment::after {
+			content: "Wait a moment...";
+		}
 
-        &.welcome::after {
-            content: "Welcome"
-        }
+		&.welcome::after {
+			content: "Welcome";
+		}
 
-        &.repeat-password-mistake::after {
-            content: "Repeat password mistake"
-        }
+		&.repeat-password-mistake::after {
+			content: "Repeat password mistake";
+		}
 
-        &.verify-code-mismatch::after {
-            content: "Verify code mismatch"
-        }
+		&.verify-code-mismatch::after {
+			content: "Verify code mismatch";
+		}
 
-        &.username-already-exists::after {
-            content: "User name already exists"
-        }
-    }
+		&.username-already-exists::after {
+			content: "User name already exists";
+		}
+	}
 }
