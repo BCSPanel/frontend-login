@@ -42,7 +42,7 @@ export async function submit(e: SubmitEvent) {
             // string 密码
             password: self.inputPassword.value,
             // string 注册模式发送验证码
-            verifycode: self.inputVerifyCode.value,
+            verifycode: isReg ? self.inputVerifyCode.value : '',
         };
 
         // 如果运行了另一个函数，另一个函数可以终止当前请求

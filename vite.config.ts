@@ -9,20 +9,7 @@ export default defineConfig({
 	base: './',
 	build: {
 		target: 'es2023',
-		minify: 'terser',
 		reportCompressedSize: false, // 是否使用vite自带的方式打印压缩后的大小
-		rollupOptions: {
-			output: {
-				entryFileNames: `assets/[name].js`,
-				chunkFileNames: `assets/[name].js`,
-				assetFileNames: `assets/[name].[ext]`,
-				manualChunks(id) {
-					if (id.includes("/node_modules/")) {
-						return "node_modules"
-					}
-				},
-			}
-		},
 		modulePreload: {
 			polyfill: false,
 		},
