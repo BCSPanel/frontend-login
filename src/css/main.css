@@ -1,0 +1,163 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	transition-duration: 0.2s;
+	transition-property: color, background-color, box-shadow, border-color;
+}
+
+html {
+	background-color: white;
+	--blue-button: #1677ff;
+	--blue: var(--blue-button);
+	--blue-hover-button: #4096ff;
+	--blue-hover: var(--blue-hover-button);
+	--blue-disabled: #87bdff;
+	--blue-active: #0958d9;
+	--font-color: black;
+}
+
+#root {
+	width: 320px;
+	margin: auto;
+	text-align: center;
+}
+
+.imgBCSPanel {
+	height: 32px;
+	margin: 40px auto;
+	display: block;
+}
+
+#formLoginMode {
+	display: flex;
+	justify-content: center;
+
+	label {
+		color: var(--font-color);
+		cursor: pointer;
+		margin: 0 10px;
+		font-size: 20px;
+
+		&:hover {
+			color: var(--blue-hover);
+		}
+
+		&:active {
+			color: var(--blue-active);
+		}
+	}
+
+	input {
+		display: none;
+
+		&:checked+label {
+			color: var(--blue);
+			text-decoration-line: underline;
+			text-decoration-thickness: 1px;
+			text-decoration-color: #0072eb;
+			text-underline-offset: 8px;
+			cursor: default;
+		}
+	}
+}
+
+#formLogin {
+	padding: 20px;
+	margin: 20px 0 40px;
+	background-color: #f6f8fa;
+	border: 1px solid #d1d9e0b3;
+	border-radius: 8px;
+	font-size: 14px;
+
+	input {
+		display: block;
+		width: 100%;
+		margin-bottom: 16px;
+		padding: 6px 10px;
+		border: 1px solid #d1d9e0;
+		border-radius: 8px;
+		line-height: 20px;
+		outline-color: var(--blue);
+		outline-width: 2px;
+		outline-offset: -2px;
+
+		&:focus {
+			outline-style: solid;
+		}
+	}
+
+	label {
+		display: inline;
+		float: left;
+		margin-bottom: 8px;
+		color: var(--font-color);
+	}
+
+	#aForgotPassword {
+		float: right;
+		display: inline;
+		color: var(--blue);
+
+		&:hover {
+			color: var(--blue-hover);
+		}
+
+		&:active {
+			color: var(--blue-active);
+		}
+	}
+
+	#pStatus {
+		font-size: 16px;
+		&.red {
+			color: red;
+		}
+
+		&.gray {
+			color: gray;
+		}
+
+		&.green {
+			color: green;
+		}
+	}
+
+	#submit {
+		border: none;
+		background-color: var(--blue-button);
+		border-radius: 8px;
+		padding: 8px;
+		color: white;
+		width: 100%;
+		font-size: 16px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--blue-hover-button);
+		}
+
+		&:active {
+			background-color: var(--blue-active);
+		}
+
+		&:disabled {
+			background-color: var(--blue-disabled);
+			cursor: no-drop;
+		}
+	}
+}
+
+footer {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	align-items: center;
+	font-size: 12px;
+
+	a {
+		display: inline-block;
+		margin: 0;
+		width: auto;
+		color: gray;
+	}
+}

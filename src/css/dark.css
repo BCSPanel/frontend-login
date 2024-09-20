@@ -1,0 +1,28 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+
+    html {
+        background-color: #0d1117;
+        --blue: var(--blue-hover-button);
+        --blue-hover: var(--blue-button);
+        --font-color: #f0f6fc;
+    }
+
+    #formLogin {
+        background-color: #151b23;
+        border-color: #3d444db3;
+
+        input {
+            background-color: #0d1117;
+            border-color: #3d444d;
+        }
+
+        #pStatus {
+            &.green {
+                color: lightgreen;
+            }
+        }
+    }
+}

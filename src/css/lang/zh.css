@@ -1,0 +1,45 @@
+html:lang(zh) {
+
+    label[for="inputModeReg"]::after,
+    #submit::after {
+        content: "注册";
+    }
+
+    label[for="inputModeLogin"]::after,
+    &.login #submit::after {
+        content: "登录";
+    }
+
+    label[for="inputUserName"]::after {
+        content: "用户名";
+    }
+
+    #aForgotPassword::after {
+        content: "忘记密码";
+    }
+
+    label[for="inputPassword"]::after {
+        content: "密码";
+    }
+
+    label[for="inputRepeatPassword"]::after {
+        content: "重复密码";
+    }
+
+    label[for="inputVerifyCode"]::after {
+        content: "验证码";
+    }
+
+    #pStatus {
+        &.wait-a-moment::after{
+            content: "请稍等..."
+        }
+        &.welcome::after{
+            content: "欢迎使用"
+        }
+        &.repeat-password-mistake::after {
+            content: "重复密码错误";
+        }
+    }
+
+}

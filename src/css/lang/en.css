@@ -1,0 +1,46 @@
+html {
+
+    label[for="inputModeReg"]::after,
+    #submit::after {
+        content: "Register";
+    }
+
+    label[for="inputModeLogin"]::after,
+    &.login #submit::after {
+        content: "Login";
+    }
+
+    label[for="inputUserName"]::after {
+        content: "User name";
+    }
+
+    #aForgotPassword::after {
+        content: "Forgot password";
+    }
+
+    label[for="inputPassword"]::after {
+        content: "Password";
+    }
+
+    label[for="inputRepeatPassword"]::after {
+        content: "Repeat your password";
+    }
+
+    label[for="inputVerifyCode"]::after {
+        content: "Verify code";
+    }
+
+    #pStatus {
+        &.wait-a-moment::after {
+            content: "Wait a moment..."
+        }
+
+        &.welcome::after {
+            content: "Welcome"
+        }
+
+        &.repeat-password-mistake::after {
+            content: "Repeat password mistake";
+        }
+    }
+}
