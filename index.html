@@ -2,94 +2,100 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="icon/BCSP-64x64.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - BCSPanel</title>
-  <script src="/loading-failed.js"></script>
-  <script nomodule> throw "Unsupported ES6"; </script>
-  <script type="module" src="/src/main.ts"></script>
-  <link rel="stylesheet" href="/src/css/main.scss">
-  <link rel="stylesheet" href="/src/css/login.scss">
-  <link rel="stylesheet" href="/src/css/dark.scss">
-  <link rel="stylesheet" href="/src/css/lang/en.scss">
-  <link rel="stylesheet" href="/src/css/lang/zh.scss">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="icon/BCSP-64x64.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - BCSPanel</title>
+    <script src="/loading-failed.js"></script>
+    <script nomodule> throw "Unsupported ES6"; </script>
+    <script type="module" src="/src/main.ts"></script>
+    <link rel="stylesheet" href="/src/css/main.scss">
+    <link rel="stylesheet" href="/src/css/login.scss">
+    <link rel="stylesheet" href="/src/css/dark.scss">
+    <link rel="stylesheet" href="/src/css/lang/en.scss">
+    <link rel="stylesheet" href="/src/css/lang/zh.scss">
 </head>
 
 <body>
-  <div id="loading">
-    <div id="loadingSpin"></div>
-    <style>
-      #loading {
-        display: flex;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #fff;
-        z-index: calc(infinity);
-      }
+    <div id="loading">
+        <div id="loadingSpin"></div>
+        <style>
+            #loading {
+                display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #fff;
+                z-index: calc(infinity);
+            }
 
-      #loadingSpin {
-        margin: auto;
-        height: 30px;
-        width: 30px;
-        border-radius: 99px;
-        border: 3px solid #0000;
-        border-top-color: #1677ff;
-        animation: loading .8s infinite linear;
-      }
+            #loadingSpin {
+                margin: auto;
+                height: 30px;
+                width: 30px;
+                border-radius: 99px;
+                border: 3px solid #0000;
+                border-top-color: #1677ff;
+                animation: loading .8s infinite linear;
+            }
 
-      @keyframes loading {
-        100% {
-          transform: rotate(360deg);
-        }
-      }
+            @keyframes loading {
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
 
-      @media (prefers-color-scheme: dark) {
-        #loading {
-          background-color: #000;
-        }
-      }
-    </style>
-  </div>
-  <div id="root">
-    <img id="imgBCSPanel" src="/icon/BCSPanel.png" alt="BCSPanel">
-    <p id="unsupportedES2023"></p>
-    <form id="formLoginMode">
-      <input type="radio" id="inputModeLogin" name="loginMode" value="login" checked>
-      <label for="inputModeLogin"></label>
-      <input type="radio" id="inputModeReg" name="loginMode" value="reg">
-      <label for="inputModeReg"></label>
-    </form>
-    <form id="formLogin">
-      <label for="inputUserName"></label>
-      <input type="text" id="inputUserName" name="username" autocomplete="username" required pattern="^[\w\-]{1,32}$"
-        oninput="value=value.replace(/[^\w\-]/g,'')">
+            @media (prefers-color-scheme: dark) {
+                #loading {
+                    background-color: #000;
+                }
+            }
+        </style>
+    </div>
+    <div id="root">
+        <img id="imgBCSPanel" src="/icon/BCSPanel.png" alt="BCSPanel">
+        <p id="unsupportedES2023"></p>
+        <form id="formLoginMode">
+            <input type="radio" id="inputModeLogin" name="loginMode" value="login" checked>
+            <label for="inputModeLogin"></label>
+            <input type="radio" id="inputModeReg" name="loginMode" value="reg">
+            <label for="inputModeReg"></label>
+        </form>
+        <form id="formLogin">
+            <label for="inputUserName"></label>
+            <input type="text" id="inputUserName" name="username" autocomplete="username" required pattern="^[\w\-]{1,32}$"
+                oninput="value=value.replace(/[^\w\-]/g,'')">
 
-      <a id=aForgotPassword href="https://bcspanel.bddjr.com/forgotpassword.html"></a>
-      <label for="inputPassword"></label>
-      <input type="password" id="inputPassword" name="password" minlength="10" required>
+            <a id=aForgotPassword href="https://bcspanel.bddjr.com/forgotpassword.html" target="_blank"></a>
+            <label for="inputPassword"></label>
+            <input type="password" id="inputPassword" name="password" minlength="10" required>
 
-      <label for="inputRepeatPassword"></label>
-      <input type="password" id="inputRepeatPassword" name="repeatpassword" minlength="10" required
-        autocomplete="new-password">
+            <label for="inputRepeatPassword"></label>
+            <input type="password" id="inputRepeatPassword" name="repeatpassword" minlength="10" required
+                autocomplete="new-password">
 
-      <label for="inputVerifyCode"></label>
-      <input type="text" id="inputVerifyCode" name="verifycode" minlength="8" maxlength="8" required pattern="^[\d]{8}$"
-        oninput="value=value.replace(/\D/g,'')" inputmode="numeric" placeholder="bcspanel verifycode"
-        autocomplete="off">
+            <label for="inputVerifyCode"></label>
+            <input type="text" id="inputVerifyCode" name="verifycode" minlength="8" maxlength="8" required pattern="^[\d]{8}$"
+                oninput="value=value.replace(/\D/g,'')" inputmode="numeric" placeholder="bcspanel verifycode"
+                autocomplete="off">
 
-      <p id="pStatus"></p>
+            <p id="pStatus"></p>
 
-      <button type="submit" id="submit"></button>
-    </form>
+            <button type="submit" id="submit"></button>
+        </form>
+
+<!-- htmlmin:ignore -->
+
     <footer>
-      <a href="https://bcspanel.bddjr.com/" target="_blank">BCSPanel</a>
-      <!-- <a href="https://beian.miit.gov.cn/" target="_blank">汉ICP备999号-9</a> -->
+        <a href="https://bcspanel.bddjr.com/" target=_blank>BCSPanel</a>
+        <!-- <a href="https://beian.miit.gov.cn/" target=_blank>汉ICP备999号-9</a> -->
     </footer>
-  </div>
+
+<!-- htmlmin:ignore -->
+
+    </div>
 </body>
 
 </html>
