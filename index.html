@@ -67,8 +67,8 @@
         </form>
         <form id="formLogin">
             <label for="inputUserName"></label>
-            <input type="text" id="inputUserName" name="username" autocomplete="username" required pattern="^[\w\-]{1,32}$"
-                oninput="value=value.replace(/[^\w\-]/g,'')">
+            <input type="text" id="inputUserName" name="username" maxlength="32" autocomplete="username" required
+                pattern="^[\w\-]{1,32}$" oninput="value=value.replace(/[^\w\-]/g,'')">
 
             <a id=aForgotPassword href="https://bcspanel.bddjr.com/forgotpassword.html" target="_blank"></a>
             <label for="inputPassword"></label>
@@ -79,9 +79,9 @@
                 autocomplete="new-password">
 
             <label for="inputVerifyCode"></label>
-            <input type="text" id="inputVerifyCode" name="verifycode" minlength="8" maxlength="8" required pattern="^[\d]{8}$"
-                oninput="value=value.replace(/\D/g,'')" inputmode="numeric" placeholder="bcspanel verifycode"
-                autocomplete="off">
+            <input type="text" id="inputVerifyCode" name="verifycode" minlength="8" maxlength="8" required
+                pattern="^[\d]{8}$" oninput="value=value.replace(/\D/g,'')" inputmode="numeric"
+                placeholder="bcspanel verifycode" autocomplete="off">
 
             <p id="pStatus"></p>
 
