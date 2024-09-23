@@ -1,0 +1,10 @@
+html.welcome {
+    #welcome {
+        display: block;
+    }
+
+    form,
+    footer {
+        display: none !important;
+    }
+}

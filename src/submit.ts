@@ -32,37 +32,34 @@ export async function submit(e: SubmitEvent) {
     setTimeout(() => disable(false), 1000)
     status('@wait-a-moment', 'gray')
     try {
-        const submitForm = {
-            // boolean 安全上下文
-            secure: isSecureContext,
-            // boolean 是否处于注册模式
-            isregister: isReg,
-            // string 用户名
-            username: self.inputUserName.value,
-            // string 密码
-            password: self.inputPassword.value,
-            // string 注册模式发送验证码
-            verifycode: isReg ? self.inputVerifyCode.value : '',
-        };
-
         // 如果运行了另一个函数，另一个函数可以终止当前请求
         const controller = new AbortController();
         abort = controller.abort;
 
-        const resp = await fetch(
-            "../api/login/login",
-            {
-                method: "POST",
-                body: JSON.stringify(submitForm),
-                signal: controller.signal,
+        const resp = await fetch("../api/login/login", {
+            method: "POST",
+            headers: {
+                "Accept": "text/plain",
+                "Content-Type": "application/json",
             },
-        );
+            body: JSON.stringify({
+                // boolean 安全上下文
+                secure: isSecureContext,
+                // boolean 是否处于注册模式
+                isregister: isReg,
+                // string 用户名
+                username: self.inputUserName.value,
+                // string 密码
+                password: self.inputPassword.value,
+                // string 注册模式发送验证码
+                verifycode: isReg ? self.inputVerifyCode.value : '',
+            }),
+            signal: controller.signal,
+        });
 
         if (resp.ok) {
-            clearTimeout(undefined)
-            status('@welcome', 'green')
-            disable(true)
-            setTimeout(() => location.replace('../'), 100)
+            self.html.classList.add('welcome')
+            location.replace('../')
             return
         }
         if (resp.status == 401) {

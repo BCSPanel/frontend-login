@@ -1,6 +1,7 @@
 declare interface Window {
     supportES2023: boolean
 
+    html: HTMLHtmlElement
     loading?: HTMLDivElement
     root: HTMLDivElement
 

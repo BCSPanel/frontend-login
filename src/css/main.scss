@@ -36,6 +36,13 @@ html {
 	color: black;
 }
 
+#welcome {
+	font-size: 32px;
+	margin-top: 140px;
+	color: var(--font-color);
+	display: none;
+}
+
 #formLoginMode {
 	display: flex;
 	justify-content: center;
