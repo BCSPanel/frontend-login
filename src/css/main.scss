@@ -125,13 +125,7 @@ html {
 	#pStatus {
 		font-size: 16px;
 		transition: none;
-		&.red {
-			color: red;
-		}
-
-		&.gray {
-			color: gray;
-		}
+		color: red;
 	}
 
 	#submit {

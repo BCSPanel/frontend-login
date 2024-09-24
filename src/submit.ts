@@ -2,12 +2,12 @@ function disable(b: boolean) {
     self.submit.disabled = b
 }
 
-function status(s: string, colorClass: string = 'red') {
+function status(s: string) {
     if (s.startsWith('@')) {
-        self.pStatus.className = s.slice(1) + ' ' + colorClass
         self.pStatus.innerText = ''
+        self.pStatus.className = s.slice(1)
     } else {
-        self.pStatus.className = 'red'
+        self.pStatus.className = ''
         self.pStatus.innerText = s
     }
 }
@@ -30,7 +30,7 @@ export async function submit(e: SubmitEvent) {
 
     disable(true)
     setTimeout(() => disable(false), 1000)
-    status('@wait-a-moment', 'gray')
+    status('@wait-a-moment')
     try {
         // 如果运行了另一个函数，另一个函数可以终止当前请求
         const controller = new AbortController();

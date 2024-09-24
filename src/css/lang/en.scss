@@ -39,6 +39,7 @@ html {
 
 	#pStatus {
 		&.wait-a-moment::after {
+			color: gray;
 			content: "Wait a moment...";
 		}
 
