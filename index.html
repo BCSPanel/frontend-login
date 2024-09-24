@@ -18,45 +18,13 @@
 </head>
 
 <body>
-    <div id="loading">
-        <div id="loadingSpin"></div>
-        <style>
-            #loading {
-                display: flex;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: #fff;
-                z-index: calc(infinity);
-            }
-
-            #loadingSpin {
-                margin: auto;
-                height: 30px;
-                width: 30px;
-                border-radius: 99px;
-                border: 3px solid #0000;
-                border-top-color: #1677ff;
-                animation: loading .8s infinite linear;
-            }
-
-            @keyframes loading {
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
-            @media (prefers-color-scheme: dark) {
-                #loading {
-                    background-color: #000;
-                }
-            }
-        </style>
-    </div>
+    <style id="loading">
+        #root {
+            display: none;
+        }
+    </style>
     <div id="root">
-        <img id="imgBCSPanel" src="/icon/BCSPanel.png" alt="BCSPanel">
+        <img id="imgBCSPanel" src="/icon/BCSPanel.png" alt>
         <p id="unsupportedES2023"></p>
         <p id="welcome"></p>
         <form id="formLoginMode">
@@ -75,13 +43,13 @@
             <input type="password" id="inputPassword" name="password" minlength="10" required>
 
             <label for="inputRepeatPassword"></label>
-            <input type="password" id="inputRepeatPassword" name="repeatpassword" minlength="10" required
+            <input type="password" id="inputRepeatPassword" name="repeatpassword" minlength="10"
                 autocomplete="new-password">
 
             <label for="inputVerifyCode"></label>
-            <input type="text" id="inputVerifyCode" name="verifycode" minlength="8" maxlength="8" required
-                pattern="^[\d]{8}$" oninput="value=value.replace(/\D/g,'')" inputmode="numeric"
-                placeholder="bcspanel verifycode" autocomplete="off">
+            <input type="text" id="inputVerifyCode" name="verifycode" minlength="8" maxlength="8" pattern="^[\d]{8}$"
+                oninput="value=value.replace(/\D/g,'')" inputmode="numeric" placeholder="bcspanel verifycode"
+                autocomplete="off">
 
             <p id="pStatus"></p>
 

@@ -2,11 +2,12 @@ declare interface Window {
     supportES2023: boolean
 
     html: HTMLHtmlElement
-    loading?: HTMLDivElement
+    loading?: HTMLStyleElement
     root: HTMLDivElement
 
     imgBCSPanel: HTMLImageElement
-    unsupportedES2023: HTMLParagraphElement
+    unsupportedES2023?: HTMLParagraphElement
+    welcome: HTMLParagraphElement
 
     formLoginMode: HTMLDivElement
     inputModeLogin: HTMLInputElement

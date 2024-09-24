@@ -3,7 +3,7 @@ import { submit } from "./submit";
 function init() {
     self.html.lang = navigator.language;
 
-    if (self.supportES2023) self.unsupportedES2023.remove();
+    if (self.supportES2023) self.unsupportedES2023?.remove();
 
     (self.formLoginMode.onchange = () => {
         if (self.inputModeLogin.checked) {
