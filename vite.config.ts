@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import viteCompression from 'vite-plugin-compression';
 import htmlMinimize from '@sergeymakinen/vite-plugin-html-minimize'
 
 // https://vitejs.dev/config/
@@ -9,6 +10,8 @@ export default defineConfig({
 	},
 	base: './',
 	plugins: [
+		viteCompression({ algorithm: "brotliCompress" }),
+		viteCompression({ algorithm: "gzip" }),
 		htmlMinimize({
 			minifierOptions: {
 				collapseWhitespace: true,

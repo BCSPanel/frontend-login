@@ -59,7 +59,7 @@ export async function submit(e: SubmitEvent) {
 
         if (resp.ok) {
             self.html.classList.add('welcome')
-            location.replace('../')
+            setTimeout(() => location.replace('../'), 10)
             return
         }
         if (resp.status == 401) {
