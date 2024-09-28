@@ -31,7 +31,7 @@ export default defineConfig({
 		}),
 	],
 	build: {
-		target: 'es2023',
+		target: 'esnext',
 		reportCompressedSize: false, // 是否使用vite自带的方式打印压缩后的大小
 		modulePreload: {
 			polyfill: false,
