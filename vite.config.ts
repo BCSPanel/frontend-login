@@ -9,6 +9,14 @@ export default defineConfig({
 		host: '0.0.0.0',
 	},
 	base: './',
+	experimental: {
+		renderBuiltUrl(filename, { type }) {
+			// frontend-antd/public
+			if (type === 'public') return '../' + filename
+			// assets
+			return filename
+		},
+	},
 	plugins: [
 		viteCompression({ algorithm: "brotliCompress" }),
 		viteCompression({ algorithm: "gzip" }),
@@ -31,6 +39,7 @@ export default defineConfig({
 		}),
 	],
 	build: {
+		copyPublicDir: false,
 		target: 'esnext',
 		reportCompressedSize: false, // 是否使用vite自带的方式打印压缩后的大小
 		modulePreload: {

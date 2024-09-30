@@ -14,9 +14,3 @@ npm run dev
 ```
 npm run build
 ```
-
-挂载预览（需要先运行构建）
-
-```
-npm run preview
-```
