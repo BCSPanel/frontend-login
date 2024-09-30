@@ -9,6 +9,7 @@ export default defineConfig({
 		host: '0.0.0.0',
 	},
 	base: './',
+	// https://cn.vitejs.dev/guide/build#advanced-base-options
 	experimental: {
 		renderBuiltUrl(filename, { type }) {
 			// frontend-antd/public
