@@ -1,7 +1,10 @@
+declare interface Document {
+    lastChild: HTMLHtmlElement
+}
+
 declare interface Window {
     supportES2023: boolean
 
-    html: HTMLHtmlElement
     loading?: HTMLStyleElement
     root: HTMLDivElement
 

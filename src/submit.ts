@@ -58,7 +58,7 @@ export async function submit(e: SubmitEvent) {
         });
 
         if (resp.ok) {
-            self.html.classList.add('welcome')
+            document.lastChild.classList.add('welcome')
             setTimeout(() => location.replace('../'), 10)
             return
         }
