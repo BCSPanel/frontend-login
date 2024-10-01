@@ -58,9 +58,9 @@ export async function submit(e: SubmitEvent) {
         });
 
         if (resp.ok) {
-            document.lastChild.classList.add('welcome')
-            setTimeout(() => location.replace('../'), 10)
-            return
+            clearTimeout(undefined)
+            disable(true)
+            return location.replace('../')
         }
         if (resp.status == 401) {
             const text = (await resp.text()).trim();

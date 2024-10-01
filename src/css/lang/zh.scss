@@ -3,10 +3,6 @@ html:lang(zh) {
 		content: "浏览器不支持ES2023，请升级浏览器！";
 	}
 
-	#welcome::after {
-		content: "欢迎使用";
-	}
-
 	label[for="inputModeReg"]::after,
 	#submit::after {
 		content: "注册";

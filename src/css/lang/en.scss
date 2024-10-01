@@ -3,10 +3,6 @@ html {
 		content: "The browser does not support ES2023, please upgrade your browser!";
 	}
 
-	#welcome::after {
-		content: "Welcome";
-	}
-
 	label[for="inputModeReg"]::after,
 	#submit::after {
 		content: "Register";
