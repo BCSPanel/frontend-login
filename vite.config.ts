@@ -28,7 +28,7 @@ export default defineConfig({
 				html5: true,
 				keepClosingSlash: false,
 				minifyCSS: true,
-				minifyJS: true,
+				minifyJS: false,
 				removeAttributeQuotes: true,
 				removeComments: true,
 				removeRedundantAttributes: true,
