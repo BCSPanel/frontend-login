@@ -29,14 +29,13 @@ window.onerror = function (event, source, lineo, colno) {
 		event.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '<br>' +
 		source.replace(location.protocol + '//' + location.host, '') + ' (' + lineo + ', ' + colno + ')</p>'
 
-	var loadingFailedBlueScreenPrinted = false
 	function f() {
-		if (loadingFailedBlueScreenPrinted) return
-		document.body.innerHTML = innerHTML
-		loadingFailedBlueScreenPrinted = true
-		document.head.innerHTML = ''
+		document.close()
+		document.write(innerHTML)
 	}
-	setTimeout(f, 500)
-	setTimeout(f, 800)
-	document.readyState != 'loading' ? f() : document.addEventListener("DOMContentLoaded", f)
+	for (var i = 100; i < 600; i += 100) {
+		setTimeout(f, i)
+	}
+	document.addEventListener("DOMContentLoaded", f)
+	f()
 }
