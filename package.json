@@ -18,7 +18,7 @@
   "dependencies": {
     "@sergeymakinen/vite-plugin-html-minimize": "^2.0.0",
     "prettier": "^3.2.4",
-    "rollup": "^4.9.6",
+    "rollup": "^4.24.2",
     "vite-plugin-mock-dev-server": "^1.5.0"
   }
 }
