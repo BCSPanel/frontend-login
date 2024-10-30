@@ -24,10 +24,6 @@ export async function submit(e: SubmitEvent) {
         console.error(e);
     }
 
-    const isReg = self.inputModeReg.checked
-    if (isReg && self.inputPassword.value != self.inputRepeatPassword.value)
-        return status('@repeat-password-mistake')
-
     disable(true)
     setTimeout(() => disable(false), 1000)
     status('@wait-a-moment')
@@ -45,14 +41,10 @@ export async function submit(e: SubmitEvent) {
             body: JSON.stringify({
                 // boolean 安全上下文
                 secure: isSecureContext,
-                // boolean 是否处于注册模式
-                isregister: isReg,
                 // string 用户名
                 username: self.inputUserName.value,
                 // string 密码
                 password: self.inputPassword.value,
-                // string 注册模式发送验证码
-                verifycode: isReg ? self.inputVerifyCode.value : '',
             }),
             signal: controller.signal,
         });
