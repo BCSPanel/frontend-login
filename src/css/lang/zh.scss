@@ -3,13 +3,7 @@ html:lang(zh) {
 		content: "浏览器不支持ES2023，请升级浏览器！";
 	}
 
-	label[for="inputModeReg"]::after,
 	#submit::after {
-		content: "注册";
-	}
-
-	label[for="inputModeLogin"]::after,
-	&.login #submit::after {
 		content: "登录";
 	}
 
@@ -25,29 +19,9 @@ html:lang(zh) {
 		content: "密码";
 	}
 
-	label[for="inputRepeatPassword"]::after {
-		content: "重复密码";
-	}
-
-	label[for="inputVerifyCode"]::after {
-		content: "验证码";
-	}
-
 	#pStatus {
 		&.wait-a-moment::after {
 			content: "请稍等...";
-		}
-
-		&.repeat-password-mistake::after {
-			content: "重复密码错误";
-		}
-
-		&.verify-code-mismatch::after {
-			content: "验证码不匹配";
-		}
-
-		&.username-already-exists::after {
-			content: "用户名已存在";
 		}
 
 		&.invalid-username-or-password::after {

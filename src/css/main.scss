@@ -16,15 +16,22 @@ html {
 	--font-color: black;
 }
 
+body {
+	display: flex;
+	min-height: 100vh;
+	margin: 0;
+}
+
 #root {
-	width: 320px;
+	width: 300px;
 	margin: auto;
 	text-align: center;
 }
 
 #imgBCSPanel {
 	height: 32px;
-	margin: 40px auto;
+	// margin: 40px auto;
+	margin: 0 auto 30px;
 	display: block;
 }
 
@@ -43,42 +50,9 @@ html {
 	display: none;
 }
 
-#formLoginMode {
-	display: flex;
-	justify-content: center;
-
-	label {
-		color: var(--font-color);
-		cursor: pointer;
-		margin: 0 10px;
-		font-size: 20px;
-
-		&:hover {
-			color: var(--blue-hover);
-		}
-
-		&:active {
-			color: var(--blue-active);
-		}
-	}
-
-	input {
-		display: none;
-
-		&:checked + label {
-			color: var(--blue);
-			text-decoration-line: underline;
-			text-decoration-thickness: 1px;
-			text-decoration-color: #0072eb;
-			text-underline-offset: 8px;
-			cursor: default;
-		}
-	}
-}
-
 #formLogin {
-	padding: 20px;
-	margin: 20px 0 40px;
+	padding: 16px;
+	margin: 0 0 30px;
 	background-color: #f6f8fa;
 	border: 1px solid #d1d9e0b3;
 	border-radius: 8px;

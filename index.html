@@ -10,7 +10,6 @@
     <script nomodule>throw "Unsupported ES6"</script>
     <script type="module" src="/src/main.ts"></script>
     <link rel="stylesheet" href="/src/css/main.scss">
-    <link rel="stylesheet" href="/src/css/login.scss">
     <link rel="stylesheet" href="/src/css/dark.scss">
     <link rel="stylesheet" href="/src/css/lang/en.scss">
     <link rel="stylesheet" href="/src/css/lang/zh.scss">
@@ -25,13 +24,6 @@
     <div id="root">
         <img id="imgBCSPanel" src="/icon/BCSPanel.png" alt>
         <p id="unsupportedES2023"></p>
-        <p id="welcome"></p>
-        <form id="formLoginMode">
-            <input type="radio" id="inputModeLogin" name="loginMode" value="login" checked>
-            <label for="inputModeLogin"></label>
-            <input type="radio" id="inputModeReg" name="loginMode" value="reg">
-            <label for="inputModeReg"></label>
-        </form>
         <form id="formLogin">
             <label for="inputUserName"></label>
             <input type="text" id="inputUserName" name="username" maxlength="32" autocomplete="username" required
@@ -40,15 +32,6 @@
             <a id=aForgotPassword href="https://bcspanel.bddjr.com/forgotpassword.html" target="_blank"></a>
             <label for="inputPassword"></label>
             <input type="password" id="inputPassword" name="password" minlength="10" required>
-
-            <label for="inputRepeatPassword"></label>
-            <input type="password" id="inputRepeatPassword" name="repeatpassword" minlength="10"
-                autocomplete="new-password">
-
-            <label for="inputVerifyCode"></label>
-            <input type="text" id="inputVerifyCode" name="verifycode" minlength="8" maxlength="8" pattern="^[\d]{8}$"
-                oninput="value=value.replace(/\D/g,'')" inputmode="numeric" placeholder="bcspanel verifycode"
-                autocomplete="off">
 
             <p id="pStatus"></p>
 
